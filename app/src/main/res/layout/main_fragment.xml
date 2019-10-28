@@ -9,7 +9,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#D70E0E0F"
+        android:background="#212432"
         android:minWidth="@android:dimen/thumbnail_width"
         android:minHeight="@android:dimen/thumbnail_height"
         tools:context=".MainActivity">
