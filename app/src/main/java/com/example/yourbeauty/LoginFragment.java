@@ -16,7 +16,7 @@ public class LoginFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
 
-        View rootView = inflater.inflate(R.layout.sign_fragment, container,
+        View rootView = inflater.inflate(R.layout.login_fragment, container,
                 false);
 
 

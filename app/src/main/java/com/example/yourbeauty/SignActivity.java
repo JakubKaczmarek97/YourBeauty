@@ -10,7 +10,8 @@ public class SignActivity extends AppCompatActivity
     private ViewPager mViewPager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -23,9 +24,5 @@ public class SignActivity extends AppCompatActivity
 
         adapter.addFragment(new SignFragment(), "signFragment");
         viewPager.setAdapter(adapter);
-    }
-    public void setViewPager(int FragmentNumber)
-    {
-        mViewPager.setCurrentItem(FragmentNumber);
     }
 }
