@@ -88,7 +88,7 @@
         app:layout_constraintTop_toBottomOf="@+id/plainName" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/plainAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -99,7 +99,7 @@
         app:layout_constraintTop_toBottomOf="@+id/plainSurname" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/plainMail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -107,10 +107,10 @@
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/plainAge" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/plainAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -118,7 +118,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        app:layout_constraintTop_toBottomOf="@+id/plainMail" />
 
     <TextView
         android:id="@+id/twAge"
@@ -130,7 +130,7 @@
         android:fontFamily="@font/oregano"
         android:text="Age:"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/editText4"
+        app:layout_constraintEnd_toStartOf="@+id/plainAge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/twSurname" />
 
@@ -144,12 +144,12 @@
         android:fontFamily="@font/oregano"
         android:text="E-Mail:"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/editText5"
+        app:layout_constraintEnd_toStartOf="@+id/plainMail"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/twAge" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/twAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -158,9 +158,22 @@
         android:fontFamily="@font/oregano"
         android:text="Address:"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/editText6"
+        app:layout_constraintEnd_toStartOf="@+id/plainAddress"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/twMail" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#D94A4A"
+        android:fontFamily="@font/oregano"
+        android:text="Sign Up"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plainAddress" />
 
 </android.support.constraint.ConstraintLayout>
 </ScrollView>
