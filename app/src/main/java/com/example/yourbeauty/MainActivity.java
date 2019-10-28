@@ -4,12 +4,14 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
 
     private ViewPager mViewPager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -17,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
         setupViewPager(mViewPager);
     }
 
-    private void setupViewPager(ViewPager viewPager) {
+    private void setupViewPager(ViewPager viewPager)
+    {
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager());
 
         adapter.addFragment(new mainFragment(), "mainFragment");
