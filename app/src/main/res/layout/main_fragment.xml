@@ -17,11 +17,11 @@
         android:text="Welcome to the beauty area. \n Find the service you are looking for."
         android:textAlignment="center"
         android:textColor="#ffffff"
-        android:textSize="18sp" />
+        android:textSize="20sp"/>
 
     <Button
         android:id="@+id/btnStrGlowna"
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
@@ -81,7 +81,8 @@
                 android:fontFamily="@font/oregano"
                 android:paddingTop="32sp"
                 android:layout_marginRight="2dp"
-                android:text="Hairdressers" />
+                android:text="Hairdressers"
+                android:textStyle="bold"/>
 
 
             <Button
@@ -94,7 +95,8 @@
                 android:fontFamily="@font/oregano"
                 android:paddingTop="32sp"
                 android:layout_marginLeft="2dp"
-                android:text="Barbers" />
+                android:text="Barbers"
+                android:textStyle="bold"/>
 
 
         </TableRow>
@@ -117,7 +119,8 @@
                     android:fontFamily="@font/oregano"
                     android:paddingTop="32sp"
                     android:layout_marginRight="2dp"
-                    android:text="Beauticians" />
+                    android:text="Beauticians"
+                    android:textStyle="bold"/>
 
 
                 <Button
@@ -130,7 +133,8 @@
                     android:fontFamily="@font/oregano"
                     android:paddingTop="32sp"
                     android:layout_marginLeft="2dp"
-                    android:text="Estetic Medicine" />
+                    android:text="Estetic Medicine"
+                    android:textStyle="bold"/>
 
 
             </TableRow>
@@ -153,7 +157,8 @@
                     android:fontFamily="@font/oregano"
                     android:paddingTop="32sp"
                     android:layout_marginRight="2dp"
-                    android:text="Nails" />
+                    android:text="Nails"
+                    android:textStyle="bold"/>
 
 
                 <Button
@@ -166,7 +171,8 @@
                     android:fontFamily="@font/oregano"
                     android:paddingTop="32sp"
                     android:layout_marginLeft="2dp"
-                    android:text="Dietetics" />
+                    android:text="Dietetics"
+                    android:textStyle="bold"/>
 
 
             </TableRow>
