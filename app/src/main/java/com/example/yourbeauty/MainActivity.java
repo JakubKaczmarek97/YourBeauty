@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mViewPager=(ViewPager) findViewById(R.id.fragment_container);
+        mViewPager= findViewById(R.id.fragment_container);
         setupViewPager(mViewPager);
     }
 
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity
     {
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager());
 
-        adapter.addFragment(new mainFragment(), "mainFragment");
+        adapter.addFragment(new mainFragment(), "mainMenuFragment");
         viewPager.setAdapter(adapter);
     }
     public void setViewPager(int FragmentNumber)
