@@ -21,13 +21,13 @@ public class LoginFragment extends Fragment
 
         View rootView = inflater.inflate(R.layout.login_fragment, container,
                 false);
-        LogBtn = (Button) rootView.findViewById(R.id.btnLogin);
+        LogBtn = rootView.findViewById(R.id.btnLogin);
 
         LogBtn.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),MainMenuActivity.class);
+                Intent intent = new Intent(getActivity(), LoginSignActivity.class);
                 startActivity(intent);
             }
         });

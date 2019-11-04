@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-public class MainMenuActivity extends AppCompatActivity
+public class LoginSignActivity extends AppCompatActivity
 {
 
     private ViewPager mViewPager;
@@ -15,7 +15,7 @@ public class MainMenuActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mViewPager=(ViewPager) findViewById(R.id.fragment_container);
+        mViewPager = findViewById(R.id.fragment_container);
         setupViewPager(mViewPager);
     }
 
@@ -23,7 +23,7 @@ public class MainMenuActivity extends AppCompatActivity
     {
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager());
 
-        adapter.addFragment(new MainMenuFragment(), "MainMenuFragment");
+        adapter.addFragment(new LoginSignFragment(), "LoginSignFragment");
         viewPager.setAdapter(adapter);
     }
 }

@@ -12,7 +12,7 @@
             android:background="#212432"
             android:minWidth="@android:dimen/thumbnail_width"
             android:minHeight="@android:dimen/thumbnail_height"
-            tools:context=".MainMenuActivity">
+            tools:context=".LoginSignActivity">
 
                 <Button
                     android:id="@+id/login_btn"
