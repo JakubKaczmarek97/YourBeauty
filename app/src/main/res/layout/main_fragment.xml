@@ -80,6 +80,7 @@
                 android:drawablePadding="-10sp"
                 android:fontFamily="@font/oregano"
                 android:paddingTop="32sp"
+                android:layout_marginRight="2dp"
                 android:text="Hairdressers" />
 
 
@@ -92,10 +93,83 @@
                 android:drawablePadding="-10sp"
                 android:fontFamily="@font/oregano"
                 android:paddingTop="32sp"
+                android:layout_marginLeft="2dp"
                 android:text="Barbers" />
 
 
         </TableRow>
+
+            <TableRow
+                android:id="@+id/Row2"
+                app:layout_constraintTop_toBottomOf="@+id/search_browser"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/btnBeauty"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    android:background="#99FF66"
+                    android:drawableTop="@drawable/beauty_salon"
+                    android:drawablePadding="-10sp"
+                    android:fontFamily="@font/oregano"
+                    android:paddingTop="32sp"
+                    android:layout_marginRight="2dp"
+                    android:text="Beauticians" />
+
+
+                <Button
+                    android:id="@+id/btnMedic"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    android:background="#80FFFF"
+                    android:drawableTop="@drawable/doctor"
+                    android:drawablePadding="-10sp"
+                    android:fontFamily="@font/oregano"
+                    android:paddingTop="32sp"
+                    android:layout_marginLeft="2dp"
+                    android:text="Estetic Medicine" />
+
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/Row3"
+                app:layout_constraintTop_toBottomOf="@+id/search_browser"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/btnNails"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    android:background="#FF80B3"
+                    android:drawableTop="@drawable/fashion"
+                    android:drawablePadding="-10sp"
+                    android:fontFamily="@font/oregano"
+                    android:paddingTop="32sp"
+                    android:layout_marginRight="2dp"
+                    android:text="Nails" />
+
+
+                <Button
+                    android:id="@+id/btnFruit"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    android:background="#AA80FF"
+                    android:drawableTop="@drawable/fruit"
+                    android:drawablePadding="-10sp"
+                    android:fontFamily="@font/oregano"
+                    android:paddingTop="32sp"
+                    android:layout_marginLeft="2dp"
+                    android:text="Dietetics" />
+
+
+            </TableRow>
 
 
         </LinearLayout>
