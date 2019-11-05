@@ -23,11 +23,7 @@ public class MainActivity extends AppCompatActivity
     {
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager());
 
-        adapter.addFragment(new mainFragment(), "mainMenuFragment");
+        adapter.addFragment(new mainFragment(), "mainFragment");
         viewPager.setAdapter(adapter);
-    }
-    public void setViewPager(int FragmentNumber)
-    {
-        mViewPager.setCurrentItem(FragmentNumber);
     }
 }
