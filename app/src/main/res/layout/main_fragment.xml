@@ -36,7 +36,9 @@
         android:text="Welcome to the beauty area. \n Find the service you are looking for."
         android:textAlignment="center"
         android:textColor="#ffffff"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+
+        />
 
     <Button
         android:id="@+id/btnStrGlowna"
