@@ -12,32 +12,15 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.yourbeauty.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_signin"
+        android:name="com.example.yourbeauty.ui.SignIn.SignInFragment"
+        android:label="@string/menu_signin"
+        tools:layout="@layout/fragment_signin" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.yourbeauty.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+    android:id="@+id/nav_signup"
+    android:name="com.example.yourbeauty.ui.SignUp.SignUpFragment"
+    android:label="@string/menu_signup"
+    tools:layout="@layout/fragment_signup" />
 
-    <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.example.yourbeauty.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
-
-    <fragment
-        android:id="@+id/nav_share"
-        android:name="com.example.yourbeauty.ui.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
-
-    <fragment
-        android:id="@+id/nav_send"
-        android:name="com.example.yourbeauty.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
 </navigation>
