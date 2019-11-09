@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -6,9 +7,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
-<android.support.constraint.ConstraintLayout
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#212432">
 
     <ImageView
         android:id="@+id/imageViewLogo"
@@ -31,6 +36,7 @@
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/oregano"
         android:text="Sign Up"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +51,7 @@
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/oregano"
         android:text="Name:"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/plainName"
         app:layout_constraintHorizontal_bias="0.433"
@@ -71,6 +78,7 @@
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/oregano"
         android:text="Surname:"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/plainSurname"
         app:layout_constraintStart_toStartOf="parent"
@@ -129,6 +137,7 @@
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/oregano"
         android:text="Age:"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/plainAge"
         app:layout_constraintStart_toStartOf="parent"
@@ -143,6 +152,7 @@
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/oregano"
         android:text="E-Mail:"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/plainMail"
         app:layout_constraintStart_toStartOf="parent"
@@ -157,6 +167,7 @@
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/oregano"
         android:text="Address:"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/plainAddress"
         app:layout_constraintStart_toStartOf="parent"
@@ -171,9 +182,11 @@
         android:backgroundTint="#D94A4A"
         android:fontFamily="@font/oregano"
         android:text="Sign Up"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/plainAddress" />
 
-</android.support.constraint.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
