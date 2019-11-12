@@ -16,173 +16,162 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="60dp"
             android:fontFamily="@font/oregano"
             android:text="Welcome to the beauty area. \n Find the service you are looking for."
             android:textAlignment="center"
             android:textColor="#ffffff"
             android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/btnStrGlowna"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/logo444" />
-
-    <SearchView
-        android:id="@+id/search_browser"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Title"
-        android:layout_marginTop="24dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="#FFFFFF"
-        />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:layout_below="@+id/search_browser"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginBottom="0dp"
-        tools:ignore="RtlHardcoded">
-
-        <LinearLayout
-            android:id="@+id/linearView2"
+        <SearchView
+            android:id="@+id/search_browser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_below="@+id/Title"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#FFFFFF"
+            />
 
-            <TableRow
-                android:id="@+id/Row1"
-                app:layout_constraintTop_toBottomOf="@+id/search_browser"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="550dp"
+            android:layout_below="@+id/search_browser"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="0dp"
+            tools:ignore="RtlHardcoded">
+
+            <LinearLayout
+                android:id="@+id/linearView2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal" >
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/btnWoman"
-                    android:layout_height="150dp"
-                    android:layout_weight="1"
-                    android:background="#FAFA36"
-                    android:drawableTop="@drawable/woman"
-                    android:drawablePadding="-10sp"
-                    android:fontFamily="@font/oregano"
-                    android:paddingTop="32sp"
-                    android:layout_marginRight="2dp"
-                    android:text="Hairdressers"
-                    android:textStyle="bold"/>
+                <TableRow
+                    android:id="@+id/Row1"
+                    app:layout_constraintTop_toBottomOf="@+id/search_browser"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal" >
 
-
-                <Button
-                    android:id="@+id/btnScissors"
-                    android:layout_height="150dp"
-                    android:layout_weight="1"
-                    android:background="#FF8533"
-                    android:drawableTop="@drawable/scissor"
-                    android:drawablePadding="-10sp"
-                    android:fontFamily="@font/oregano"
-                    android:paddingTop="32sp"
-                    android:layout_marginLeft="2dp"
-                    android:text="Barbers"
-                    android:textStyle="bold"/>
+                    <Button
+                        android:id="@+id/btnWoman"
+                        android:layout_height="150dp"
+                        android:layout_weight="1"
+                        android:background="#FAFA36"
+                        android:drawableTop="@drawable/woman"
+                        android:drawablePadding="-10sp"
+                        android:fontFamily="@font/oregano"
+                        android:paddingTop="32sp"
+                        android:layout_marginRight="2dp"
+                        android:text="Hairdressers"
+                        android:textStyle="bold"/>
 
 
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/Row2"
-                app:layout_constraintTop_toBottomOf="@+id/search_browser"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="4dp"
-                android:orientation="horizontal" >
-
-                <Button
-                    android:id="@+id/btnBeauty"
-                    android:layout_height="150dp"
-                    android:layout_weight="1"
-                    android:background="#99FF66"
-                    android:drawableTop="@drawable/beauty_salon"
-                    android:drawablePadding="-10sp"
-                    android:fontFamily="@font/oregano"
-                    android:paddingTop="32sp"
-                    android:layout_marginRight="2dp"
-                    android:text="Beauticians"
-                    android:textStyle="bold"/>
+                    <Button
+                        android:id="@+id/btnScissors"
+                        android:layout_height="150dp"
+                        android:layout_weight="1"
+                        android:background="#FF8533"
+                        android:drawableTop="@drawable/scissor"
+                        android:drawablePadding="-10sp"
+                        android:fontFamily="@font/oregano"
+                        android:paddingTop="32sp"
+                        android:layout_marginLeft="2dp"
+                        android:text="Barbers"
+                        android:textStyle="bold"/>
 
 
-                <Button
-                    android:id="@+id/btnMedic"
-                    android:layout_height="150dp"
-                    android:layout_weight="1"
-                    android:background="#80FFFF"
-                    android:drawableTop="@drawable/doctor"
-                    android:drawablePadding="-10sp"
-                    android:fontFamily="@font/oregano"
-                    android:paddingTop="32sp"
-                    android:layout_marginLeft="2dp"
-                    android:text="Estetic Medicine"
-                    android:textStyle="bold"/>
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/Row2"
+                    app:layout_constraintTop_toBottomOf="@+id/search_browser"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/btnBeauty"
+                        android:layout_height="150dp"
+                        android:layout_weight="1"
+                        android:background="#99FF66"
+                        android:drawableTop="@drawable/beauty_salon"
+                        android:drawablePadding="-10sp"
+                        android:fontFamily="@font/oregano"
+                        android:paddingTop="32sp"
+                        android:layout_marginRight="2dp"
+                        android:text="Beauticians"
+                        android:textStyle="bold"/>
 
 
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/Row3"
-                app:layout_constraintTop_toBottomOf="@+id/search_browser"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="4dp"
-                android:orientation="horizontal" >
-
-                <Button
-                    android:id="@+id/btnNails"
-                    android:layout_height="150dp"
-                    android:layout_weight="1"
-                    android:background="#FF80B3"
-                    android:drawableTop="@drawable/fashion"
-                    android:drawablePadding="-10sp"
-                    android:fontFamily="@font/oregano"
-                    android:paddingTop="32sp"
-                    android:layout_marginRight="2dp"
-                    android:text="Nails"
-                    android:textStyle="bold"/>
+                    <Button
+                        android:id="@+id/btnMedic"
+                        android:layout_height="150dp"
+                        android:layout_weight="1"
+                        android:background="#80FFFF"
+                        android:drawableTop="@drawable/doctor"
+                        android:drawablePadding="-10sp"
+                        android:fontFamily="@font/oregano"
+                        android:paddingTop="32sp"
+                        android:layout_marginLeft="2dp"
+                        android:text="Estetic Medicine"
+                        android:textStyle="bold"/>
 
 
-                <Button
-                    android:id="@+id/btnFruit"
-                    android:layout_height="150dp"
-                    android:layout_weight="1"
-                    android:background="#AA80FF"
-                    android:drawableTop="@drawable/fruit"
-                    android:drawablePadding="-10sp"
-                    android:fontFamily="@font/oregano"
-                    android:paddingTop="32sp"
-                    android:layout_marginLeft="2dp"
-                    android:text="Dietetics"
-                    android:textStyle="bold"/>
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/Row3"
+                    app:layout_constraintTop_toBottomOf="@+id/search_browser"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/btnNails"
+                        android:layout_height="150dp"
+                        android:layout_weight="1"
+                        android:background="#FF80B3"
+                        android:drawableTop="@drawable/fashion"
+                        android:drawablePadding="-10sp"
+                        android:fontFamily="@font/oregano"
+                        android:paddingTop="32sp"
+                        android:layout_marginRight="2dp"
+                        android:text="Nails"
+                        android:textStyle="bold"/>
 
 
-            </TableRow>
+                    <Button
+                        android:id="@+id/btnFruit"
+                        android:layout_height="150dp"
+                        android:layout_weight="1"
+                        android:background="#AA80FF"
+                        android:drawableTop="@drawable/fruit"
+                        android:drawablePadding="-10sp"
+                        android:fontFamily="@font/oregano"
+                        android:paddingTop="32sp"
+                        android:layout_marginLeft="2dp"
+                        android:text="Dietetics"
+                        android:textStyle="bold"/>
 
 
-        </LinearLayout>
-    </ScrollView>
+                </TableRow>
+
+
+            </LinearLayout>
+        </ScrollView>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
