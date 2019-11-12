@@ -1,41 +1,129 @@
 package com.example.yourbeauty.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
+import android.view.ViewDebug;
 import android.view.ViewGroup;
 import android.widget.Button;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import com.example.yourbeauty.MainActivity;
+
+import com.example.yourbeauty.MenuActivity;
 import com.example.yourbeauty.R;
+import com.example.yourbeauty.ui.Menu.BarberFragment;
+import com.example.yourbeauty.ui.Menu.HairFragment;
+
+import java.util.Objects;
 
 
 public class HomeFragment extends Fragment
 {
-    private View rootView;
-    private Button btnHair;
-
+    private int position = 0;
 
     @Nullable
     @Override
     public View onCreateView
             (@NonNull LayoutInflater inflater,@Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
-        rootView = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        btnHair = rootView.findViewById(R.id.btnWoman);
+        Button btnHair = view.findViewById(R.id.btnWoman);
+        Button btnBarber = view.findViewById(R.id.btnScissors);
+        Button btnBeauty = view.findViewById(R.id.btnBeauty);
+        Button btnMedic = view.findViewById(R.id.btnMedic);
+        Button btnNails = view.findViewById(R.id.btnNails);
+        Button btnDiet = view.findViewById(R.id.btnFruit);
+
         btnHair.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View view)
+            public void onClick(View v)
             {
-                ((MainActivity)getActivity()).setViewPager(0);
+                position = 0;
+                String message = String.valueOf(position);
+
+                Intent intent = new Intent(getActivity(), MenuActivity.class);
+                intent.putExtra("PageNumber", message);
+                startActivity(intent);
             }
         });
 
-        return rootView;
+        btnBarber.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                position = 1;
+                String message = String.valueOf(position);
+
+                Intent intent = new Intent(getActivity(), MenuActivity.class);
+                intent.putExtra("PageNumber", message);
+                startActivity(intent);
+            }
+        });
+
+        btnBeauty.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                position = 2;
+                String message = String.valueOf(position);
+
+                Intent intent = new Intent(getActivity(), MenuActivity.class);
+                intent.putExtra("PageNumber", message);
+                startActivity(intent);
+            }
+        });
+
+        btnMedic.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                position = 3;
+                String message = String.valueOf(position);
+
+                Intent intent = new Intent(getActivity(), MenuActivity.class);
+                intent.putExtra("PageNumber", message);
+                startActivity(intent);
+            }
+        });
+
+        btnNails.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                position = 4;
+                String message = String.valueOf(position);
+
+                Intent intent = new Intent(getActivity(), MenuActivity.class);
+                intent.putExtra("PageNumber", message);
+                startActivity(intent);
+            }
+        });
+
+        btnDiet.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                position = 5;
+                String message = String.valueOf(position);
+
+                Intent intent = new Intent(getActivity(), MenuActivity.class);
+                intent.putExtra("PageNumber", message);
+                startActivity(intent);
+            }
+        });
+
+        return view;
     }
 
 

@@ -23,7 +23,8 @@ public class FragmentAdapter extends FragmentStatePagerAdapter
     }
 
     @Override
-    public Fragment getItem(int position) {
+    public Fragment getItem(int position)
+    {
         return mListaFragmentow.get(position);
     }
 
