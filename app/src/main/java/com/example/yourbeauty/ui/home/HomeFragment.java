@@ -12,11 +12,13 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.yourbeauty.MenuActivity;
 import com.example.yourbeauty.R;
 import com.example.yourbeauty.ui.Menu.BarberFragment;
 import com.example.yourbeauty.ui.Menu.HairFragment;
+import com.example.yourbeauty.ui.Menu.MenuFragment;
 
 import java.util.Objects;
 
@@ -44,12 +46,17 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                position = 0;
+                /*position = 0;
                 String message = String.valueOf(position);
 
                 Intent intent = new Intent(getActivity(), MenuActivity.class);
                 intent.putExtra("PageNumber", message);
-                startActivity(intent);
+                startActivity(intent);*/
+
+                MenuFragment menuFragment = new MenuFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_home, menuFragment);
+                transaction.commit();
             }
         });
 
