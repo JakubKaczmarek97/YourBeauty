@@ -47,17 +47,7 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                position = 0;
-                String message = String.valueOf(position);
-
-                MenuFragment menuFragment = new MenuFragment();
-                Bundle args = new Bundle();
-                args.putString("YourKey", message);
-                menuFragment.setArguments(args);
-
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_home, menuFragment);
-                transaction.commit();
+                changeFragment(0);
             }
         });
 
@@ -66,17 +56,7 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                position = 1;
-                String message = String.valueOf(position);
-
-                MenuFragment menuFragment = new MenuFragment();
-                Bundle args = new Bundle();
-                args.putString("YourKey", message);
-                menuFragment.setArguments(args);
-
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_home, menuFragment);
-                transaction.commit();
+                changeFragment(1);
             }
         });
 
@@ -85,17 +65,7 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                position = 2;
-                String message = String.valueOf(position);
-
-                MenuFragment menuFragment = new MenuFragment();
-                Bundle args = new Bundle();
-                args.putString("YourKey", message);
-                menuFragment.setArguments(args);
-
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_home, menuFragment);
-                transaction.commit();
+                changeFragment(2);
             }
         });
 
@@ -104,17 +74,7 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                position = 3;
-                String message = String.valueOf(position);
-
-                MenuFragment menuFragment = new MenuFragment();
-                Bundle args = new Bundle();
-                args.putString("YourKey", message);
-                menuFragment.setArguments(args);
-
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_home, menuFragment);
-                transaction.commit();
+                changeFragment(3);
             }
         });
 
@@ -123,17 +83,7 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                position = 4;
-                String message = String.valueOf(position);
-
-                MenuFragment menuFragment = new MenuFragment();
-                Bundle args = new Bundle();
-                args.putString("YourKey", message);
-                menuFragment.setArguments(args);
-
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_home, menuFragment);
-                transaction.commit();
+                changeFragment(4);
             }
         });
 
@@ -142,21 +92,26 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                position = 5;
-                String message = String.valueOf(position);
-
-                MenuFragment menuFragment = new MenuFragment();
-                Bundle args = new Bundle();
-                args.putString("YourKey", message);
-                menuFragment.setArguments(args);
-
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_home, menuFragment);
-                transaction.commit();
+                changeFragment(5);
             }
         });
 
         return view;
+    }
+
+    void changeFragment (int pos)
+    {
+        position = pos;
+        String message = String.valueOf(position);
+
+        MenuFragment menuFragment = new MenuFragment();
+        Bundle args = new Bundle();
+        args.putString("YourKey", message);
+        menuFragment.setArguments(args);
+
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_home, menuFragment);
+        transaction.commit();
     }
 
 
