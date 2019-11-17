@@ -1,27 +1,18 @@
 package com.example.yourbeauty.ui.home;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
-import android.view.ViewDebug;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.yourbeauty.MenuActivity;
 import com.example.yourbeauty.R;
-import com.example.yourbeauty.ui.Menu.BarberFragment;
-import com.example.yourbeauty.ui.Menu.HairFragment;
 import com.example.yourbeauty.ui.Menu.MenuFragment;
-
-import java.util.Objects;
 
 
 public class HomeFragment extends Fragment
