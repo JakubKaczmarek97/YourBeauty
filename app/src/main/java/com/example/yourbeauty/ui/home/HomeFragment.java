@@ -12,6 +12,7 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.yourbeauty.MenuActivity;
@@ -46,14 +47,14 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                /*position = 0;
+                position = 0;
                 String message = String.valueOf(position);
 
-                Intent intent = new Intent(getActivity(), MenuActivity.class);
-                intent.putExtra("PageNumber", message);
-                startActivity(intent);*/
-
                 MenuFragment menuFragment = new MenuFragment();
+                Bundle args = new Bundle();
+                args.putString("YourKey", message);
+                menuFragment.setArguments(args);
+
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_home, menuFragment);
                 transaction.commit();
@@ -68,9 +69,14 @@ public class HomeFragment extends Fragment
                 position = 1;
                 String message = String.valueOf(position);
 
-                Intent intent = new Intent(getActivity(), MenuActivity.class);
-                intent.putExtra("PageNumber", message);
-                startActivity(intent);
+                MenuFragment menuFragment = new MenuFragment();
+                Bundle args = new Bundle();
+                args.putString("YourKey", message);
+                menuFragment.setArguments(args);
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_home, menuFragment);
+                transaction.commit();
             }
         });
 
@@ -82,9 +88,14 @@ public class HomeFragment extends Fragment
                 position = 2;
                 String message = String.valueOf(position);
 
-                Intent intent = new Intent(getActivity(), MenuActivity.class);
-                intent.putExtra("PageNumber", message);
-                startActivity(intent);
+                MenuFragment menuFragment = new MenuFragment();
+                Bundle args = new Bundle();
+                args.putString("YourKey", message);
+                menuFragment.setArguments(args);
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_home, menuFragment);
+                transaction.commit();
             }
         });
 
@@ -96,9 +107,14 @@ public class HomeFragment extends Fragment
                 position = 3;
                 String message = String.valueOf(position);
 
-                Intent intent = new Intent(getActivity(), MenuActivity.class);
-                intent.putExtra("PageNumber", message);
-                startActivity(intent);
+                MenuFragment menuFragment = new MenuFragment();
+                Bundle args = new Bundle();
+                args.putString("YourKey", message);
+                menuFragment.setArguments(args);
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_home, menuFragment);
+                transaction.commit();
             }
         });
 
@@ -110,9 +126,14 @@ public class HomeFragment extends Fragment
                 position = 4;
                 String message = String.valueOf(position);
 
-                Intent intent = new Intent(getActivity(), MenuActivity.class);
-                intent.putExtra("PageNumber", message);
-                startActivity(intent);
+                MenuFragment menuFragment = new MenuFragment();
+                Bundle args = new Bundle();
+                args.putString("YourKey", message);
+                menuFragment.setArguments(args);
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_home, menuFragment);
+                transaction.commit();
             }
         });
 
@@ -124,9 +145,14 @@ public class HomeFragment extends Fragment
                 position = 5;
                 String message = String.valueOf(position);
 
-                Intent intent = new Intent(getActivity(), MenuActivity.class);
-                intent.putExtra("PageNumber", message);
-                startActivity(intent);
+                MenuFragment menuFragment = new MenuFragment();
+                Bundle args = new Bundle();
+                args.putString("YourKey", message);
+                menuFragment.setArguments(args);
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_home, menuFragment);
+                transaction.commit();
             }
         });
 

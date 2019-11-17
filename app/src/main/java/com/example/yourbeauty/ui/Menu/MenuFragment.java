@@ -24,6 +24,10 @@ public class MenuFragment extends Fragment
         mViewPager = view.findViewById(R.id.fragment_container);
         setupViewPager(mViewPager);
 
+        String value = getArguments().getString("YourKey");
+        int position = Integer.parseInt(value);
+        mViewPager.setCurrentItem(position);
+
         return view;
     }
 
@@ -37,10 +41,5 @@ public class MenuFragment extends Fragment
         adapter.addFragment(new NailsFragment(), "NailsFragment");
         adapter.addFragment(new DietFragment(), "DietFragment");
         viewPager.setAdapter(adapter);
-    }
-
-    public void setViewPager(int FragmentNumber)
-    {
-        mViewPager.setCurrentItem(FragmentNumber);
     }
 }
