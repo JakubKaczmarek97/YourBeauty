@@ -1,24 +1,18 @@
 package com.example.yourbeauty.ui.home;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
-import android.view.ViewDebug;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
-import com.example.yourbeauty.MenuActivity;
 import com.example.yourbeauty.R;
-import com.example.yourbeauty.ui.Menu.BarberFragment;
-import com.example.yourbeauty.ui.Menu.HairFragment;
-
-import java.util.Objects;
+import com.example.yourbeauty.ui.Menu.MenuFragment;
 
 
 public class HomeFragment extends Fragment
@@ -44,12 +38,7 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                position = 0;
-                String message = String.valueOf(position);
-
-                Intent intent = new Intent(getActivity(), MenuActivity.class);
-                intent.putExtra("PageNumber", message);
-                startActivity(intent);
+                changeFragment(0);
             }
         });
 
@@ -58,12 +47,7 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                position = 1;
-                String message = String.valueOf(position);
-
-                Intent intent = new Intent(getActivity(), MenuActivity.class);
-                intent.putExtra("PageNumber", message);
-                startActivity(intent);
+                changeFragment(1);
             }
         });
 
@@ -72,12 +56,7 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                position = 2;
-                String message = String.valueOf(position);
-
-                Intent intent = new Intent(getActivity(), MenuActivity.class);
-                intent.putExtra("PageNumber", message);
-                startActivity(intent);
+                changeFragment(2);
             }
         });
 
@@ -86,12 +65,7 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                position = 3;
-                String message = String.valueOf(position);
-
-                Intent intent = new Intent(getActivity(), MenuActivity.class);
-                intent.putExtra("PageNumber", message);
-                startActivity(intent);
+                changeFragment(3);
             }
         });
 
@@ -100,12 +74,7 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                position = 4;
-                String message = String.valueOf(position);
-
-                Intent intent = new Intent(getActivity(), MenuActivity.class);
-                intent.putExtra("PageNumber", message);
-                startActivity(intent);
+                changeFragment(4);
             }
         });
 
@@ -114,16 +83,26 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                position = 5;
-                String message = String.valueOf(position);
-
-                Intent intent = new Intent(getActivity(), MenuActivity.class);
-                intent.putExtra("PageNumber", message);
-                startActivity(intent);
+                changeFragment(5);
             }
         });
 
         return view;
+    }
+
+    void changeFragment (int pos)
+    {
+        position = pos;
+        String message = String.valueOf(position);
+
+        MenuFragment menuFragment = new MenuFragment();
+        Bundle args = new Bundle();
+        args.putString("YourKey", message);
+        menuFragment.setArguments(args);
+
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_home, menuFragment);
+        transaction.commit();
     }
 
 
