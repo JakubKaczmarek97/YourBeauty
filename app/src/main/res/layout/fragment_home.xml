@@ -66,31 +66,37 @@
                     android:orientation="horizontal" >
 
                     <Button
+
                         android:id="@+id/btnWoman"
                         android:layout_height="150dp"
                         android:layout_weight="1"
-                        android:background="#FAFA36"
-                        android:drawableTop="@drawable/woman"
-                        android:drawablePadding="-10sp"
+                        android:background="@drawable/hairdresser"
                         android:fontFamily="@font/oregano"
-                        android:paddingTop="32sp"
                         android:layout_marginRight="2dp"
+                        android:drawablePadding="-10sp"
                         android:text="Hairdressers"
-                        android:textStyle="bold"/>
+                        android:gravity="bottom|center"
+                        android:paddingBottom="10dp"
+                        android:textColor="#FFFFFF"
+                        android:textSize="36dp"
+                        android:textAllCaps="false"/>
 
 
                     <Button
                         android:id="@+id/btnScissors"
                         android:layout_height="150dp"
                         android:layout_weight="1"
-                        android:background="#FF8533"
-                        android:drawableTop="@drawable/scissor"
-                        android:drawablePadding="-10sp"
+                        android:background="@drawable/barbers"
                         android:fontFamily="@font/oregano"
-                        android:paddingTop="32sp"
                         android:layout_marginLeft="2dp"
+                        android:drawablePadding="-10sp"
                         android:text="Barbers"
-                        android:textStyle="bold"/>
+                        android:gravity="bottom|center"
+                        android:paddingBottom="10dp"
+                        android:textSize="36dp"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        />
 
 
                 </TableRow>
@@ -104,31 +110,37 @@
                     android:orientation="horizontal" >
 
                     <Button
+
                         android:id="@+id/btnBeauty"
-                        android:layout_height="150dp"
+                        android:layout_height="140dp"
+                        android:layout_marginRight="2dp"
                         android:layout_weight="1"
-                        android:background="#99FF66"
-                        android:drawableTop="@drawable/beauty_salon"
+                        android:background="@drawable/beauticians"
                         android:drawablePadding="-10sp"
                         android:fontFamily="@font/oregano"
-                        android:paddingTop="32sp"
-                        android:layout_marginRight="2dp"
+                        android:gravity="bottom|center"
+                        android:paddingBottom="10dp"
                         android:text="Beauticians"
-                        android:textStyle="bold"/>
+                        android:textColor="#FFFFFF"
+                        android:textSize="36dp"
+                        android:textAllCaps="false"/>
 
 
                     <Button
                         android:id="@+id/btnMedic"
-                        android:layout_height="150dp"
+                        android:layout_height="140dp"
                         android:layout_weight="1"
-                        android:background="#80FFFF"
-                        android:drawableTop="@drawable/doctor"
-                        android:drawablePadding="-10sp"
+                        android:background="@drawable/esteticmedicine"
                         android:fontFamily="@font/oregano"
-                        android:paddingTop="32sp"
                         android:layout_marginLeft="2dp"
+                        android:drawablePadding="-10sp"
                         android:text="Estetic Medicine"
-                        android:textStyle="bold"/>
+                        android:gravity="bottom|center"
+                        android:paddingBottom="10dp"
+                        android:textSize="33dp"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        />
 
 
                 </TableRow>
@@ -142,32 +154,38 @@
                     android:orientation="horizontal" >
 
                     <Button
+
                         android:id="@+id/btnNails"
-                        android:layout_height="150dp"
+                        android:layout_height="140dp"
                         android:layout_weight="1"
-                        android:background="#FF80B3"
-                        android:drawableTop="@drawable/fashion"
-                        android:drawablePadding="-10sp"
+                        android:background="@drawable/nails"
                         android:fontFamily="@font/oregano"
-                        android:paddingTop="32sp"
                         android:layout_marginRight="2dp"
+                        android:drawablePadding="-10sp"
                         android:text="Nails"
-                        android:textStyle="bold"/>
+                        android:gravity="bottom|center"
+                        android:paddingBottom="10dp"
+                        android:textSize="36dp"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        />
 
 
                     <Button
                         android:id="@+id/btnFruit"
-                        android:layout_height="150dp"
+                        android:layout_height="140dp"
                         android:layout_weight="1"
-                        android:background="#AA80FF"
-                        android:drawableTop="@drawable/fruit"
-                        android:drawablePadding="-10sp"
+                        android:background="@drawable/dietetics"
                         android:fontFamily="@font/oregano"
-                        android:paddingTop="32sp"
                         android:layout_marginLeft="2dp"
+                        android:drawablePadding="-10sp"
                         android:text="Dietetics"
-                        android:textStyle="bold"/>
-
+                        android:gravity="bottom|center"
+                        android:paddingBottom="10dp"
+                        android:textSize="36dp"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        />
 
                 </TableRow>
 
