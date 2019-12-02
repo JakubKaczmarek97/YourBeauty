@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,7 +21,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SignUpActivity extends Activity {
+public class SignUpActivity extends AppCompatActivity {
 
     private static final String KEY_SUCCESS = "success";
     int SUCCESS ;
@@ -62,9 +63,10 @@ public class SignUpActivity extends Activity {
         signUp.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 // creating new user in background thread
-               // new CreateNewUser().execute();
+               new CreateNewUser().execute();
+                //System.out.println("czy ja w ogóle działam?");
             }
         });
 
@@ -106,16 +108,16 @@ public class SignUpActivity extends Activity {
             httpParams.put("name", name);
             httpParams.put("name2", secondName);
             httpParams.put("surname", surname);
-            httpParams.put("dateOfBirth", dateOfBirth);
+            httpParams.put("date_of_birth", dateOfBirth);
             httpParams.put("gender", gender);
-            httpParams.put("userType", "C");
+            httpParams.put("account_type", "C");
             httpParams.put("email", Email);
             httpParams.put("password", Password);
-            httpParams.put("bankAccountNumber", BankAccountNumber);
+            httpParams.put("bank_account_number", BankAccountNumber);
 
 
             JSONObject jsonObject = httpJsonParser.makeHttpRequest(
-                    url_create_product + "add_new_user.php", "POST", httpParams);
+                    url_create_product, "POST", httpParams);
             try {
                 SUCCESS = jsonObject.getInt(KEY_SUCCESS);
             } catch (JSONException e) {
