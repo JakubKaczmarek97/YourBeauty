@@ -33,7 +33,7 @@ public class SignUpActivity extends AppCompatActivity {
     EditText inputAccountNumber;
     Button signUp;
 
-    private static String url_create_product = "http://localhost/bayb/add_new_user.php";
+    private static String url_create_product = "http://10.0.2.2/bayb/add_new_user.php";
 
 
     @Override
@@ -116,29 +116,36 @@ public class SignUpActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }*/
+            OkHttpClient client = new OkHttpClient();
 
-           try {
-               OkHttpClient client = new OkHttpClient();
+            RequestBody postData = new FormBody.Builder()
+                    .add("name", name)
+                    .add("name2", secondName)
+                    .add("surname", surname)
+                    .add("date_of_birth", dateOfBirth)
+                    .add("gender", gender)
+                    .add("account_type", "C")
+                    .add("email", Email)
+                    .add("password", Password)
+                    .add("bank_account_number", BankAccountNumber)
+                    .build();
 
-               RequestBody postData = new FormBody.Builder()
-                       .add("name", "dd")
-                       .add("name2", "aa")
-                       .build();
-
-               Request request = new Request.Builder()
-                       .url(url_create_product)
-                       .build();
-
+            Request request = new Request.Builder()
+                    .url(url_create_product)
+                    .post(postData)
+                    .build();
+           try
+           {
                Response response = client.newCall(request).execute();
                String result = response.body().string();
-               System.out.println(result);
-               return result;
+               System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAA");
+               //return result;
            }
            catch (Exception e)
            {
-               return null;
+                System.out.println("Błąd: " + e);
            }
-
+            return null;
         }
         protected void onPostExecute(String result) {
             pDialog.dismiss();
