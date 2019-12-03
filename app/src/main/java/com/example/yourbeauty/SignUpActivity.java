@@ -1,6 +1,5 @@
 package com.example.yourbeauty;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -11,15 +10,10 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
+import okhttp3.*;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -39,14 +33,13 @@ public class SignUpActivity extends AppCompatActivity {
     EditText inputAccountNumber;
     Button signUp;
 
-    private static String url_create_product = "localhost/bayb/add_new_user.php";
+    private static String url_create_product = "http://localhost/bayb/add_new_user.php";
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_signup);
-
 
         inputName = (EditText) findViewById(R.id.plainName);
         inputSecondName = (EditText) findViewById(R.id.plainSecondName);
@@ -100,7 +93,7 @@ public class SignUpActivity extends AppCompatActivity {
             String Email = inputEmail.getText().toString();
             String Password = inputPassword.getText().toString();
             String BankAccountNumber = inputAccountNumber.getText().toString();
-
+/*
             ///////////////////
             HttpJsonParser httpJsonParser = new HttpJsonParser();
             Map<String, String> httpParams = new HashMap<>();
@@ -116,16 +109,36 @@ public class SignUpActivity extends AppCompatActivity {
             httpParams.put("bank_account_number", BankAccountNumber);
 
 
-            JSONObject jsonObject = httpJsonParser.makeHttpRequest(
+            httpJsonParser.makeHttpRequest(
                     url_create_product, "POST", httpParams);
             try {
                 SUCCESS = jsonObject.getInt(KEY_SUCCESS);
             } catch (JSONException e) {
                 e.printStackTrace();
-            }
+            }*/
 
+           try {
+               OkHttpClient client = new OkHttpClient();
 
-            return null;
+               RequestBody postData = new FormBody.Builder()
+                       .add("name", "dd")
+                       .add("name2", "aa")
+                       .build();
+
+               Request request = new Request.Builder()
+                       .url(url_create_product)
+                       .build();
+
+               Response response = client.newCall(request).execute();
+               String result = response.body().string();
+               System.out.println(result);
+               return result;
+           }
+           catch (Exception e)
+           {
+               return null;
+           }
+
         }
         protected void onPostExecute(String result) {
             pDialog.dismiss();
