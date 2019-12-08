@@ -64,11 +64,13 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
     }
-    class CreateNewUser extends AsyncTask<String, String, String> {
+    class CreateNewUser extends AsyncTask<String, String, String>
+    {
 
 
         @Override
-        protected void onPreExecute() {
+        protected void onPreExecute()
+        {
             super.onPreExecute();
             pDialog = new ProgressDialog(SignUpActivity.this);
             pDialog.setMessage("Please wait to sign up...");
@@ -78,7 +80,8 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
         @Override
-        protected String doInBackground(String... strings) {
+        protected String doInBackground(String... strings)
+        {
 
             String name = inputName.getText().toString();
             String secondName = inputSecondName.getText().toString();
@@ -138,20 +141,24 @@ public class SignUpActivity extends AppCompatActivity {
            {
                Response response = client.newCall(request).execute();
                String result = response.body().string();
-               System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAA");
+               System.out.println("Response:" + result);
+               SUCCESS = 1;
                //return result;
            }
            catch (Exception e)
            {
+                SUCCESS = 0;
                 System.out.println("Błąd: " + e);
            }
-            return null;
+           return null;
         }
-        protected void onPostExecute(String result) {
+        protected void onPostExecute(String result)
+        {
             pDialog.dismiss();
             runOnUiThread(new Runnable() {
                 public void run() {
-                    if (SUCCESS == 1) {
+                    if (SUCCESS == 1)
+                    {
                         //Display success message
                         Toast.makeText(SignUpActivity.this,
                                 "User Added", Toast.LENGTH_LONG).show();
@@ -161,7 +168,9 @@ public class SignUpActivity extends AppCompatActivity {
                         //Finish ths activity and go back to listing activity
                         finish();
 
-                    } else {
+                    }
+                    else
+                        {
                         Toast.makeText(SignUpActivity.this,
                                 "Some error occurred while adding new user",
                                 Toast.LENGTH_LONG).show();
