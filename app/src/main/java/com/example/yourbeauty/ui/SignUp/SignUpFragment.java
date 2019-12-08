@@ -16,6 +16,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.yourbeauty.R;
 
+import java.util.Objects;
+
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -24,29 +26,23 @@ import okhttp3.Response;
 
 public class SignUpFragment extends Fragment
 {
-    int SUCCESS ;
+    private int SUCCESS ;
 
     private ProgressDialog pDialog;
 
-    EditText inputName;
-    EditText inputSecondName;
-    EditText inputSurname;
-    EditText inputdateOfBirth;
-    RadioButton inputgenderWoman;
-    RadioButton inputgenderMan;
-    EditText inputEmail;
-    EditText inputPassword;
-    EditText inputAccountNumber;
-    Button signUp;
-
-    private static String url_create_product = "http://10.0.2.2/bayb/add_new_user.php";
+    private EditText inputName;
+    private EditText inputSecondName;
+    private EditText inputSurname;
+    private EditText inputdateOfBirth;
+    private RadioButton inputgenderWoman;
+    private RadioButton inputgenderMan;
+    private EditText inputEmail;
+    private EditText inputPassword;
+    private EditText inputAccountNumber;
 
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-
-        //Intent intent = new Intent(getActivity(), SignUpActivity.class);
-        //startActivity(intent);
 
         View view = inflater.inflate(R.layout.fragment_signup, container, false);
 
@@ -60,7 +56,7 @@ public class SignUpFragment extends Fragment
         inputPassword = view.findViewById(R.id.plainPassword);
         inputAccountNumber = view.findViewById(R.id.plainBankAccountNumber);
 
-        signUp = view.findViewById(R.id.buttonSignUp);
+        Button signUp = view.findViewById(R.id.buttonSignUp);
 
         signUp.setOnClickListener(new View.OnClickListener()
         {
@@ -97,38 +93,21 @@ public class SignUpFragment extends Fragment
             String secondName = inputSecondName.getText().toString();
             String surname = inputSurname.getText().toString();
             String dateOfBirth = inputdateOfBirth.getText().toString();
-            String gender = "M" ;
+            String gender="";
 
-            if(inputgenderWoman.isSelected())
+            if(inputgenderWoman.isChecked())
             {
                 gender ="W";
             }
+            else if(inputgenderMan.isChecked())
+            {
+                gender = "M";
+            }
+
             String Email = inputEmail.getText().toString();
             String Password = inputPassword.getText().toString();
             String BankAccountNumber = inputAccountNumber.getText().toString();
-/*
-            ///////////////////
-            HttpJsonParser httpJsonParser = new HttpJsonParser();
-            Map<String, String> httpParams = new HashMap<>();
-            //Populating request parameters
-            httpParams.put("name", name);
-            httpParams.put("name2", secondName);
-            httpParams.put("surname", surname);
-            httpParams.put("date_of_birth", dateOfBirth);
-            httpParams.put("gender", gender);
-            httpParams.put("account_type", "C");
-            httpParams.put("email", Email);
-            httpParams.put("password", Password);
-            httpParams.put("bank_account_number", BankAccountNumber);
 
-
-            httpJsonParser.makeHttpRequest(
-                    url_create_product, "POST", httpParams);
-            try {
-                SUCCESS = jsonObject.getInt(KEY_SUCCESS);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }*/
             OkHttpClient client = new OkHttpClient();
 
             RequestBody postData = new FormBody.Builder()
@@ -143,6 +122,7 @@ public class SignUpFragment extends Fragment
                     .add("bank_account_number", BankAccountNumber)
                     .build();
 
+            String url_create_product = "http://10.0.2.2/bayb/add_new_user.php";
             Request request = new Request.Builder()
                     .url(url_create_product)
                     .post(postData)
@@ -150,7 +130,7 @@ public class SignUpFragment extends Fragment
             try
             {
                 Response response = client.newCall(request).execute();
-                String result = response.body().string();
+                String result = Objects.requireNonNull(response.body()).string();
                 System.out.println("Response:" + result);
                 SUCCESS = 1;
                 //return result;
@@ -165,7 +145,7 @@ public class SignUpFragment extends Fragment
         protected void onPostExecute(String result)
         {
             pDialog.dismiss();
-            getActivity().runOnUiThread(new Runnable()
+            Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable()
             {
                 public void run()
                 {
@@ -175,8 +155,6 @@ public class SignUpFragment extends Fragment
                         Toast.makeText(getActivity(),
                                 "User Added", Toast.LENGTH_LONG).show();
 
-                        //Come back to SignUpFragment after registration
-                        getFragmentManager().popBackStackImmediate();
                     }
                     else
                     {

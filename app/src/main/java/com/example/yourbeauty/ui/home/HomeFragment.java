@@ -14,11 +14,11 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.yourbeauty.R;
 import com.example.yourbeauty.ui.Menu.MenuFragment;
 
+import java.util.Objects;
+
 
 public class HomeFragment extends Fragment
 {
-    private int position = 0;
-
     @Nullable
     @Override
     public View onCreateView
@@ -90,17 +90,16 @@ public class HomeFragment extends Fragment
         return view;
     }
 
-    void changeFragment (int pos)
+    private void changeFragment(int pos)
     {
-        position = pos;
-        String message = String.valueOf(position);
+        String message = String.valueOf(pos);
 
         MenuFragment menuFragment = new MenuFragment();
         Bundle args = new Bundle();
         args.putString("YourKey", message);
         menuFragment.setArguments(args);
 
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        FragmentTransaction transaction = Objects.requireNonNull(getFragmentManager()).beginTransaction();
         transaction.replace(R.id.fragment_home, menuFragment);
         transaction.commit();
     }
