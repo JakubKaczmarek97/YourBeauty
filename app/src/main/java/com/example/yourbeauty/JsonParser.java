@@ -13,4 +13,24 @@ public class JsonParser
         {
             czytaj do kolejnego "
      */
+
+    public String[] splitString(String s)
+    {
+        String string = s;
+        String[] parts = string.split(",");
+
+        String[] validate = parts[0].split(":");
+
+        if(validate[1] == "1")
+        {
+            String temp = parts[1];
+            System.out.println("Parser: " + temp);
+            return parts;
+        }
+        else
+        {
+            return parts;
+        }
+    }
+
 }

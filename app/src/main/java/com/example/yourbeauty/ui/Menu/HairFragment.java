@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.yourbeauty.JsonParser;
 import com.example.yourbeauty.R;
 import com.example.yourbeauty.ui.SignUp.SignUpFragment;
 
@@ -84,7 +85,9 @@ public class HairFragment extends Fragment
             {
                 Response response = client.newCall(request).execute();
                 String result = Objects.requireNonNull(response.body()).string();
-                System.out.println("Response:" + result);
+                JsonParser jsonParser = new JsonParser();
+                String[] parts = jsonParser.splitString(result);
+                System.out.println("Response:" + "Part1: " + parts[0] + "Part2: " + parts[1]);
             } catch (Exception e)
             {
                 System.out.println("Błąd: " + e);
