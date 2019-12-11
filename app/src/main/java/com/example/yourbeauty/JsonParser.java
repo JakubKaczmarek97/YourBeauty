@@ -41,7 +41,7 @@ public class JsonParser
                 for(int j=3; j<7; j++)
                 {
                     HashMap<String, String> map = new HashMap<>();
-                    String[] temp = parts[i+j-1].split(":");
+                    String[] temp = parts[j].split(":");
 
                     System.out.println("Temp " + j + " " + temp[0] + " " + temp[1]);
 
