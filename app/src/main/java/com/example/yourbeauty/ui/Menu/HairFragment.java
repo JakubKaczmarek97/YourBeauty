@@ -18,6 +18,8 @@ import com.example.yourbeauty.JsonParser;
 import com.example.yourbeauty.R;
 import com.example.yourbeauty.ui.SignUp.SignUpFragment;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 import okhttp3.FormBody;
@@ -86,8 +88,9 @@ public class HairFragment extends Fragment
                 Response response = client.newCall(request).execute();
                 String result = Objects.requireNonNull(response.body()).string();
                 JsonParser jsonParser = new JsonParser();
-                String[] parts = jsonParser.splitString(result);
-                System.out.println("Response:" + "Part1: " + parts[0] + "Part2: " + parts[1]);
+                ArrayList<HashMap> parts = jsonParser.splitString(result);
+
+                System.out.println("Response:");
             } catch (Exception e)
             {
                 System.out.println("Błąd: " + e);
