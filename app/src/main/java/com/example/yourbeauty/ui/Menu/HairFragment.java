@@ -88,7 +88,7 @@ public class HairFragment extends Fragment
                 Response response = client.newCall(request).execute();
                 String result = Objects.requireNonNull(response.body()).string();
                 JsonParser jsonParser = new JsonParser();
-                ArrayList<HashMap> parts = jsonParser.splitString(result);
+                jsonParser.splitString(result);
 
                 System.out.println("Response:");
             } catch (Exception e)

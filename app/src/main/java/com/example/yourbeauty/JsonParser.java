@@ -2,6 +2,10 @@ package com.example.yourbeauty;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+
+import org.json.*;
 
 public class JsonParser
 {
@@ -17,14 +21,50 @@ public class JsonParser
             czytaj do kolejnego "
      */
 
-    public ArrayList<HashMap> splitString(String s)
+    public void splitString(String s) throws Exception
     {
+        String json = s;
+
+        JSONObject jsonObject = null;
+        int validate = 0;
+        int amount = 0;
+        try
+        {
+            jsonObject = new JSONObject(json);
+            validate = jsonObject.getInt("success");
+            amount = jsonObject.getInt("query_amount");
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+
+        System.out.println("Validate: " + validate + " amount: " + amount);
+
+        if(validate == 1)
+        {
+            String[] temp = json.split("(?=\"id_0)");
+            json = temp[1];
+            jsonObject = new JSONObject(json);
+            System.out.println("Firms: " + temp[1]);
+
+            for(int i=0; i<amount; i++)
+            {
+                String value = jsonObject.names().opt(3).toString();
+                System.out.println("Value: " + i + " " + value);
+                //ArrayList<String> keys = jsonObject.keys().forEachRemaining(list::add);
+
+            }
+        }
+
+
+/*
         String string = s;
         String[] parts = string.split(",");     //Podział JSON na części, separator = przecinek
 
         String[] validate = parts[0].split(":"); //Validate to "success = ?"
 
-        ArrayList<HashMap> myTableOfFuckingMaps = new ArrayList<>(); //Wynikowa ArrayLista, zawierająca w sobie mapy(taki bajer :P)
+        ArrayList<HashMap> myArrayOfMaps = new ArrayList<>(); //Wynikowa ArrayLista, zawierająca w sobie mapy(taki bajer :P)
 
 
         System.out.println("Validate:" + validate[1]);
@@ -47,11 +87,12 @@ public class JsonParser
 
                     map.put(temp[0],temp[1]);
 
-                    myTableOfFuckingMaps.add(map);
+                    myArrayOfMaps.add(map);
                 }
             }
         }
-        return myTableOfFuckingMaps;
+
+ */
     }
 
 }
