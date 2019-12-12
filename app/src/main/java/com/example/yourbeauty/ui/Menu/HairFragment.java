@@ -1,25 +1,18 @@
 package com.example.yourbeauty.ui.Menu;
 
 import android.app.ProgressDialog;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.yourbeauty.JsonParser;
 import com.example.yourbeauty.R;
-import com.example.yourbeauty.ui.SignUp.SignUpFragment;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Objects;
 
 import okhttp3.FormBody;
@@ -87,6 +80,7 @@ public class HairFragment extends Fragment
             {
                 Response response = client.newCall(request).execute();
                 String result = Objects.requireNonNull(response.body()).string();
+
                 JsonParser jsonParser = new JsonParser();
                 jsonParser.splitString(result);
 

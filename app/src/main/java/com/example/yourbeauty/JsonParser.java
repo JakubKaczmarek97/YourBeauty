@@ -1,11 +1,7 @@
 package com.example.yourbeauty;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-
-import org.json.*;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class JsonParser
 {
@@ -44,16 +40,20 @@ public class JsonParser
         if(validate == 1)
         {
             String[] temp = json.split("(?=\"id_0)");
-            json = temp[1];
+            json = "{" + temp[1];
             jsonObject = new JSONObject(json);
             System.out.println("Firms: " + temp[1]);
 
             for(int i=0; i<amount; i++)
             {
-                String value = jsonObject.names().opt(3).toString();
-                System.out.println("Value: " + i + " " + value);
-                //ArrayList<String> keys = jsonObject.keys().forEachRemaining(list::add);
-
+                System.out.println("Firma " + i + ": ");
+                for(int j=0; j<4; j++)
+                {
+                    String key = jsonObject.names().getString(i*4+j);
+                    String value = jsonObject.get(key).toString();
+                    System.out.println(key + ": " + value);
+                    //ArrayList<String> keys = jsonObject.keys().forEachRemaining(list::add);
+                }
             }
         }
 
