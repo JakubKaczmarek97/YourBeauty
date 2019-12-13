@@ -87,27 +87,39 @@ public class HairFragment extends Fragment
                     {
                         LinearLayout linear = view.findViewById(R.id.fragment_hair);
 
-                        for(int i=0; i<keys.length; i+=4)
-                        {
-
+                        if(parsedJson.isEmpty()) {
                             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                                     LinearLayout.LayoutParams.MATCH_PARENT,
                                     LinearLayout.LayoutParams.WRAP_CONTENT);
 
                             Button btn = new Button(getActivity());
-                            btn.setId(i);
-                            btn.setText(
-                                    parsedJson.get(keys[i+1]) + "\n"
-                                    + parsedJson.get(keys[i+2]) + "\n"
-                                    + parsedJson.get(keys[i+3]));
+                            btn.setText("No hairdressers found at database");
                             btn.setBackgroundColor(Color.rgb(3, 136, 252));
-                            params.setMargins(10,3,10,3);
+
+                            params.setMargins(10, 3, 10, 3);
                             linear.addView(btn, params);
+                        }
+                        else {
+
+                            for (int i = 0; i < keys.length; i += 4) {
+
+                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                                        LinearLayout.LayoutParams.MATCH_PARENT,
+                                        LinearLayout.LayoutParams.WRAP_CONTENT);
+
+                                Button btn = new Button(getActivity());
+                                btn.setId(i);
+                                btn.setText(
+                                        parsedJson.get(keys[i + 1]) + "\n"
+                                                + parsedJson.get(keys[i + 2]) + "\n"
+                                                + parsedJson.get(keys[i + 3]));
+                                btn.setBackgroundColor(Color.rgb(3, 136, 252));
+                                params.setMargins(10, 3, 10, 3);
+                                linear.addView(btn, params);
+                            }
                         }
                     }
                 });
-
-
             } catch (Exception e)
             {
                 System.out.println("Błąd: " + e);

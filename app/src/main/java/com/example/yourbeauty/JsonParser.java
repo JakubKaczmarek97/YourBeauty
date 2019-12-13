@@ -29,7 +29,7 @@ public class JsonParser
 
         System.out.println("Validate: " + validate + " amount: " + amount);
 
-        if(validate == 1)
+        if(validate == 1 && amount > 0)
         {
             String[] temp = json.split("(?=\"id_0)");
             json = "{" + temp[1];
