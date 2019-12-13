@@ -9,12 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.yourbeauty.CustomViewPager;
 import com.example.yourbeauty.FragmentAdapter;
 import com.example.yourbeauty.R;
 
 public class MenuFragment extends Fragment
 {
-    private ViewPager mViewPager;
+    private CustomViewPager mViewPager;
 
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -22,6 +23,7 @@ public class MenuFragment extends Fragment
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
 
         mViewPager = view.findViewById(R.id.fragment_container);
+        mViewPager.setPagingEnabled(false);
         setupViewPager(mViewPager);
 
         String value = getArguments().getString("YourKey");
