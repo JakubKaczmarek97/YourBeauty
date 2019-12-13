@@ -35,22 +35,6 @@ public class HairFragment extends Fragment
     {
 
         view = inflater.inflate(R.layout.fragment_hair, container, false);
-        /*
-        LinearLayout linear = view.findViewById(R.id.fragment_hair);
-
-        for (int i = 1; i <= 20; i++) {
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT);
-            Button btn = new Button(getActivity());
-            btn.setId(i);
-            final int id_ = btn.getId();
-            btn.setText("button " + id_);
-            btn.setBackgroundColor(Color.rgb(70, 80, 90));
-            linear.addView(btn, params);
-
-        }
-         */
 
         new HairFragment.ListAllHairdressers().execute();
         return view;
@@ -103,19 +87,21 @@ public class HairFragment extends Fragment
                     {
                         LinearLayout linear = view.findViewById(R.id.fragment_hair);
 
-                        for(int i=0; i<keys.length; i++)
+                        for(int i=0; i<keys.length; i+=4)
                         {
 
-
-                            //System.out.println("Get from map: " + (parsedJson.get(keys[i])));
                             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                                     LinearLayout.LayoutParams.MATCH_PARENT,
                                     LinearLayout.LayoutParams.WRAP_CONTENT);
+
                             Button btn = new Button(getActivity());
                             btn.setId(i);
-                            //final int id_ = btn.getId();
-                            btn.setText("button " + (parsedJson.get(keys[i])));
-                            btn.setBackgroundColor(Color.rgb(70, 80, 90));
+                            btn.setText(
+                                    parsedJson.get(keys[i+1]) + "\n"
+                                    + parsedJson.get(keys[i+2]) + "\n"
+                                    + parsedJson.get(keys[i+3]));
+                            btn.setBackgroundColor(Color.rgb(3, 136, 252));
+                            params.setMargins(10,3,10,3);
                             linear.addView(btn, params);
                         }
                     }
