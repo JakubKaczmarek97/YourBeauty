@@ -1,11 +1,14 @@
 package com.example.yourbeauty.ui.Menu;
 
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -25,12 +28,13 @@ import okhttp3.Response;
 public class HairFragment extends Fragment
 {
     private ProgressDialog pDialog;
+    private View view;
 
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
 
-        View view = inflater.inflate(R.layout.fragment_hair, container, false);
+        view = inflater.inflate(R.layout.fragment_hair, container, false);
         /*
         LinearLayout linear = view.findViewById(R.id.fragment_hair);
 
@@ -67,6 +71,7 @@ public class HairFragment extends Fragment
         @Override
         protected String doInBackground(String... strings)
         {
+
             OkHttpClient client = new OkHttpClient();
 
             RequestBody postData = new FormBody.Builder()
@@ -85,14 +90,37 @@ public class HairFragment extends Fragment
                 //Use of JsonParser class.
 
                 JsonParser jsonParser = new JsonParser();
-                LinkedHashMap<String, String> parsedJson = new LinkedHashMap<>();
+                final LinkedHashMap<String, String> parsedJson;
                 parsedJson = jsonParser.parseJson(result);
-                Object[] keys = parsedJson.keySet().toArray();
+                final Object[] keys = parsedJson.keySet().toArray();
 
-                for(int i=0; i<keys.length; i++)
+                //Generate buttons dynamically based on JSON
+
+                getActivity().runOnUiThread(new Runnable()
                 {
-                    System.out.println("Get from map: " + (parsedJson.get(keys[i])));
-                }
+                    @Override
+                    public void run()
+                    {
+                        LinearLayout linear = view.findViewById(R.id.fragment_hair);
+
+                        for(int i=0; i<keys.length; i++)
+                        {
+
+
+                            //System.out.println("Get from map: " + (parsedJson.get(keys[i])));
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                                    LinearLayout.LayoutParams.MATCH_PARENT,
+                                    LinearLayout.LayoutParams.WRAP_CONTENT);
+                            Button btn = new Button(getActivity());
+                            btn.setId(i);
+                            //final int id_ = btn.getId();
+                            btn.setText("button " + (parsedJson.get(keys[i])));
+                            btn.setBackgroundColor(Color.rgb(70, 80, 90));
+                            linear.addView(btn, params);
+                        }
+                    }
+                });
+
 
             } catch (Exception e)
             {
