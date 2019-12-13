@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import com.example.yourbeauty.JsonParser;
 import com.example.yourbeauty.R;
 
+import java.util.LinkedHashMap;
 import java.util.Objects;
 
 import okhttp3.FormBody;
@@ -81,10 +82,18 @@ public class HairFragment extends Fragment
                 Response response = client.newCall(request).execute();
                 String result = Objects.requireNonNull(response.body()).string();
 
-                JsonParser jsonParser = new JsonParser();
-                jsonParser.splitString(result);
+                //Use of JsonParser class.
 
-                System.out.println("Response:");
+                JsonParser jsonParser = new JsonParser();
+                LinkedHashMap<String, String> parsedJson = new LinkedHashMap<>();
+                parsedJson = jsonParser.parseJson(result);
+                Object[] keys = parsedJson.keySet().toArray();
+
+                for(int i=0; i<keys.length; i++)
+                {
+                    System.out.println("Get from map: " + (parsedJson.get(keys[i])));
+                }
+
             } catch (Exception e)
             {
                 System.out.println("Błąd: " + e);
