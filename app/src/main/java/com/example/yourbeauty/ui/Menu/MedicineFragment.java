@@ -142,9 +142,6 @@ public class MedicineFragment extends Fragment
         protected void onPostExecute(String result)
         {
             pDialog.dismiss();
-            Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable() {
-                public void run() { }
-            });
         }
     }
 

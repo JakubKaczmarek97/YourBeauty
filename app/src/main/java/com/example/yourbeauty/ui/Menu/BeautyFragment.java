@@ -142,9 +142,6 @@ public class BeautyFragment extends Fragment
         protected void onPostExecute(String result)
         {
             pDialog.dismiss();
-            Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable() {
-                public void run() { }
-            });
         }
     }
 
