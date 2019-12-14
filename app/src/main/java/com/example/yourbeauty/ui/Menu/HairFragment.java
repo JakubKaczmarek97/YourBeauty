@@ -117,12 +117,16 @@ public class HairFragment extends Fragment
                                                 + parsedJson.get(keys[i + 3]));
                                 btn.setBackgroundColor(Color.rgb(3, 136, 252));
 
+                                System.out.println("HairFragment: " + keys[i] + " : " + parsedJson.get(keys[i]));
+
+                                final String argument = parsedJson.get(keys[i]);
+
                                 btn.setOnClickListener(new View.OnClickListener()
                                 {
                                     @Override
                                     public void onClick(View v)
                                     {
-                                        changeFragment();
+                                        changeFragment(argument);
                                     }
                                 });
 
@@ -144,9 +148,13 @@ public class HairFragment extends Fragment
             pDialogHair.dismiss();
         }
     }
-    private void changeFragment()
+    private void changeFragment(String message)
     {
         ServicesFragment servicesFragment = new ServicesFragment();
+
+        Bundle args = new Bundle();
+        args.putString("YourKey", message);
+        servicesFragment.setArguments(args);
 
         FragmentTransaction transaction = Objects.requireNonNull(getFragmentManager()).beginTransaction();
         transaction.replace(R.id.hair_fragment, servicesFragment);

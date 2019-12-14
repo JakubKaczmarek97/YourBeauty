@@ -29,11 +29,13 @@ public class ServicesFragment extends Fragment
 {
     private ProgressDialog pDialog;
     private View view;
+    private String selectedFirm;
 
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         view = inflater.inflate(R.layout.fragment_services, container, false);
+        selectedFirm = getArguments().getString("YourKey");
 
         new ServicesFragment.ListAllServices().execute();
 
@@ -60,7 +62,7 @@ public class ServicesFragment extends Fragment
             OkHttpClient client = new OkHttpClient();
 
             RequestBody postData = new FormBody.Builder()
-                    .add("idFirm", "1")
+                    .add("idFirm", selectedFirm)
                     .build();
 
             String url_services = "http://10.0.2.2/bayb/display_services_of_firm.php";

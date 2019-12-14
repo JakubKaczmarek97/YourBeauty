@@ -118,12 +118,14 @@ public class NailsFragment extends Fragment
                                                 + parsedJson.get(keys[i + 3]));
                                 btn.setBackgroundColor(Color.rgb(3, 136, 252));
 
+                                final String argument = parsedJson.get(keys[i]);
+
                                 btn.setOnClickListener(new View.OnClickListener()
                                 {
                                     @Override
                                     public void onClick(View v)
                                     {
-                                        changeFragment();
+                                        changeFragment(argument);
                                     }
                                 });
 
@@ -146,9 +148,13 @@ public class NailsFragment extends Fragment
         }
     }
 
-    private void changeFragment()
+    private void changeFragment(String message)
     {
         ServicesFragment servicesFragment = new ServicesFragment();
+
+        Bundle args = new Bundle();
+        args.putString("YourKey", message);
+        servicesFragment.setArguments(args);
 
         FragmentTransaction transaction = Objects.requireNonNull(getFragmentManager()).beginTransaction();
         transaction.replace(R.id.nails_fragment, servicesFragment);
