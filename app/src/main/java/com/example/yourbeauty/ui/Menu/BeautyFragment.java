@@ -29,7 +29,7 @@ import okhttp3.Response;
 
 public class BeautyFragment extends Fragment
 {
-    private ProgressDialog pDialog;
+    private ProgressDialog pDialogBeauty;
     private View view;
 
     public View onCreateView
@@ -47,11 +47,11 @@ public class BeautyFragment extends Fragment
         protected void onPreExecute()
         {
             super.onPreExecute();
-            pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Please wait to list all beauticians...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
+            pDialogBeauty = new ProgressDialog(getActivity());
+            pDialogBeauty.setMessage("Please wait...");
+            pDialogBeauty.setIndeterminate(false);
+            pDialogBeauty.setCancelable(true);
+            pDialogBeauty.show();
         }
 
         @Override
@@ -141,7 +141,7 @@ public class BeautyFragment extends Fragment
 
         protected void onPostExecute(String result)
         {
-            pDialog.dismiss();
+            pDialogBeauty.dismiss();
         }
     }
 

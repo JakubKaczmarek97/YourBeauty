@@ -29,7 +29,7 @@ import okhttp3.Response;
 
 public class MedicineFragment extends Fragment
 {
-    private ProgressDialog pDialog;
+    private ProgressDialog pDialogMedicine;
     private View view;
 
     public View onCreateView
@@ -47,11 +47,11 @@ public class MedicineFragment extends Fragment
         protected void onPreExecute()
         {
             super.onPreExecute();
-            pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Please wait to list all medics...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
+            pDialogMedicine = new ProgressDialog(getActivity());
+            pDialogMedicine.setMessage("Please wait...");
+            pDialogMedicine.setIndeterminate(false);
+            pDialogMedicine.setCancelable(true);
+            pDialogMedicine.show();
         }
 
         @Override
@@ -141,7 +141,7 @@ public class MedicineFragment extends Fragment
 
         protected void onPostExecute(String result)
         {
-            pDialog.dismiss();
+            pDialogMedicine.dismiss();
         }
     }
 

@@ -29,7 +29,7 @@ import okhttp3.Response;
 
 public class DietFragment extends Fragment
 {
-    private ProgressDialog pDialog;
+    private ProgressDialog pDialogDiet;
     private View view;
 
     public View onCreateView
@@ -47,11 +47,11 @@ public class DietFragment extends Fragment
         protected void onPreExecute()
         {
             super.onPreExecute();
-            pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Please wait to list all dietetics...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
+            pDialogDiet = new ProgressDialog(getActivity());
+            pDialogDiet.setMessage("Please wait...");
+            pDialogDiet.setIndeterminate(false);
+            pDialogDiet.setCancelable(true);
+            pDialogDiet.show();
         }
 
         @Override
@@ -141,7 +141,7 @@ public class DietFragment extends Fragment
 
         protected void onPostExecute(String result)
         {
-            pDialog.dismiss();
+            pDialogDiet.dismiss();
         }
     }
 

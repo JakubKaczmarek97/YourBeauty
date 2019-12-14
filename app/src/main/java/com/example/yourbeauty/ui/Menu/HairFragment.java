@@ -29,7 +29,7 @@ import okhttp3.Response;
 
 public class HairFragment extends Fragment
 {
-    private ProgressDialog pDialog;
+    private ProgressDialog pDialogHair;
     private View view;
 
     public View onCreateView
@@ -47,11 +47,11 @@ public class HairFragment extends Fragment
         protected void onPreExecute()
         {
             super.onPreExecute();
-            pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Please wait to list all hairdressers...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
+            pDialogHair = new ProgressDialog(getActivity());
+            pDialogHair.setMessage("Please wait...");
+            pDialogHair.setIndeterminate(false);
+            pDialogHair.setCancelable(true);
+            pDialogHair.show();
         }
 
         @Override
@@ -141,7 +141,7 @@ public class HairFragment extends Fragment
 
         protected void onPostExecute(String result)
         {
-            pDialog.dismiss();
+            pDialogHair.dismiss();
         }
     }
     private void changeFragment()

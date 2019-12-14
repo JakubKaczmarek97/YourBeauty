@@ -29,7 +29,7 @@ import okhttp3.Response;
 
 public class NailsFragment extends Fragment
 {
-    private ProgressDialog pDialog;
+    private ProgressDialog pDialogNails;
     private View view;
 
     public View onCreateView
@@ -48,11 +48,11 @@ public class NailsFragment extends Fragment
         protected void onPreExecute()
         {
             super.onPreExecute();
-            pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Please wait to list all nails makers...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
+            pDialogNails = new ProgressDialog(getActivity());
+            pDialogNails.setMessage("Please wait...");
+            pDialogNails.setIndeterminate(false);
+            pDialogNails.setCancelable(true);
+            pDialogNails.show();
         }
 
         @Override
@@ -142,7 +142,7 @@ public class NailsFragment extends Fragment
 
         protected void onPostExecute(String result)
         {
-            pDialog.dismiss();
+            pDialogNails.dismiss();
         }
     }
 

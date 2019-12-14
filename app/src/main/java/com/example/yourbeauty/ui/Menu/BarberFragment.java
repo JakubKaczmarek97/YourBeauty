@@ -29,7 +29,7 @@ import okhttp3.Response;
 
 public class BarberFragment extends Fragment
 {
-    private ProgressDialog pDialog;
+    private ProgressDialog pDialogBarber;
     private View view;
 
     public View onCreateView
@@ -47,11 +47,11 @@ public class BarberFragment extends Fragment
         protected void onPreExecute()
         {
             super.onPreExecute();
-            pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Please wait to list all barbers...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
+            pDialogBarber = new ProgressDialog(getActivity());
+            pDialogBarber.setMessage("Please wait...");
+            pDialogBarber.setIndeterminate(false);
+            pDialogBarber.setCancelable(true);
+            pDialogBarber.show();
         }
 
         @Override
@@ -141,7 +141,7 @@ public class BarberFragment extends Fragment
 
         protected void onPostExecute(String result)
         {
-            pDialog.dismiss();
+            pDialogBarber.dismiss();
         }
     }
     private void changeFragment()
