@@ -117,8 +117,8 @@ public class ServicesFragment extends Fragment
                                 btn.setText(
                                         parsedServices.get(keys[i + 1]) + "\n"
                                                 + parsedServices.get(keys[i + 2]) + "\n"
-                                                + parsedServices.get(keys[i + 3]) + "\n"
-                                                + parsedServices.get(keys[i + 4]));
+                                                + "Price: " + parsedServices.get(keys[i + 3]) + "\n"
+                                                + "Time: " + parsedServices.get(keys[i + 4]));
 
                                 btn.setBackgroundColor(Color.rgb(3, 136, 252));
 
