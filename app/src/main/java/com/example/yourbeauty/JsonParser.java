@@ -27,14 +27,11 @@ public class JsonParser
             e.printStackTrace();
         }
 
-        System.out.println("Validate: " + validate + " amount: " + amount);
-
         if(validate == 1 && amount > 0)
         {
             String[] temp = json.split("(?=\"id_0)");
             json = "{" + temp[1];
             jsonObject = new JSONObject(json);
-            System.out.println("Firms: " + temp[1]);
 
             for(int i=0; i<amount; i++)
             {
@@ -72,14 +69,11 @@ public class JsonParser
             e.printStackTrace();
         }
 
-        System.out.println("Validate: " + validate + " amount: " + amount);
-
         if(validate == 1 && amount > 0)
         {
             String[] temp = json.split("(?=\"0_id)");
             json = "{" + temp[1];
             jsonObject = new JSONObject(json);
-            System.out.println("Firms: " + temp[1]);
 
             for(int i=0; i<amount; i++)
             {
@@ -88,8 +82,6 @@ public class JsonParser
                 {
                     String key = jsonObject.names().getString(i * 5 + j);
                     String value = jsonObject.get(key).toString();
-
-                    System.out.println("Services: " + key + " " + value);
 
                     map.put(key, value);
                 }
