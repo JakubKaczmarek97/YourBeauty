@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
 import com.example.yourbeauty.CustomViewPager;
 import com.example.yourbeauty.FragmentAdapter;
@@ -33,7 +32,7 @@ public class MenuFragment extends Fragment
         return view;
     }
 
-    private void setupViewPager(ViewPager viewPager)
+    private void setupViewPager(CustomViewPager viewPager)
     {
         FragmentAdapter adapter = new FragmentAdapter(getChildFragmentManager());
         adapter.addFragment(new HairFragment(), "HairFragment");
