@@ -101,7 +101,7 @@ public class HomeFragment extends Fragment
 
         FragmentTransaction transaction = Objects.requireNonNull(getFragmentManager()).beginTransaction();
         transaction.replace(R.id.fragment_home, menuFragment);
-        transaction.commit();
+        transaction.addToBackStack(null).commit();
     }
 
 
