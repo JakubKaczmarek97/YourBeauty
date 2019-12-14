@@ -41,7 +41,8 @@ public class NailsFragment extends Fragment
         new NailsFragment.ListAllNails().execute();
         return view;
     }
-    class ListAllNails extends AsyncTask<String, String, String> {
+    class ListAllNails extends AsyncTask<String, String, String>
+    {
 
         @Override
         protected void onPreExecute()
@@ -63,9 +64,9 @@ public class NailsFragment extends Fragment
             RequestBody postData = new FormBody.Builder()
                     .build();
 
-            String url_create_product = "http://10.0.2.2/bayb/display_category_nails.php";
+            String url_nails = "http://10.0.2.2/bayb/display_category_nails.php";
             Request request = new Request.Builder()
-                    .url(url_create_product)
+                    .url(url_nails)
                     .post(postData)
                     .build();
             try

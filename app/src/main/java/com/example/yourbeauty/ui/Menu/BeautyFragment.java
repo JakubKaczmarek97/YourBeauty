@@ -63,9 +63,9 @@ public class BeautyFragment extends Fragment
             RequestBody postData = new FormBody.Builder()
                     .build();
 
-            String url_create_product = "http://10.0.2.2/bayb/display_category_beauticians.php";
+            String url_beauticians = "http://10.0.2.2/bayb/display_category_beauticians.php";
             Request request = new Request.Builder()
-                    .url(url_create_product)
+                    .url(url_beauticians)
                     .post(postData)
                     .build();
             try

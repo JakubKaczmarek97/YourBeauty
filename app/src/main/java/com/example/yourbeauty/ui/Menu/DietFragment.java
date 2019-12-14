@@ -63,9 +63,9 @@ public class DietFragment extends Fragment
             RequestBody postData = new FormBody.Builder()
                     .build();
 
-            String url_create_product = "http://10.0.2.2/bayb/display_category_dietetics.php";
+            String url_diet = "http://10.0.2.2/bayb/display_category_dietetics.php";
             Request request = new Request.Builder()
-                    .url(url_create_product)
+                    .url(url_diet)
                     .post(postData)
                     .build();
             try
