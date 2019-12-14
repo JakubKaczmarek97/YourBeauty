@@ -12,9 +12,11 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.yourbeauty.JsonParser;
 import com.example.yourbeauty.R;
+import com.example.yourbeauty.ui.Services.ServicesFragment;
 
 import java.util.LinkedHashMap;
 import java.util.Objects;
@@ -114,6 +116,16 @@ public class MedicineFragment extends Fragment
                                                     + parsedJson.get(keys[i + 2]) + "\n"
                                                     + parsedJson.get(keys[i + 3]));
                                     btn.setBackgroundColor(Color.rgb(3, 136, 252));
+
+                                    btn.setOnClickListener(new View.OnClickListener()
+                                    {
+                                        @Override
+                                        public void onClick(View v)
+                                        {
+                                            changeFragment();
+                                        }
+                                    });
+
                                     params.setMargins(10, 3, 10, 3);
                                     linear.addView(btn, params);
                                 }
@@ -134,5 +146,14 @@ public class MedicineFragment extends Fragment
                 public void run() { }
             });
         }
+    }
+
+    private void changeFragment()
+    {
+        ServicesFragment servicesFragment = new ServicesFragment();
+
+        FragmentTransaction transaction = Objects.requireNonNull(getFragmentManager()).beginTransaction();
+        transaction.replace(R.id.medicine_fragment, servicesFragment);
+        transaction.addToBackStack(null).commit();
     }
 }
