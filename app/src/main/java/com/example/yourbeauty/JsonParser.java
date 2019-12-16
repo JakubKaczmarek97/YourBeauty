@@ -90,4 +90,40 @@ public class JsonParser
 
         return map;
     }
+
+    public LinkedHashMap<String, String> parseLogin(String s) throws Exception
+    {
+        String json = s;
+        JSONObject jsonObject;
+        int validate = 0;       //Is success == 1 ?
+
+        LinkedHashMap<String, String> map = new LinkedHashMap<>();
+
+        try
+        {
+            jsonObject = new JSONObject(json);
+            validate = jsonObject.getInt("success");
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+
+        if(validate > 0)
+        {
+            jsonObject = new JSONObject(json);
+
+            String key = "id";
+            String value = jsonObject.getString("id");
+
+            map.put(key, value);
+
+            key = "userType";
+            value = jsonObject.getString("userType");
+
+            map.put(key,value);
+        }
+
+        return map;
+    }
 }

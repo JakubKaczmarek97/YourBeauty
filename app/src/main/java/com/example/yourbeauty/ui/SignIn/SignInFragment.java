@@ -26,8 +26,6 @@ import okhttp3.Response;
 
 public class SignInFragment extends Fragment
 {
-    private int SUCCESS ;
-
     private ProgressDialog pDialog;
 
     private EditText inputEmail;
@@ -57,7 +55,6 @@ public class SignInFragment extends Fragment
     }
     class UserLogin extends AsyncTask<String, String, String>
     {
-
 
         @Override
         protected void onPreExecute()
@@ -94,12 +91,9 @@ public class SignInFragment extends Fragment
                 Response response = client.newCall(request).execute();
                 String result = Objects.requireNonNull(response.body()).string();
                 System.out.println("Response:" + result);
-                SUCCESS = 1;
-                //return result;
             }
             catch (Exception e)
             {
-                SUCCESS = 0;
                 System.out.println("Błąd: " + e);
             }
             return null;
@@ -107,26 +101,6 @@ public class SignInFragment extends Fragment
         protected void onPostExecute(String result)
         {
             pDialog.dismiss();
-            Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable()
-            {
-                public void run()
-                {
-                    if (SUCCESS == 1)
-                    {
-                        //Display success message
-                        Toast.makeText(getActivity(),
-                                "User logged successfully", Toast.LENGTH_LONG).show();
-
-                    }
-                    else
-                    {
-                        Toast.makeText(getActivity(),
-                                "Some error occurred while signing in",
-                                Toast.LENGTH_LONG).show();
-
-                    }
-                }
-            });
         }
     }
 }
