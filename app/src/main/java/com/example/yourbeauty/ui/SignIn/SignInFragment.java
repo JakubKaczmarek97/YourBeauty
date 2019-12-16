@@ -13,8 +13,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.yourbeauty.JsonParser;
 import com.example.yourbeauty.R;
 
+import java.util.LinkedHashMap;
 import java.util.Objects;
 
 import okhttp3.FormBody;
@@ -30,6 +32,8 @@ public class SignInFragment extends Fragment
 
     private EditText inputEmail;
     private EditText inputPassword;
+
+    private LinkedHashMap<String, String> parsedJson = new LinkedHashMap<>();
 
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -90,7 +94,14 @@ public class SignInFragment extends Fragment
             {
                 Response response = client.newCall(request).execute();
                 String result = Objects.requireNonNull(response.body()).string();
-                System.out.println("Response:" + result);
+
+                JsonParser jsonParser = new JsonParser();
+
+
+                parsedJson = jsonParser.parseLogin(result);
+                final Object[] keys = parsedJson.keySet().toArray();
+
+
             }
             catch (Exception e)
             {
@@ -101,6 +112,12 @@ public class SignInFragment extends Fragment
         protected void onPostExecute(String result)
         {
             pDialog.dismiss();
+
+            if(parsedJson.isEmpty())
+            {
+                Toast.makeText(getActivity(),
+                        "Bad e-mail or password!", Toast.LENGTH_LONG).show();
+            }
         }
     }
 }
