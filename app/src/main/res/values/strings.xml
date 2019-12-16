@@ -9,4 +9,6 @@
     <string name="menu_home">Home</string>
     <string name="menu_signin">Sign In</string>
     <string name="menu_signup">Sign Up</string>
+
+    <string name="menu_logout">Log Out</string>
 </resources>
