@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -107,7 +108,8 @@ public class ServicesFragment extends Fragment
                         }
                         else {
 
-                            for (int i = 0; i < keys.length; i += 5) {
+                            for (int i = 0; i < keys.length; i += 5)
+                            {
 
                                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                                         LinearLayout.LayoutParams.MATCH_PARENT,
@@ -116,7 +118,7 @@ public class ServicesFragment extends Fragment
                                 Button btn = new Button(getActivity());
                                 EditText edit = new EditText(getActivity());
 
-                                btn.setText(parsedServices.get(keys[i + 1]) + "\n");
+                                btn.setText(parsedServices.get(keys[i + 1]));
 
                                 edit.setText(" " +parsedServices.get(keys[i + 2]) + "\n"
                                         + " Price: " + parsedServices.get(keys[i + 3]) + "\n"
@@ -127,8 +129,10 @@ public class ServicesFragment extends Fragment
                                 edit.setEnabled(false);
                                 edit.setTextColor(Color.rgb(0,0,0));
 
-                                params.setMargins(5, 0, 5, 3);
-                                linear.addView(btn, params);
+                                btn.setGravity(Gravity.CENTER);
+
+                                params.setMargins(5, 0, 5, 8);
+                                linear.addView(btn);
                                 linear.addView(edit,params);
                             }
                         }

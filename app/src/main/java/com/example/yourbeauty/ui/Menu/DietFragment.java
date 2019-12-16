@@ -4,10 +4,12 @@ import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -110,12 +112,20 @@ public class DietFragment extends Fragment
                                         LinearLayout.LayoutParams.WRAP_CONTENT);
 
                                 Button btn = new Button(getActivity());
-                                btn.setId(i);
-                                btn.setText(
-                                        parsedJson.get(keys[i + 1]) + "\n"
-                                                + parsedJson.get(keys[i + 2]) + "\n"
-                                                + parsedJson.get(keys[i + 3]));
+                                EditText editText = new EditText(getActivity());
+
+                                btn.setText(parsedJson.get(keys[i + 1]));
+
+                                editText.setText(" " + parsedJson.get(keys[i + 2])
+                                        + parsedJson.get(keys[i + 3]));
+
                                 btn.setBackgroundColor(Color.rgb(3, 136, 252));
+                                editText.setBackgroundColor(Color.rgb(230,230,230));
+                                editText.setEnabled(false);
+                                editText.setTextColor(Color.rgb(0,0,0));
+
+                                btn.setGravity(Gravity.CENTER);
+                                editText.setGravity(Gravity.CENTER);
 
                                 final String argument = parsedJson.get(keys[i]);
 
@@ -128,8 +138,9 @@ public class DietFragment extends Fragment
                                     }
                                 });
 
-                                params.setMargins(10, 3, 10, 3);
-                                linear.addView(btn, params);
+                                params.setMargins(5, 0, 5, 8);
+                                linear.addView(btn);
+                                linear.addView(editText,params);
                             }
                         }
                     }
