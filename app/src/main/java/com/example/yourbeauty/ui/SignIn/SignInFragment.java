@@ -1,6 +1,7 @@
 package com.example.yourbeauty.ui.SignIn;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.yourbeauty.JsonParser;
+import com.example.yourbeauty.LoggedUser.UserActivity;
 import com.example.yourbeauty.R;
 
 import java.util.LinkedHashMap;
@@ -35,6 +37,13 @@ public class SignInFragment extends Fragment
 
     private LinkedHashMap<String, String> parsedJson = new LinkedHashMap<>();
 
+    private int userId;
+
+    public int getUserId()
+    {
+        return userId;
+    }
+
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -50,7 +59,6 @@ public class SignInFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-
                 new SignInFragment.UserLogin().execute();
             }
         });
@@ -100,8 +108,8 @@ public class SignInFragment extends Fragment
 
                 parsedJson = jsonParser.parseLogin(result);
                 final Object[] keys = parsedJson.keySet().toArray();
-
-
+                userId = Integer.parseInt(parsedJson.get(keys[0]));
+                System.out.println("aaa: " + parsedJson.get(keys[0]) + "bbb" + parsedJson.get(keys[1]) + "userId: " + userId);
             }
             catch (Exception e)
             {
@@ -117,6 +125,11 @@ public class SignInFragment extends Fragment
             {
                 Toast.makeText(getActivity(),
                         "Bad e-mail or password!", Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+                Intent intent = new Intent(getActivity(), UserActivity.class);
+                startActivity(intent);
             }
         }
     }

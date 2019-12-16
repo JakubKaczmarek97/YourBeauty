@@ -116,10 +116,14 @@ public class JsonParser
             String key = "id";
             String value = jsonObject.getString("id");
 
+            System.out.println("JSON 1: " + key + " " + value);
+
             map.put(key, value);
 
             key = "userType";
             value = jsonObject.getString("userType");
+
+            System.out.println("JSON 2: " + key + " " + value);
 
             map.put(key,value);
         }
