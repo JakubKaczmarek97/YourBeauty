@@ -29,7 +29,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".LoggedUser.UserActivity"/>
+        <activity
+            android:name=".LoggedUser.UserActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
     </application>
 

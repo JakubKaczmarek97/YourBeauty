@@ -104,7 +104,6 @@ public class SignInFragment extends Fragment
                 parsedJson = jsonParser.parseLogin(result);
                 final Object[] keys = parsedJson.keySet().toArray();
                 userId = parsedJson.get(keys[0]);
-                System.out.println("aaa: " + parsedJson.get(keys[0]) + "bbb" + parsedJson.get(keys[1]) + "userId: " + userId);
             }
             catch (Exception e)
             {
