@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -113,17 +114,22 @@ public class ServicesFragment extends Fragment
                                         LinearLayout.LayoutParams.WRAP_CONTENT);
 
                                 Button btn = new Button(getActivity());
-                                btn.setId(i);
-                                btn.setText(
-                                        parsedServices.get(keys[i + 1]) + "\n"
-                                                + parsedServices.get(keys[i + 2]) + "\n"
-                                                + "Price: " + parsedServices.get(keys[i + 3]) + "\n"
-                                                + "Time: " + parsedServices.get(keys[i + 4]));
+                                EditText edit = new EditText(getActivity());
+
+                                btn.setText(parsedServices.get(keys[i + 1]) + "\n");
+
+                                edit.setText(" " +parsedServices.get(keys[i + 2]) + "\n"
+                                        + " Price: " + parsedServices.get(keys[i + 3]) + "\n"
+                                        + " Time: " + parsedServices.get(keys[i + 4]));
 
                                 btn.setBackgroundColor(Color.rgb(3, 136, 252));
+                                edit.setBackgroundColor(Color.rgb(230,230,230));
+                                edit.setEnabled(false);
+                                edit.setTextColor(Color.rgb(0,0,0));
 
-                                params.setMargins(10, 3, 10, 3);
+                                params.setMargins(5, 0, 5, 3);
                                 linear.addView(btn, params);
+                                linear.addView(edit,params);
                             }
                         }
                     }
