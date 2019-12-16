@@ -5,18 +5,20 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.yourbeauty.R;
-import com.example.yourbeauty.ui.SignIn.SignInFragment;
 
 public class UserActivity extends AppCompatActivity
 {
+    private String userId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        SignInFragment signInFragment = new SignInFragment();
+        userId = getIntent().getStringExtra("USER_ID");
 
-        System.out.println(signInFragment.getUserId());
+
+        System.out.println("UserActivity: " + userId);
     }
 }

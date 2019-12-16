@@ -37,12 +37,7 @@ public class SignInFragment extends Fragment
 
     private LinkedHashMap<String, String> parsedJson = new LinkedHashMap<>();
 
-    private int userId;
-
-    public int getUserId()
-    {
-        return userId;
-    }
+    private String userId;
 
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -108,7 +103,7 @@ public class SignInFragment extends Fragment
 
                 parsedJson = jsonParser.parseLogin(result);
                 final Object[] keys = parsedJson.keySet().toArray();
-                userId = Integer.parseInt(parsedJson.get(keys[0]));
+                userId = parsedJson.get(keys[0]);
                 System.out.println("aaa: " + parsedJson.get(keys[0]) + "bbb" + parsedJson.get(keys[1]) + "userId: " + userId);
             }
             catch (Exception e)
@@ -129,6 +124,7 @@ public class SignInFragment extends Fragment
             else
             {
                 Intent intent = new Intent(getActivity(), UserActivity.class);
+                intent.putExtra("USER_ID", userId);
                 startActivity(intent);
             }
         }
