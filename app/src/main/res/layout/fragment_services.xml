@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/fragment_services"
-    android:background="#AAFFAA"
+    android:background="@color/colorPrimaryDark"
     android:clickable="true"
     android:focusable="true">
 
@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Services:"
+            android:textColor="#FFFFFF"
             android:textAlignment="center"/>
 
     </LinearLayout>

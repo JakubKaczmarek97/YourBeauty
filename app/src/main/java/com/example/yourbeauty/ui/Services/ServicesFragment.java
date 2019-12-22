@@ -101,7 +101,8 @@ public class ServicesFragment extends Fragment
 
                             Button btn = new Button(getActivity());
                             btn.setText("No services found at database");
-                            btn.setBackgroundColor(Color.rgb(3, 136, 252));
+                            btn.setBackgroundResource(R.drawable.gradient_1);
+                            btn.setTextColor(Color.rgb(255,255,255));
 
                             params.setMargins(10, 3, 10, 3);
                             linear.addView(btn, params);
@@ -124,7 +125,8 @@ public class ServicesFragment extends Fragment
                                         + " Price: " + parsedServices.get(keys[i + 3]) + "\n"
                                         + " Time: " + parsedServices.get(keys[i + 4]));
 
-                                btn.setBackgroundColor(Color.rgb(3, 136, 252));
+                                btn.setBackgroundResource(R.drawable.gradient_1);
+                                btn.setTextColor(Color.rgb(255,255,255));
                                 edit.setBackgroundColor(Color.rgb(230,230,230));
                                 edit.setEnabled(false);
                                 edit.setTextColor(Color.rgb(0,0,0));

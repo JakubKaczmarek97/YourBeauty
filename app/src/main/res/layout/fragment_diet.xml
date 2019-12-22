@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/diet_fragment"
-    android:background="#AAFFAA"
+    android:background="@color/colorPrimaryDark"
     android:clickable="true"
     android:focusable="true">
 
@@ -19,7 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Dietetics Fragment"
+            android:textColor="#FFFFFF"
             android:textAlignment="center"/>
 
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

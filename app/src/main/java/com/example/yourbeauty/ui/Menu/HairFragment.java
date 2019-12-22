@@ -41,6 +41,13 @@ public class HairFragment extends Fragment
         view = inflater.inflate(R.layout.fragment_hair, container, false);
 
         new HairFragment.ListAllHairdressers().execute();
+/*
+        RelativeLayout relativeLayout = view.findViewById(R.id.hair_fragment);
+        AnimationDrawable animationDrawable = (AnimationDrawable) relativeLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2000);
+        animationDrawable.setExitFadeDuration(4000);
+        animationDrawable.start();
+*/
         return view;
     }
     class ListAllHairdressers extends AsyncTask<String, String, String> {
@@ -98,7 +105,8 @@ public class HairFragment extends Fragment
 
                             Button btn = new Button(getActivity());
                             btn.setText("No hairdressers found at database");
-                            btn.setBackgroundColor(Color.rgb(3, 136, 252));
+                            btn.setBackgroundResource(R.drawable.gradient_1);
+                            btn.setTextColor(Color.rgb(255,255,255));
 
                             params.setMargins(10, 3, 10, 3);
                             linear.addView(btn, params);
@@ -119,7 +127,8 @@ public class HairFragment extends Fragment
                                 editText.setText(" " + parsedJson.get(keys[i + 2])
                                         + parsedJson.get(keys[i + 3]));
 
-                                btn.setBackgroundColor(Color.rgb(3, 136, 252));
+                                btn.setBackgroundResource(R.drawable.gradient_1);
+                                btn.setTextColor(Color.rgb(255,255,255));
                                 editText.setBackgroundColor(Color.rgb(230,230,230));
                                 editText.setEnabled(false);
                                 editText.setTextColor(Color.rgb(0,0,0));
