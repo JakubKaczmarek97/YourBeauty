@@ -28,15 +28,15 @@ public class UserActivity extends AppCompatActivity
 
         userId = getIntent().getStringExtra("USER_ID");
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar_user);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout_user);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder
-                (R.id.nav_home, R.id.nav_signin, R.id.nav_signup)
+                (R.id.nav_home)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -68,10 +68,12 @@ public class UserActivity extends AppCompatActivity
             this.doubleBackToExitPressedOnce = true;
             Toast.makeText(this, "Please click BACK again to close app", Toast.LENGTH_SHORT).show();
 
-            new Handler().postDelayed(new Runnable() {
+            new Handler().postDelayed(new Runnable()
+            {
 
                 @Override
-                public void run() {
+                public void run()
+                {
                     doubleBackToExitPressedOnce=false;
                 }
             }, 2000);
