@@ -99,7 +99,7 @@ public class HomeFragment extends Fragment
         args.putString("YourKey", message);
         menuFragment.setArguments(args);
 
-        FragmentTransaction transaction = Objects.requireNonNull(getFragmentManager()).beginTransaction();
+        FragmentTransaction transaction = Objects.requireNonNull(getActivity().getSupportFragmentManager()).beginTransaction();
         transaction.replace(R.id.fragment_home, menuFragment);
         transaction.addToBackStack(null).commit();
     }

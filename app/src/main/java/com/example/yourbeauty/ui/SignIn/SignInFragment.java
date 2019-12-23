@@ -125,6 +125,7 @@ public class SignInFragment extends Fragment
                 Intent intent = new Intent(getActivity(), UserActivity.class);
                 intent.putExtra("USER_ID", userId);
                 startActivity(intent);
+                getActivity().finish();
             }
         }
     }

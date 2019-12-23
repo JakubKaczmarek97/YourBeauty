@@ -1,6 +1,8 @@
 package com.example.yourbeauty.UnregisteredUser;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -47,5 +49,35 @@ public class MainActivity extends AppCompatActivity
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    boolean doubleBackToExitPressedOnce = false;
+
+    @Override
+    public void onBackPressed()
+    {
+        if(getSupportFragmentManager().getBackStackEntryCount() == 0)
+        {
+            if (doubleBackToExitPressedOnce)
+            {
+                super.onBackPressed();
+                return;
+            }
+
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to close app", Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(new Runnable()
+            {
+
+                @Override
+                public void run()
+                {
+                    doubleBackToExitPressedOnce=false;
+                }
+            }, 2000);
+        }
+        else
+            super.onBackPressed();
     }
 }

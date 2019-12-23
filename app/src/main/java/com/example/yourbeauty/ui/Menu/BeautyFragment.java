@@ -168,7 +168,7 @@ public class BeautyFragment extends Fragment
         args.putString("YourKey", message);
         servicesFragment.setArguments(args);
 
-        FragmentTransaction transaction = Objects.requireNonNull(getFragmentManager()).beginTransaction();
+        FragmentTransaction transaction = (Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
         transaction.replace(R.id.beauty_fragment, servicesFragment);
         transaction.addToBackStack(null).commit();
     }
