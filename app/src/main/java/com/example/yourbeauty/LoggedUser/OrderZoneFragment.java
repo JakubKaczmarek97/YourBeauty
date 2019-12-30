@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -118,6 +117,10 @@ public class OrderZoneFragment extends Fragment
 
                             params.setMargins(10, 10, 10, 3);
                             workers.addView(btn, params);
+
+                            Button next = view.findViewById(R.id.btnNext);
+                            next.setEnabled(false);
+                            next.setTextColor(Color.rgb(150,150,150));
                         }
                         else {
                             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
@@ -137,15 +140,8 @@ public class OrderZoneFragment extends Fragment
                                 radioGroup.addView(rb);
                             }
 
-                            Button next = new Button(getActivity());
-                            next.setText("NEXT");
-                            next.setTextColor(Color.rgb(0,0,0));
-                            next.setTextSize(24);
-                            next.setGravity(Gravity.CENTER);
-                            next.setBackgroundColor(Color.rgb(184, 236, 248));
-
-                            workers.addView(next);
-
+                            Button next = view.findViewById(R.id.btnNext);
+                            next.setEnabled(true);
 
                         }
                     }
@@ -163,5 +159,4 @@ public class OrderZoneFragment extends Fragment
             pDialog.dismiss();
         }
     }
-
 }

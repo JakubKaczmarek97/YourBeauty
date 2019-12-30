@@ -3,13 +3,12 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_1">
 
 <LinearLayout
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_1"
     android:id="@+id/fragment_order_zone"
     android:orientation="vertical">
 
@@ -55,6 +54,17 @@
             android:id="@+id/radio_group" />
 
     </LinearLayout>
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#B8ECF8"
+        android:text="NEXT"
+        android:fontFamily="@font/oregano"
+        android:layout_gravity="right"
+        android:textColor="#000000"/>
 
 </LinearLayout>
 </ScrollView>
