@@ -154,7 +154,6 @@ public class ServicesFragment extends Fragment
                                         }
                                         else    //User is logged in
                                         {
-                                            //TODO: Open Order Zone here
                                             changeFragment(argument, firmData);
                                         }
                                     }

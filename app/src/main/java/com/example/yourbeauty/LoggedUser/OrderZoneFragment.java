@@ -1,13 +1,18 @@
 package com.example.yourbeauty.LoggedUser;
 
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -42,7 +47,7 @@ public class OrderZoneFragment extends Fragment
 
         EditText edit = new EditText(getActivity());
         edit.setText(firmData);
-
+        edit.setTextColor(Color.rgb(255,255,255));
         firms.addView(edit);
 
         new OrderZoneFragment.ListAllWorkers().execute();
@@ -70,7 +75,7 @@ public class OrderZoneFragment extends Fragment
             OkHttpClient client = new OkHttpClient();
 
             RequestBody postData = new FormBody.Builder()
-                    .add("idFirm", selectedService)
+                    .add("idService", selectedService)
                     .build();
 
             String url_order_zone = "http://10.0.2.2/bayb/order_zone.php";
@@ -86,20 +91,20 @@ public class OrderZoneFragment extends Fragment
                 //Use of JsonParser class.
 
                 JsonParser jsonParser = new JsonParser();
-                final LinkedHashMap<String, String> parsedServices;
-                parsedServices = jsonParser.parseWorkers(result);
-                final Object[] keys = parsedServices.keySet().toArray();
+                final LinkedHashMap<String, String> parsedWorkers;
+                parsedWorkers = jsonParser.parseWorkers(result);
+                final Object[] keys = parsedWorkers.keySet().toArray();
 
                 //Generate buttons dynamically based on JSON
-/*
+
                 getActivity().runOnUiThread(new Runnable()
                 {
                     @Override
                     public void run()
                     {
-                        LinearLayout linear = view.findViewById(R.id.workers_list);
+                        LinearLayout workers = view.findViewById(R.id.workers_list);
 
-                        if(parsedServices.isEmpty())
+                        if(parsedWorkers.isEmpty())
                         {
                             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                                     LinearLayout.LayoutParams.MATCH_PARENT,
@@ -107,66 +112,45 @@ public class OrderZoneFragment extends Fragment
 
                             Button btn = new Button(getActivity());
                             btn.setText("No workers found at database");
-                            btn.setBackgroundResource(R.drawable.gradient_1);
+                            //btn.setBackgroundResource(R.drawable.gradient_1);
+                            btn.setBackgroundColor(Color.rgb(255,100,100));
                             btn.setTextColor(Color.rgb(255,255,255));
 
-                            params.setMargins(10, 3, 10, 3);
-                            linear.addView(btn, params);
+                            params.setMargins(10, 10, 10, 3);
+                            workers.addView(btn, params);
                         }
                         else {
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                                    LinearLayout.LayoutParams.MATCH_PARENT,
+                                    LinearLayout.LayoutParams.WRAP_CONTENT);
 
-                            for (int i = 0; i < keys.length; i += 5)
+                            for (int i = 0; i < keys.length; i += 2)
                             {
+                                RadioGroup radioGroup = view.findViewById(R.id.radio_group);
 
-                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                                        LinearLayout.LayoutParams.MATCH_PARENT,
-                                        LinearLayout.LayoutParams.WRAP_CONTENT);
-
-                                Button btn = new Button(getActivity());
-                                EditText edit = new EditText(getActivity());
-
-                                btn.setText(parsedServices.get(keys[i + 1]));
-
-                                edit.setText(" " +parsedServices.get(keys[i + 2]) + "\n"
-                                        + " Price: " + parsedServices.get(keys[i + 3]) + "\n"
-                                        + " Time: " + parsedServices.get(keys[i + 4]));
-
-                                btn.setBackgroundResource(R.drawable.gradient_1);
-                                btn.setTextColor(Color.rgb(255,255,255));
-                                edit.setBackgroundColor(Color.rgb(230,230,230));
-                                edit.setEnabled(false);
-                                edit.setTextColor(Color.rgb(0,0,0));
-
-                                btn.setGravity(Gravity.CENTER);
-
-
-
-                                btn.setOnClickListener(new View.OnClickListener()
-                                {
-                                    @Override
-                                    public void onClick(View v)
-                                    {
-                                        if(UserActivity.getUserId() == "")  //User is not logged in
-                                        {
-                                            Toast.makeText(getActivity(),
-                                                    "You have to sign in first!", Toast.LENGTH_LONG).show();
-                                        }
-                                        else    //User is logged in
-                                        {
-                                            //TODO: Open Order Zone here
-
-                                        }
-                                    }
-                                });
+                                RadioButton rb = new RadioButton(getActivity());
+                                rb.setText(parsedWorkers.get(keys[i]) + " " + parsedWorkers.get(keys[i+1]));
+                                rb.setTextColor(Color.rgb(230,230,230));
+                                rb.setTextSize(18);
 
                                 params.setMargins(5, 0, 5, 8);
-                                linear.addView(btn);
-                                linear.addView(edit,params);
+                                radioGroup.addView(rb);
                             }
+
+                            Button next = new Button(getActivity());
+                            next.setText("NEXT");
+                            next.setTextColor(Color.rgb(0,0,0));
+                            next.setTextSize(24);
+                            next.setGravity(Gravity.CENTER);
+                            next.setBackgroundColor(Color.rgb(184, 236, 248));
+
+                            workers.addView(next);
+
+
                         }
                     }
                 });
-                */
+
             } catch (Exception e)
             {
                 System.out.println("Błąd: " + e);

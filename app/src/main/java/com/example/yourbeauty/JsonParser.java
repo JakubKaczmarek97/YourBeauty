@@ -116,7 +116,7 @@ public class JsonParser
             String key = "id";
             String value = jsonObject.getString("id");
 
-            System.out.println("JSON 1: " + key + " " + value);
+
 
             map.put(key, value);
 
@@ -144,13 +144,14 @@ public class JsonParser
         {
             jsonObject = new JSONObject(json);
             validate = jsonObject.getInt("success");
+            amount = jsonObject.getInt("query_amount");
         }
         catch (JSONException e)
         {
             e.printStackTrace();
         }
 
-        if(validate > 0)
+        if(validate != 0 && amount != 0)
         {
             jsonObject = new JSONObject(json);
 
@@ -159,10 +160,14 @@ public class JsonParser
                 String key = i + "_Name";
                 String value = jsonObject.getString(key);
 
+                System.out.println("JSON 1: " + key + " " + value);
+
                 map.put(key,value);
 
                 key = i + "_Surname";
                 value = jsonObject.getString(key);
+
+                System.out.println("JSON 2: " + key + " " + value);
 
                 map.put(key,value);
             }
