@@ -1,25 +1,18 @@
-package com.example.yourbeauty.ui.Services;
+package com.example.yourbeauty.LoggedUser;
 
 import android.app.ProgressDialog;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.example.yourbeauty.JsonParser;
-import com.example.yourbeauty.LoggedUser.OrderZoneFragment;
-import com.example.yourbeauty.LoggedUser.UserActivity;
 import com.example.yourbeauty.R;
 
 import java.util.LinkedHashMap;
@@ -31,24 +24,33 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class ServicesFragment extends Fragment
+public class OrderZoneFragment extends Fragment
 {
     private ProgressDialog pDialog;
     private View view;
-    private String selectedFirm;
+    private String selectedService;
+    private String firmData;
 
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        view = inflater.inflate(R.layout.fragment_services, container, false);
-        selectedFirm = getArguments().getString("YourKey");
+        view = inflater.inflate(R.layout.fragment_order_zone, container, false);
+        selectedService = getArguments().getString("ServiceID");
+        firmData = getArguments().getString("FirmData");
 
-        new ServicesFragment.ListAllServices().execute();
+        LinearLayout firms = view.findViewById(R.id.firm_data);
+
+        EditText edit = new EditText(getActivity());
+        edit.setText(firmData);
+
+        firms.addView(edit);
+
+        new OrderZoneFragment.ListAllWorkers().execute();
 
         return view;
     }
 
-    class ListAllServices extends AsyncTask<String, String, String>
+    class ListAllWorkers extends AsyncTask<String, String, String>
     {
 
         @Override
@@ -56,7 +58,7 @@ public class ServicesFragment extends Fragment
         {
             super.onPreExecute();
             pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Please wait to list all services...");
+            pDialog.setMessage("Please wait to list all workers...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();
@@ -68,12 +70,12 @@ public class ServicesFragment extends Fragment
             OkHttpClient client = new OkHttpClient();
 
             RequestBody postData = new FormBody.Builder()
-                    .add("idFirm", selectedFirm)
+                    .add("idFirm", selectedService)
                     .build();
 
-            String url_services = "http://10.0.2.2/bayb/display_services_of_firm.php";
+            String url_order_zone = "http://10.0.2.2/bayb/order_zone.php";
             Request request = new Request.Builder()
-                    .url(url_services)
+                    .url(url_order_zone)
                     .post(postData)
                     .build();
             try
@@ -85,17 +87,17 @@ public class ServicesFragment extends Fragment
 
                 JsonParser jsonParser = new JsonParser();
                 final LinkedHashMap<String, String> parsedServices;
-                parsedServices = jsonParser.parseServices(result);
+                parsedServices = jsonParser.parseWorkers(result);
                 final Object[] keys = parsedServices.keySet().toArray();
 
                 //Generate buttons dynamically based on JSON
-
+/*
                 getActivity().runOnUiThread(new Runnable()
                 {
                     @Override
                     public void run()
                     {
-                        LinearLayout linear = view.findViewById(R.id.services_linear);
+                        LinearLayout linear = view.findViewById(R.id.workers_list);
 
                         if(parsedServices.isEmpty())
                         {
@@ -104,7 +106,7 @@ public class ServicesFragment extends Fragment
                                     LinearLayout.LayoutParams.WRAP_CONTENT);
 
                             Button btn = new Button(getActivity());
-                            btn.setText("No services found at database");
+                            btn.setText("No workers found at database");
                             btn.setBackgroundResource(R.drawable.gradient_1);
                             btn.setTextColor(Color.rgb(255,255,255));
 
@@ -137,10 +139,7 @@ public class ServicesFragment extends Fragment
 
                                 btn.setGravity(Gravity.CENTER);
 
-                                final String argument = parsedServices.get(keys[i]);
-                                final String firmData = " " +parsedServices.get(keys[i + 2]) + "\n"
-                                        + " Price: " + parsedServices.get(keys[i + 3]) + "\n"
-                                        + " Time: " + parsedServices.get(keys[i + 4]);
+
 
                                 btn.setOnClickListener(new View.OnClickListener()
                                 {
@@ -155,7 +154,7 @@ public class ServicesFragment extends Fragment
                                         else    //User is logged in
                                         {
                                             //TODO: Open Order Zone here
-                                            changeFragment(argument, firmData);
+
                                         }
                                     }
                                 });
@@ -167,6 +166,7 @@ public class ServicesFragment extends Fragment
                         }
                     }
                 });
+                */
             } catch (Exception e)
             {
                 System.out.println("Błąd: " + e);
@@ -180,17 +180,4 @@ public class ServicesFragment extends Fragment
         }
     }
 
-    private void changeFragment(String message, String data)
-    {
-        OrderZoneFragment orderZoneFragment = new OrderZoneFragment();
-
-        Bundle args = new Bundle();
-        args.putString("ServiceID", message);
-        args.putString("FirmData", data);
-        orderZoneFragment.setArguments(args);
-
-        FragmentTransaction transaction = (Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
-        transaction.replace(R.id.fragment_services, orderZoneFragment);
-        transaction.addToBackStack(null).commit();
-    }
 }

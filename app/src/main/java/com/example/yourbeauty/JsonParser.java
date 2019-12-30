@@ -130,4 +130,45 @@ public class JsonParser
 
         return map;
     }
+
+    public LinkedHashMap<String, String> parseWorkers(String s) throws Exception
+    {
+        String json = s;
+        JSONObject jsonObject;
+        int validate = 0;       //Is success == 1 ?
+        int amount = 0;         //Number of workers
+
+        LinkedHashMap<String, String> map = new LinkedHashMap<>();
+
+        try
+        {
+            jsonObject = new JSONObject(json);
+            validate = jsonObject.getInt("success");
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+
+        if(validate > 0)
+        {
+            jsonObject = new JSONObject(json);
+
+            for(int i=0; i<amount; i++)
+            {
+                String key = i + "_Name";
+                String value = jsonObject.getString(key);
+
+                map.put(key,value);
+
+                key = i + "_Surname";
+                value = jsonObject.getString(key);
+
+                map.put(key,value);
+            }
+
+        }
+
+        return map;
+    }
 }
