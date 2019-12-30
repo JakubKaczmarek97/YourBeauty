@@ -17,8 +17,13 @@ import com.google.android.material.navigation.NavigationView;
 
 public class UserActivity extends AppCompatActivity
 {
-    private String userId;
+    private static String userId="";
     private AppBarConfiguration mAppBarConfiguration;
+
+    public static String getUserId()
+    {
+        return userId;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -80,5 +85,12 @@ public class UserActivity extends AppCompatActivity
         }
         else
             super.onBackPressed();
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        userId="";
+        super.onDestroy();
     }
 }

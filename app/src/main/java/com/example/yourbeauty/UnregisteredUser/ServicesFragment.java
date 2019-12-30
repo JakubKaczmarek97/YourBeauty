@@ -11,11 +11,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.yourbeauty.JsonParser;
+import com.example.yourbeauty.LoggedUser.UserActivity;
 import com.example.yourbeauty.R;
 
 import java.util.LinkedHashMap;
@@ -132,6 +134,24 @@ public class ServicesFragment extends Fragment
                                 edit.setTextColor(Color.rgb(0,0,0));
 
                                 btn.setGravity(Gravity.CENTER);
+
+
+                                btn.setOnClickListener(new View.OnClickListener()
+                                {
+                                    @Override
+                                    public void onClick(View v)
+                                    {
+                                        if(UserActivity.getUserId() == "")  //User is not logged in
+                                        {
+                                            Toast.makeText(getActivity(),
+                                                    "You have to sign in first!", Toast.LENGTH_LONG).show();
+                                        }
+                                        else    //User is logged in
+                                        {
+                                            //TODO: Open Order Zone here
+                                        }
+                                    }
+                                });
 
                                 params.setMargins(5, 0, 5, 8);
                                 linear.addView(btn);
