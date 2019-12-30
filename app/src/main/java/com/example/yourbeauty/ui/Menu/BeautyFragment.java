@@ -18,7 +18,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.yourbeauty.JsonParser;
 import com.example.yourbeauty.R;
-import com.example.yourbeauty.ui.Services.ServicesFragment;
+import com.example.yourbeauty.UnregisteredUser.ServicesFragment;
 
 import java.util.LinkedHashMap;
 import java.util.Objects;
