@@ -1,4 +1,4 @@
-package com.example.yourbeauty.UnregisteredUser;
+package com.example.yourbeauty.ui.Services;
 
 import android.app.ProgressDialog;
 import android.graphics.Color;
