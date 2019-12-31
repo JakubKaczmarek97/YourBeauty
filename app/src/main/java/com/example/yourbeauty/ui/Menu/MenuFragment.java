@@ -12,21 +12,21 @@ import com.example.yourbeauty.CustomViewPager;
 import com.example.yourbeauty.FragmentAdapter;
 import com.example.yourbeauty.R;
 
+import java.util.Objects;
+
 public class MenuFragment extends Fragment
 {
-    private CustomViewPager mViewPager;
-
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
 
-        mViewPager = view.findViewById(R.id.fragment_container);
+        CustomViewPager mViewPager = view.findViewById(R.id.fragment_container);
         mViewPager.setPagingEnabled(false);
         setupViewPager(mViewPager);
 
-        String value = getArguments().getString("YourKey");
-        int position = Integer.parseInt(value);
+        String value = Objects.requireNonNull(getArguments()).getString("YourKey");
+        int position = Integer.parseInt(Objects.requireNonNull(value));
         mViewPager.setCurrentItem(position);
 
         return view;

@@ -50,7 +50,6 @@ public class ServicesFragment extends Fragment
 
     class ListAllServices extends AsyncTask<String, String, String>
     {
-
         @Override
         protected void onPreExecute()
         {
@@ -90,7 +89,7 @@ public class ServicesFragment extends Fragment
 
                 //Generate buttons dynamically based on JSON
 
-                getActivity().runOnUiThread(new Runnable()
+                Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable()
                 {
                     @Override
                     public void run()
@@ -99,8 +98,8 @@ public class ServicesFragment extends Fragment
 
                         if(parsedServices.isEmpty())
                         {
-                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                                    LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
+                                    (LinearLayout.LayoutParams.MATCH_PARENT,
                                     LinearLayout.LayoutParams.WRAP_CONTENT);
 
                             Button btn = new Button(getActivity());
@@ -115,27 +114,25 @@ public class ServicesFragment extends Fragment
 
                             for (int i = 0; i < keys.length; i += 5)
                             {
-
-                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                                        LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
+                                        (LinearLayout.LayoutParams.MATCH_PARENT,
                                         LinearLayout.LayoutParams.WRAP_CONTENT);
 
                                 Button btn = new Button(getActivity());
                                 EditText edit = new EditText(getActivity());
 
                                 btn.setText(parsedServices.get(keys[i + 1]));
+                                btn.setBackgroundResource(R.drawable.gradient_1);
+                                btn.setTextColor(Color.rgb(255,255,255));
+                                btn.setGravity(Gravity.CENTER);
 
+                                edit.setBackgroundColor(Color.rgb(230,230,230));
+                                edit.setEnabled(false);
+                                edit.setTextColor(Color.rgb(0,0,0));
                                 edit.setText(" " +parsedServices.get(keys[i + 2]) + "\n"
                                         + " Price: " + parsedServices.get(keys[i + 3]) + "\n"
                                         + " Time: " + parsedServices.get(keys[i + 4]));
 
-                                btn.setBackgroundResource(R.drawable.gradient_1);
-                                btn.setTextColor(Color.rgb(255,255,255));
-                                edit.setBackgroundColor(Color.rgb(230,230,230));
-                                edit.setEnabled(false);
-                                edit.setTextColor(Color.rgb(0,0,0));
-
-                                btn.setGravity(Gravity.CENTER);
 
                                 final String argument = parsedServices.get(keys[i]);
                                 final String firmData = " " +parsedServices.get(keys[i + 2]) + "\n"
@@ -147,7 +144,7 @@ public class ServicesFragment extends Fragment
                                     @Override
                                     public void onClick(View v)
                                     {
-                                        if(UserActivity.getUserId() == "")  //User is not logged in
+                                        if(UserActivity.getUserId().equals(""))  //User is not logged in
                                         {
                                             Toast.makeText(getActivity(),
                                                     "You have to sign in first!", Toast.LENGTH_LONG).show();

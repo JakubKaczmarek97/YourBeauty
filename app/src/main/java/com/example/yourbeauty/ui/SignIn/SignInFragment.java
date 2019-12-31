@@ -60,9 +60,9 @@ public class SignInFragment extends Fragment
 
         return view;
     }
+
     class UserLogin extends AsyncTask<String, String, String>
     {
-
         @Override
         protected void onPreExecute()
         {
@@ -103,7 +103,7 @@ public class SignInFragment extends Fragment
 
                 parsedJson = jsonParser.parseLogin(result);
                 final Object[] keys = parsedJson.keySet().toArray();
-                userId = parsedJson.get(keys[0]);
+                userId = parsedJson.get(Objects.requireNonNull(keys)[0]);
             }
             catch (Exception e)
             {
@@ -125,7 +125,7 @@ public class SignInFragment extends Fragment
                 Intent intent = new Intent(getActivity(), UserActivity.class);
                 intent.putExtra("USER_ID", userId);
                 startActivity(intent);
-                getActivity().finish();
+                Objects.requireNonNull(getActivity()).finish();
             }
         }
     }

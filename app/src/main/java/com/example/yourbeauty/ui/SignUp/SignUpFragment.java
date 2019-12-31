@@ -70,10 +70,9 @@ public class SignUpFragment extends Fragment
 
         return view;
     }
+
     class CreateNewUser extends AsyncTask<String, String, String>
     {
-
-
         @Override
         protected void onPreExecute()
         {
@@ -133,7 +132,6 @@ public class SignUpFragment extends Fragment
                 String result = Objects.requireNonNull(response.body()).string();
                 System.out.println("Response:" + result);
                 SUCCESS = 1;
-                //return result;
             }
             catch (Exception e)
             {
@@ -154,14 +152,12 @@ public class SignUpFragment extends Fragment
                         //Display success message
                         Toast.makeText(getActivity(),
                                 "User Added", Toast.LENGTH_LONG).show();
-
                     }
                     else
                     {
                         Toast.makeText(getActivity(),
                                 "Some error occurred while adding new user",
                                 Toast.LENGTH_LONG).show();
-
                     }
                 }
             });

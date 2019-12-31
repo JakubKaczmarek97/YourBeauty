@@ -15,7 +15,6 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.yourbeauty.R;
 import com.google.android.material.navigation.NavigationView;
 
-
 public class MainActivity extends AppCompatActivity
 {
     private AppBarConfiguration mAppBarConfiguration;

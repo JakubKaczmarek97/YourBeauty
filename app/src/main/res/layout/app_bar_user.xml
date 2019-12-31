@@ -20,5 +20,4 @@
 
     <include layout="@layout/content_user" />
 
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

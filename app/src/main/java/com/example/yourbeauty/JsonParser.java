@@ -7,9 +7,11 @@ import java.util.LinkedHashMap;
 
 public class JsonParser
 {
+    private String json;
+
     public LinkedHashMap<String,String> parseJson(String s) throws Exception
     {
-        String json = s;
+        json = s;
 
         LinkedHashMap<String, String> map = new LinkedHashMap<>();
 
@@ -35,7 +37,6 @@ public class JsonParser
 
             for(int i=0; i<amount; i++)
             {
-
                 for(int j=0; j<4; j++)
                 {
                     String key = jsonObject.names().getString(i * 4 + j);
@@ -51,13 +52,14 @@ public class JsonParser
 
     public LinkedHashMap<String,String> parseServices(String s) throws Exception
     {
-        String json = s;
+        json = s;
 
         LinkedHashMap<String, String> map = new LinkedHashMap<>();
 
         JSONObject jsonObject;
         int validate = 0;       //Is success == 1 ?
         int amount = 0;         //Amount of firms
+
         try
         {
             jsonObject = new JSONObject(json);
@@ -77,7 +79,6 @@ public class JsonParser
 
             for(int i=0; i<amount; i++)
             {
-
                 for(int j=0; j<5; j++)
                 {
                     String key = jsonObject.names().getString(i * 5 + j);
@@ -93,7 +94,7 @@ public class JsonParser
 
     public LinkedHashMap<String, String> parseLogin(String s) throws Exception
     {
-        String json = s;
+        json = s;
         JSONObject jsonObject;
         int validate = 0;       //Is success == 1 ?
 
@@ -116,8 +117,6 @@ public class JsonParser
             String key = "id";
             String value = jsonObject.getString("id");
 
-
-
             map.put(key, value);
 
             key = "userType";
@@ -133,7 +132,7 @@ public class JsonParser
 
     public LinkedHashMap<String, String> parseWorkers(String s) throws Exception
     {
-        String json = s;
+        json = s;
         JSONObject jsonObject;
         int validate = 0;       //Is success == 1 ?
         int amount = 0;         //Number of workers

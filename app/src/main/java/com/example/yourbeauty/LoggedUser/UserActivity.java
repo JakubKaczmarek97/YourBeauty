@@ -17,7 +17,7 @@ import com.google.android.material.navigation.NavigationView;
 
 public class UserActivity extends AppCompatActivity
 {
-    private static String userId="";
+    private static String userId = "";
     private AppBarConfiguration mAppBarConfiguration;
 
     public static String getUserId()
@@ -38,12 +38,14 @@ public class UserActivity extends AppCompatActivity
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_user);
         NavigationView navigationView = findViewById(R.id.nav_view_user);
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder
                 (R.id.nav_home, R.id.nav_logout, R.id.nav_my_profile, R.id.nav_my_orders)
                 .setDrawerLayout(drawer)
                 .build();
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_user);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
@@ -75,7 +77,6 @@ public class UserActivity extends AppCompatActivity
 
             new Handler().postDelayed(new Runnable()
             {
-
                 @Override
                 public void run()
                 {
@@ -90,7 +91,7 @@ public class UserActivity extends AppCompatActivity
     @Override
     protected void onDestroy()
     {
-        userId="";
+        userId = "";
         super.onDestroy();
     }
 }

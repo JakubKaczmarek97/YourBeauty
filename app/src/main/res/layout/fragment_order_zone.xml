@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_1">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/fragment_order_zone"
-    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_order_zone"
+        android:orientation="vertical">
 
         <LinearLayout
             android:orientation="vertical"
@@ -18,53 +18,54 @@
             android:layout_height="wrap_content"
             android:id="@+id/firm_data"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Select date of visit:"
-        android:textColor="#FFFFFF"
-        android:textSize="18dp"
-        android:textAlignment="center"/>
-
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="#FFFFFF" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Select worker:"
-        android:textColor="#FFFFFF"
-        android:textSize="18dp"
-        android:textAlignment="center"/>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/workers_list"
-        android:orientation="vertical">
-
-        <RadioGroup
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/radio_group" />
+            android:text="Select date of visit:"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:textAlignment="center"/>
+
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#FFFFFF" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select worker:"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:textAlignment="center"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/workers_list"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radio_group" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="#B8ECF8"
+            android:text="NEXT"
+            android:fontFamily="@font/oregano"
+            android:layout_gravity="right"
+            android:textColor="#000000"/>
 
     </LinearLayout>
-    <Button
-        android:id="@+id/btnNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:backgroundTint="#B8ECF8"
-        android:text="NEXT"
-        android:fontFamily="@font/oregano"
-        android:layout_gravity="right"
-        android:textColor="#000000"/>
-
-</LinearLayout>
 </ScrollView>

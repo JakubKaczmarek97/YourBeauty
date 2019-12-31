@@ -37,14 +37,15 @@ public class DietFragment extends Fragment
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-
         view = inflater.inflate(R.layout.fragment_diet, container, false);
 
         new DietFragment.ListAllDietetics().execute();
+
         return view;
     }
-    class ListAllDietetics extends AsyncTask<String, String, String> {
 
+    class ListAllDietetics extends AsyncTask<String, String, String>
+    {
         @Override
         protected void onPreExecute()
         {
@@ -59,7 +60,6 @@ public class DietFragment extends Fragment
         @Override
         protected String doInBackground(String... strings)
         {
-
             OkHttpClient client = new OkHttpClient();
 
             RequestBody postData = new FormBody.Builder()
@@ -84,16 +84,17 @@ public class DietFragment extends Fragment
 
                 //Generate buttons dynamically based on JSON
 
-                getActivity().runOnUiThread(new Runnable()
+                Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable()
                 {
                     @Override
                     public void run()
                     {
                         LinearLayout linear = view.findViewById(R.id.fragment_diet);
 
-                        if(parsedJson.isEmpty()) {
-                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                                    LinearLayout.LayoutParams.MATCH_PARENT,
+                        if(parsedJson.isEmpty())
+                        {
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
+                                    (LinearLayout.LayoutParams.MATCH_PARENT,
                                     LinearLayout.LayoutParams.WRAP_CONTENT);
 
                             Button btn = new Button(getActivity());
@@ -106,27 +107,25 @@ public class DietFragment extends Fragment
                         }
                         else {
 
-                            for (int i = 0; i < keys.length; i += 4) {
-
-                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                                        LinearLayout.LayoutParams.MATCH_PARENT,
+                            for (int i = 0; i < keys.length; i += 4)
+                            {
+                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
+                                        (LinearLayout.LayoutParams.MATCH_PARENT,
                                         LinearLayout.LayoutParams.WRAP_CONTENT);
 
                                 Button btn = new Button(getActivity());
                                 EditText editText = new EditText(getActivity());
 
                                 btn.setText(parsedJson.get(keys[i + 1]));
-
-                                editText.setText(" " + parsedJson.get(keys[i + 2])
-                                        + parsedJson.get(keys[i + 3]));
-
                                 btn.setBackgroundResource(R.drawable.gradient_1);
                                 btn.setTextColor(Color.rgb(255,255,255));
+                                btn.setGravity(Gravity.CENTER);
+
                                 editText.setBackgroundColor(Color.rgb(230,230,230));
                                 editText.setEnabled(false);
                                 editText.setTextColor(Color.rgb(0,0,0));
-
-                                btn.setGravity(Gravity.CENTER);
+                                editText.setText(" " + parsedJson.get(keys[i + 2])
+                                        + parsedJson.get(keys[i + 3]));
                                 editText.setGravity(Gravity.CENTER);
 
                                 final String argument = parsedJson.get(keys[i]);

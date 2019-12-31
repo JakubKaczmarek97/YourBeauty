@@ -37,15 +37,14 @@ public class NailsFragment extends Fragment
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-
         view = inflater.inflate(R.layout.fragment_nails, container, false);
 
         new NailsFragment.ListAllNails().execute();
+
         return view;
     }
     class ListAllNails extends AsyncTask<String, String, String>
     {
-
         @Override
         protected void onPreExecute()
         {
@@ -60,7 +59,6 @@ public class NailsFragment extends Fragment
         @Override
         protected String doInBackground(String... strings)
         {
-
             OkHttpClient client = new OkHttpClient();
 
             RequestBody postData = new FormBody.Builder()
@@ -93,8 +91,8 @@ public class NailsFragment extends Fragment
                         LinearLayout linear = view.findViewById(R.id.fragment_nails);
 
                         if(parsedJson.isEmpty()) {
-                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                                    LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
+                                    (LinearLayout.LayoutParams.MATCH_PARENT,
                                     LinearLayout.LayoutParams.WRAP_CONTENT);
 
                             Button btn = new Button(getActivity());
@@ -107,10 +105,11 @@ public class NailsFragment extends Fragment
                         }
                         else {
 
-                            for (int i = 0; i < keys.length; i += 4) {
+                            for (int i = 0; i < keys.length; i += 4)
+                            {
 
-                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                                        LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
+                                        (LinearLayout.LayoutParams.MATCH_PARENT,
                                         LinearLayout.LayoutParams.WRAP_CONTENT);
 
                                 Button btn = new Button(getActivity());

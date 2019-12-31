@@ -37,21 +37,14 @@ public class HairFragment extends Fragment
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-
         view = inflater.inflate(R.layout.fragment_hair, container, false);
 
         new HairFragment.ListAllHairdressers().execute();
-/*
-        RelativeLayout relativeLayout = view.findViewById(R.id.hair_fragment);
-        AnimationDrawable animationDrawable = (AnimationDrawable) relativeLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(2000);
-        animationDrawable.setExitFadeDuration(4000);
-        animationDrawable.start();
-*/
+
         return view;
     }
-    class ListAllHairdressers extends AsyncTask<String, String, String> {
-
+    class ListAllHairdressers extends AsyncTask<String, String, String>
+    {
         @Override
         protected void onPreExecute()
         {
@@ -98,9 +91,10 @@ public class HairFragment extends Fragment
                     {
                         LinearLayout linear = view.findViewById(R.id.fragment_hair);
 
-                        if(parsedJson.isEmpty()) {
-                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                                    LinearLayout.LayoutParams.MATCH_PARENT,
+                        if(parsedJson.isEmpty())
+                        {
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
+                                    (LinearLayout.LayoutParams.MATCH_PARENT,
                                     LinearLayout.LayoutParams.WRAP_CONTENT);
 
                             Button btn = new Button(getActivity());
@@ -113,27 +107,26 @@ public class HairFragment extends Fragment
                         }
                         else {
 
-                            for (int i = 0; i < keys.length; i += 4) {
+                            for (int i = 0; i < keys.length; i += 4)
+                            {
 
-                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                                        LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
+                                        (LinearLayout.LayoutParams.MATCH_PARENT,
                                         LinearLayout.LayoutParams.WRAP_CONTENT);
 
                                 Button btn = new Button(getActivity());
                                 EditText editText = new EditText(getActivity());
 
                                 btn.setText(parsedJson.get(keys[i + 1]));
-
-                                editText.setText(" " + parsedJson.get(keys[i + 2])
-                                        + parsedJson.get(keys[i + 3]));
-
                                 btn.setBackgroundResource(R.drawable.gradient_1);
                                 btn.setTextColor(Color.rgb(255,255,255));
+                                btn.setGravity(Gravity.CENTER);
+
                                 editText.setBackgroundColor(Color.rgb(230,230,230));
                                 editText.setEnabled(false);
                                 editText.setTextColor(Color.rgb(0,0,0));
-
-                                btn.setGravity(Gravity.CENTER);
+                                editText.setText(" " + parsedJson.get(keys[i + 2])
+                                        + parsedJson.get(keys[i + 3]));
                                 editText.setGravity(Gravity.CENTER);
 
                                 final String argument = parsedJson.get(keys[i]);
@@ -179,5 +172,3 @@ public class HairFragment extends Fragment
         transaction.addToBackStack(null).commit();
     }
 }
-
-

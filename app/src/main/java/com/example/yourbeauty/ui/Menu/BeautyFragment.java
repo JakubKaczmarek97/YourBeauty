@@ -41,10 +41,12 @@ public class BeautyFragment extends Fragment
         view = inflater.inflate(R.layout.fragment_beauty, container, false);
 
         new BeautyFragment.ListAllBeauticians().execute();
+
         return view;
     }
-    class ListAllBeauticians extends AsyncTask<String, String, String> {
 
+    class ListAllBeauticians extends AsyncTask<String, String, String>
+    {
         @Override
         protected void onPreExecute()
         {
@@ -59,7 +61,6 @@ public class BeautyFragment extends Fragment
         @Override
         protected String doInBackground(String... strings)
         {
-
             OkHttpClient client = new OkHttpClient();
 
             RequestBody postData = new FormBody.Builder()
@@ -84,7 +85,7 @@ public class BeautyFragment extends Fragment
 
                 //Generate buttons dynamically based on JSON
 
-                getActivity().runOnUiThread(new Runnable()
+                Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable()
                 {
                     @Override
                     public void run()
@@ -92,8 +93,8 @@ public class BeautyFragment extends Fragment
                         LinearLayout linear = view.findViewById(R.id.fragment_beauty);
 
                         if(parsedJson.isEmpty()) {
-                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                                    LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
+                                    (LinearLayout.LayoutParams.MATCH_PARENT,
                                     LinearLayout.LayoutParams.WRAP_CONTENT);
 
                             Button btn = new Button(getActivity());
@@ -106,10 +107,11 @@ public class BeautyFragment extends Fragment
                         }
                         else {
 
-                            for (int i = 0; i < keys.length; i += 4) {
+                            for (int i = 0; i < keys.length; i += 4)
+                            {
 
-                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                                        LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
+                                        (LinearLayout.LayoutParams.MATCH_PARENT,
                                         LinearLayout.LayoutParams.WRAP_CONTENT);
 
                                 Button btn = new Button(getActivity());
@@ -122,11 +124,11 @@ public class BeautyFragment extends Fragment
 
                                 btn.setBackgroundResource(R.drawable.gradient_1);
                                 btn.setTextColor(Color.rgb(255,255,255));
+                                btn.setGravity(Gravity.CENTER);
+
                                 editText.setBackgroundColor(Color.rgb(230,230,230));
                                 editText.setEnabled(false);
                                 editText.setTextColor(Color.rgb(0,0,0));
-
-                                btn.setGravity(Gravity.CENTER);
                                 editText.setGravity(Gravity.CENTER);
 
                                 final String argument = parsedJson.get(keys[i]);
@@ -172,5 +174,4 @@ public class BeautyFragment extends Fragment
         transaction.replace(R.id.beauty_fragment, servicesFragment);
         transaction.addToBackStack(null).commit();
     }
-
 }

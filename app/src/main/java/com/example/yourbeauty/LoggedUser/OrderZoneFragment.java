@@ -33,14 +33,13 @@ public class OrderZoneFragment extends Fragment
     private ProgressDialog pDialog;
     private View view;
     private String selectedService;
-    private String firmData;
 
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         view = inflater.inflate(R.layout.fragment_order_zone, container, false);
-        selectedService = getArguments().getString("ServiceID");
-        firmData = getArguments().getString("FirmData");
+        selectedService = Objects.requireNonNull(getArguments()).getString("ServiceID");
+        String firmData = getArguments().getString("FirmData");
 
         LinearLayout firms = view.findViewById(R.id.firm_data);
 
@@ -96,7 +95,7 @@ public class OrderZoneFragment extends Fragment
 
                 //Generate buttons dynamically based on JSON
 
-                getActivity().runOnUiThread(new Runnable()
+                Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable()
                 {
                     @Override
                     public void run()
@@ -111,7 +110,6 @@ public class OrderZoneFragment extends Fragment
 
                             Button btn = new Button(getActivity());
                             btn.setText("No workers available");
-                            //btn.setBackgroundResource(R.drawable.gradient_1);
                             btn.setBackgroundColor(Color.rgb(255,100,100));
                             btn.setTextColor(Color.rgb(255,255,255));
 
@@ -127,7 +125,7 @@ public class OrderZoneFragment extends Fragment
                                     LinearLayout.LayoutParams.MATCH_PARENT,
                                     LinearLayout.LayoutParams.WRAP_CONTENT);
 
-                            for (int i = 0; i < keys.length; i += 2)
+                            for (int i = 0; i < Objects.requireNonNull(keys).length; i += 2)
                             {
                                 RadioGroup radioGroup = view.findViewById(R.id.radio_group);
 

@@ -7,5 +7,4 @@
         <item android:id="@+id/db" android:title="Dashboard" android:icon="@drawable/fruit"></item>
     </group>
 
-
 </menu>

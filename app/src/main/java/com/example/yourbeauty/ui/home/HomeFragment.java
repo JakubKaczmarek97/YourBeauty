@@ -16,7 +16,6 @@ import com.example.yourbeauty.ui.Menu.MenuFragment;
 
 import java.util.Objects;
 
-
 public class HomeFragment extends Fragment
 {
     @Nullable
@@ -99,10 +98,9 @@ public class HomeFragment extends Fragment
         args.putString("YourKey", message);
         menuFragment.setArguments(args);
 
-        FragmentTransaction transaction = Objects.requireNonNull(getActivity().getSupportFragmentManager()).beginTransaction();
+        FragmentTransaction transaction =
+                Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
         transaction.replace(R.id.fragment_home, menuFragment);
         transaction.addToBackStack(null).commit();
     }
-
-
 }

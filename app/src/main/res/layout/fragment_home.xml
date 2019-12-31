@@ -66,7 +66,6 @@
                     android:orientation="horizontal" >
 
                     <Button
-
                         android:id="@+id/btnWoman"
                         android:layout_height="150dp"
                         android:layout_weight="1"
@@ -110,7 +109,6 @@
                     android:orientation="horizontal" >
 
                     <Button
-
                         android:id="@+id/btnBeauty"
                         android:layout_height="140dp"
                         android:layout_marginRight="2dp"
@@ -141,8 +139,6 @@
                         android:textAllCaps="false"
                         android:textColor="#FFFFFF"
                         />
-
-
                 </TableRow>
 
                 <TableRow
@@ -154,7 +150,6 @@
                     android:orientation="horizontal" >
 
                     <Button
-
                         android:id="@+id/btnNails"
                         android:layout_height="140dp"
                         android:layout_weight="1"
@@ -186,9 +181,7 @@
                         android:textAllCaps="false"
                         android:textColor="#FFFFFF"
                         />
-
                 </TableRow>
-
 
             </LinearLayout>
         </ScrollView>

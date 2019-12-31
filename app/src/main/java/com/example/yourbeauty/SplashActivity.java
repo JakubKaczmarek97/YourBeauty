@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,16 +13,13 @@ import com.example.yourbeauty.UnregisteredUser.MainActivity;
 
 public class SplashActivity extends AppCompatActivity
 {
-    private TextView textView;
-    private ImageView imageView;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        imageView = findViewById(R.id.splash_image);
+        ImageView imageView = findViewById(R.id.splash_image);
 
         Animation animation = AnimationUtils.loadAnimation(this,R.anim.transition_animation);
         imageView.startAnimation(animation);
