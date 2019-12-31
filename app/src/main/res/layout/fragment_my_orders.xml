@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:id="@+id/fragment_my_profile">
+    android:id="@+id/fragment_my_orders">
 
     <LinearLayout
         android:gravity="center"
@@ -18,7 +18,7 @@
             android:layout_height="200dp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:text="Profile Fragment WORK IN PROGRESS"
+            android:text="Orders Fragment WORK IN PROGRESS"
             android:textAlignment="center"
             android:textSize="30dp"
             android:textColor="#FF0000"/>
