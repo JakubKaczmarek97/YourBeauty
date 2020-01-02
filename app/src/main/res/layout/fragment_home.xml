@@ -118,9 +118,9 @@
                         android:fontFamily="@font/oregano"
                         android:gravity="bottom|center"
                         android:paddingBottom="10dp"
-                        android:text="Beauticians"
+                        android:text="@string/beauticians"
                         android:textColor="#FFFFFF"
-                        android:textSize="36dp"
+                        android:textSize="36sp"
                         android:textAllCaps="false"/>
 
 
@@ -132,10 +132,10 @@
                         android:fontFamily="@font/oregano"
                         android:layout_marginLeft="2dp"
                         android:drawablePadding="-10sp"
-                        android:text="Estetic Medicine"
+                        android:text="@string/estetic_medicine"
                         android:gravity="bottom|center"
                         android:paddingBottom="10dp"
-                        android:textSize="33dp"
+                        android:textSize="33sp"
                         android:textAllCaps="false"
                         android:textColor="#FFFFFF"
                         />
@@ -157,10 +157,10 @@
                         android:fontFamily="@font/oregano"
                         android:layout_marginRight="2dp"
                         android:drawablePadding="-10sp"
-                        android:text="Manicure"
+                        android:text="@string/manicure"
                         android:gravity="bottom|center"
                         android:paddingBottom="10dp"
-                        android:textSize="36dp"
+                        android:textSize="36sp"
                         android:textAllCaps="false"
                         android:textColor="#FFFFFF"
                         />
@@ -174,10 +174,10 @@
                         android:fontFamily="@font/oregano"
                         android:layout_marginLeft="2dp"
                         android:drawablePadding="-10sp"
-                        android:text="Dietetics"
+                        android:text="@string/dietetics"
                         android:gravity="bottom|center"
                         android:paddingBottom="10dp"
-                        android:textSize="36dp"
+                        android:textSize="36sp"
                         android:textAllCaps="false"
                         android:textColor="#FFFFFF"
                         />

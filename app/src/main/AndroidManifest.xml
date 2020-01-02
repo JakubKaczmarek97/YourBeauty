@@ -17,8 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
-        tools:targetApi="n"
-        android:fullBackupContent="">
+        tools:targetApi="n">
 
         <activity
             android:name=".SplashActivity"
@@ -31,7 +30,7 @@
 
 
         <activity
-            android:name="$UnregisteredUser.MainActivity"
+            android:name=".UnregisteredUser.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -41,7 +40,7 @@
         </activity>
 
         <activity
-            android:name="$LoggedUser.UserActivity"
+            android:name=".LoggedUser.UserActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
     </application>

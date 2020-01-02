@@ -29,6 +29,10 @@
     <string name="welcome">Welcome to the beauty area. \n Find the service you are looking for.</string>
     <string name="hairdressers">Hairdressers</string>
     <string name="barbers">Barbers</string>
+    <string name="beauticians">Beauticians</string>
+    <string name="estetic_medicine">Estetic Medicine</string>
+    <string name="manicure">Manicure</string>
+    <string name="dietetics">Dietetics</string>
 
 
 </resources>
