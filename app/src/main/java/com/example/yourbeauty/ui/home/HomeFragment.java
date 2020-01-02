@@ -12,7 +12,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.yourbeauty.R;
-import com.example.yourbeauty.ui.Menu.MenuFragment;
+import com.example.yourbeauty.ui.Menu.BarberFragment;
+import com.example.yourbeauty.ui.Menu.BeautyFragment;
+import com.example.yourbeauty.ui.Menu.DietFragment;
+import com.example.yourbeauty.ui.Menu.HairFragment;
+import com.example.yourbeauty.ui.Menu.MedicineFragment;
+import com.example.yourbeauty.ui.Menu.NailsFragment;
 
 import java.util.Objects;
 
@@ -37,7 +42,12 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                changeFragment(0);
+                HairFragment hairFragment = new HairFragment();
+
+                FragmentTransaction transaction =
+                        Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                transaction.replace(R.id.fragment_home, hairFragment);
+                transaction.addToBackStack(null).commit();
             }
         });
 
@@ -46,7 +56,12 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                changeFragment(1);
+                BarberFragment barberFragment = new BarberFragment();
+
+                FragmentTransaction transaction =
+                        Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                transaction.replace(R.id.fragment_home, barberFragment);
+                transaction.addToBackStack(null).commit();
             }
         });
 
@@ -55,7 +70,12 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                changeFragment(2);
+                BeautyFragment beautyFragment = new BeautyFragment();
+
+                FragmentTransaction transaction =
+                        Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                transaction.replace(R.id.fragment_home, beautyFragment);
+                transaction.addToBackStack(null).commit();
             }
         });
 
@@ -64,7 +84,12 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                changeFragment(3);
+                MedicineFragment medicineFragment = new MedicineFragment();
+
+                FragmentTransaction transaction =
+                        Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                transaction.replace(R.id.fragment_home, medicineFragment);
+                transaction.addToBackStack(null).commit();
             }
         });
 
@@ -73,7 +98,12 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                changeFragment(4);
+                NailsFragment nailsFragment = new NailsFragment();
+
+                FragmentTransaction transaction =
+                        Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                transaction.replace(R.id.fragment_home, nailsFragment);
+                transaction.addToBackStack(null).commit();
             }
         });
 
@@ -82,25 +112,15 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                changeFragment(5);
+                DietFragment dietFragment = new DietFragment();
+
+                FragmentTransaction transaction =
+                        Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                transaction.replace(R.id.fragment_home, dietFragment);
+                transaction.addToBackStack(null).commit();
             }
         });
 
         return view;
-    }
-
-    private void changeFragment(int pos)
-    {
-        String message = String.valueOf(pos);
-
-        MenuFragment menuFragment = new MenuFragment();
-        Bundle args = new Bundle();
-        args.putString("YourKey", message);
-        menuFragment.setArguments(args);
-
-        FragmentTransaction transaction =
-                Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
-        transaction.replace(R.id.fragment_home, menuFragment);
-        transaction.addToBackStack(null).commit();
     }
 }
