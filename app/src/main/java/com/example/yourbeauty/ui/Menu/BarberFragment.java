@@ -99,7 +99,7 @@ public class BarberFragment extends Fragment
                                     LinearLayout.LayoutParams.WRAP_CONTENT);
 
                             Button btn = new Button(getActivity());
-                            btn.setText("No barbers found at database");
+                            btn.setText(R.string.no_barbers);
                             btn.setBackgroundResource(R.drawable.gradient_1);
                             btn.setTextColor(Color.rgb(255,255,255));
 
@@ -108,7 +108,7 @@ public class BarberFragment extends Fragment
                         }
                         else {
 
-                            for (int i = 0; i < keys.length; i += 4)
+                            for (int i = 0; i < Objects.requireNonNull(keys).length; i += 4)
                             {
 
                                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams

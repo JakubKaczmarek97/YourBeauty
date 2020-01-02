@@ -2,10 +2,10 @@
     <string name="app_name">YourBeauty</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
 
+
+    <!-- Side Menu and Toast messages -->
     <string name="menu_home">Home</string>
     <string name="menu_signin">Sign In</string>
     <string name="menu_signup">Sign Up</string>
@@ -13,4 +13,22 @@
     <string name="menu_logout">Log Out</string>
     <string name="my_profile">My Profile</string>
     <string name="my_orders">My Orders</string>
+
+    <string name="no_workers">No workers available</string>
+    <string name="click_back">Please click BACK again to close app</string>
+
+    <!-- Menu -->
+    <string name="no_barbers">No barbers found in the database</string>
+    <string name="no_beauticians">No beauticians found in the database</string>
+    <string name="no_dietetics">No dietitians found in the database</string>
+    <string name="no_hairdressers">No hairdressers found in the database</string>
+    <string name="no_medic">No medics found in the database</string>
+    <string name="no_manicurists">No manicurists found in the database</string>
+
+    <!-- HomeFragment -->
+    <string name="welcome">Welcome to the beauty area. \n Find the service you are looking for.</string>
+    <string name="hairdressers">Hairdressers</string>
+    <string name="barbers">Barbers</string>
+
+
 </resources>

@@ -109,7 +109,7 @@ public class OrderZoneFragment extends Fragment
                                     LinearLayout.LayoutParams.WRAP_CONTENT);
 
                             Button btn = new Button(getActivity());
-                            btn.setText("No workers available");
+                            btn.setText(R.string.no_workers); // No workers available
                             btn.setBackgroundColor(Color.rgb(255,100,100));
                             btn.setTextColor(Color.rgb(255,255,255));
 

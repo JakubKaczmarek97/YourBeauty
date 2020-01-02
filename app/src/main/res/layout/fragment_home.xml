@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/oregano"
-            android:text="Welcome to the beauty area. \n Find the service you are looking for."
+            android:text="@string/welcome"
             android:textAlignment="center"
             android:textColor="#ffffff"
             android:textSize="20sp" />
@@ -73,11 +73,11 @@
                         android:fontFamily="@font/oregano"
                         android:layout_marginRight="2dp"
                         android:drawablePadding="-10sp"
-                        android:text="Hairdressers"
+                        android:text="@string/hairdressers"
                         android:gravity="bottom|center"
                         android:paddingBottom="10dp"
                         android:textColor="#FFFFFF"
-                        android:textSize="36dp"
+                        android:textSize="36sp"
                         android:textAllCaps="false"/>
 
 
@@ -89,10 +89,10 @@
                         android:fontFamily="@font/oregano"
                         android:layout_marginLeft="2dp"
                         android:drawablePadding="-10sp"
-                        android:text="Barbers"
+                        android:text="@string/barbers"
                         android:gravity="bottom|center"
                         android:paddingBottom="10dp"
-                        android:textSize="36dp"
+                        android:textSize="36sp"
                         android:textAllCaps="false"
                         android:textColor="#FFFFFF"
                         />
@@ -157,7 +157,7 @@
                         android:fontFamily="@font/oregano"
                         android:layout_marginRight="2dp"
                         android:drawablePadding="-10sp"
-                        android:text="Nails"
+                        android:text="Manicure"
                         android:gravity="bottom|center"
                         android:paddingBottom="10dp"
                         android:textSize="36dp"

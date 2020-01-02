@@ -98,7 +98,7 @@ public class DietFragment extends Fragment
                                     LinearLayout.LayoutParams.WRAP_CONTENT);
 
                             Button btn = new Button(getActivity());
-                            btn.setText("No dietetics found at database");
+                            btn.setText(R.string.no_dietetics);
                             btn.setBackgroundResource(R.drawable.gradient_1);
                             btn.setTextColor(Color.rgb(255,255,255));
 
