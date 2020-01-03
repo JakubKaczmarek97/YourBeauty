@@ -61,7 +61,7 @@ public class OrderZoneFragment extends Fragment
         {
             super.onPreExecute();
             pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Please wait to list all workers...");
+            pDialog.setMessage(getResources().getString(R.string.wait_workers));
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();
@@ -130,7 +130,8 @@ public class OrderZoneFragment extends Fragment
                                 RadioGroup radioGroup = view.findViewById(R.id.radio_group);
 
                                 RadioButton rb = new RadioButton(getActivity());
-                                rb.setText(parsedWorkers.get(keys[i]) + " " + parsedWorkers.get(keys[i+1]));
+                                String rbText = parsedWorkers.get(keys[i]) + " " + parsedWorkers.get(keys[i+1]);
+                                rb.setText(rbText);
                                 rb.setTextColor(Color.rgb(230,230,230));
                                 rb.setTextSize(18);
 
@@ -147,7 +148,7 @@ public class OrderZoneFragment extends Fragment
 
             } catch (Exception e)
             {
-                System.out.println("Błąd: " + e);
+                System.out.println("Error: " + e);
             }
             return null;
         }

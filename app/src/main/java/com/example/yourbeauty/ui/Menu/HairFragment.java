@@ -50,7 +50,7 @@ public class HairFragment extends Fragment
         {
             super.onPreExecute();
             pDialogHair = new ProgressDialog(getActivity());
-            pDialogHair.setMessage("Please wait...");
+            pDialogHair.setMessage(getResources().getString(R.string.wait));
             pDialogHair.setIndeterminate(false);
             pDialogHair.setCancelable(true);
             pDialogHair.show();
@@ -125,8 +125,10 @@ public class HairFragment extends Fragment
                                 editText.setBackgroundColor(Color.rgb(230,230,230));
                                 editText.setEnabled(false);
                                 editText.setTextColor(Color.rgb(0,0,0));
-                                editText.setText(" " + parsedJson.get(keys[i + 2])
-                                        + parsedJson.get(keys[i + 3]));
+                                String eText = " " + parsedJson.get(keys[i + 2])
+                                        + parsedJson.get(keys[i + 3]);
+
+                                editText.setText(eText);
                                 editText.setGravity(Gravity.CENTER);
 
                                 final String argument = parsedJson.get(keys[i]);

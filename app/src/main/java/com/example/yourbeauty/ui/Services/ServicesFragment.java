@@ -41,7 +41,7 @@ public class ServicesFragment extends Fragment
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         view = inflater.inflate(R.layout.fragment_services, container, false);
-        selectedFirm = getArguments().getString("YourKey");
+        selectedFirm = Objects.requireNonNull(getArguments()).getString("YourKey");
 
         new ServicesFragment.ListAllServices().execute();
 
@@ -55,7 +55,7 @@ public class ServicesFragment extends Fragment
         {
             super.onPreExecute();
             pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Please wait to list all services...");
+            pDialog.setMessage(getResources().getString(R.string.wait_services));
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();
@@ -103,7 +103,7 @@ public class ServicesFragment extends Fragment
                                     LinearLayout.LayoutParams.WRAP_CONTENT);
 
                             Button btn = new Button(getActivity());
-                            btn.setText("No services found at database");
+                            btn.setText(R.string.no_services);
                             btn.setBackgroundResource(R.drawable.gradient_1);
                             btn.setTextColor(Color.rgb(255,255,255));
 
@@ -112,7 +112,7 @@ public class ServicesFragment extends Fragment
                         }
                         else {
 
-                            for (int i = 0; i < keys.length; i += 5)
+                            for (int i = 0; i < Objects.requireNonNull(keys).length; i += 5)
                             {
                                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
                                         (LinearLayout.LayoutParams.MATCH_PARENT,
@@ -129,15 +129,13 @@ public class ServicesFragment extends Fragment
                                 edit.setBackgroundColor(Color.rgb(230,230,230));
                                 edit.setEnabled(false);
                                 edit.setTextColor(Color.rgb(0,0,0));
-                                edit.setText(" " +parsedServices.get(keys[i + 2]) + "\n"
-                                        + " Price: " + parsedServices.get(keys[i + 3]) + "\n"
-                                        + " Time: " + parsedServices.get(keys[i + 4]));
-
 
                                 final String argument = parsedServices.get(keys[i]);
-                                final String firmData = " " +parsedServices.get(keys[i + 2]) + "\n"
-                                        + " Price: " + parsedServices.get(keys[i + 3]) + "\n"
-                                        + " Time: " + parsedServices.get(keys[i + 4]);
+                                final String firmData = " " + parsedServices.get(keys[i + 2]) + "\n"
+                                        + " " + getResources().getString(R.string.price)+ " " + parsedServices.get(keys[i + 3]) + "\n"
+                                        + " " + getResources().getString(R.string.time) + " " + parsedServices.get(keys[i + 4]);
+
+                                edit.setText(firmData);
 
                                 btn.setOnClickListener(new View.OnClickListener()
                                 {
@@ -147,7 +145,7 @@ public class ServicesFragment extends Fragment
                                         if(UserActivity.getUserId().equals(""))  //User is not logged in
                                         {
                                             Toast.makeText(getActivity(),
-                                                    "You have to sign in first!", Toast.LENGTH_LONG).show();
+                                                    R.string.sign_in_first, Toast.LENGTH_LONG).show();
                                         }
                                         else    //User is logged in
                                         {
@@ -165,7 +163,7 @@ public class ServicesFragment extends Fragment
                 });
             } catch (Exception e)
             {
-                System.out.println("Błąd: " + e);
+                System.out.println("Error: " + e);
             }
             return null;
         }

@@ -51,7 +51,7 @@ public class BarberFragment extends Fragment
         {
             super.onPreExecute();
             pDialogBarber = new ProgressDialog(getActivity());
-            pDialogBarber.setMessage("Please wait...");
+            pDialogBarber.setMessage(getResources().getString(R.string.wait));
             pDialogBarber.setIndeterminate(false);
             pDialogBarber.setCancelable(true);
             pDialogBarber.show();
@@ -120,8 +120,10 @@ public class BarberFragment extends Fragment
 
                                 btn.setText(parsedJson.get(keys[i + 1]));
 
-                                editText.setText(" " + parsedJson.get(keys[i + 2])
-                                        + parsedJson.get(keys[i + 3]));
+                                String eText = " " + parsedJson.get(keys[i + 2])
+                                        + parsedJson.get(keys[i + 3]);
+
+                                editText.setText(eText);
 
                                 btn.setBackgroundResource(R.drawable.gradient_1);
                                 btn.setTextColor(Color.rgb(255,255,255));

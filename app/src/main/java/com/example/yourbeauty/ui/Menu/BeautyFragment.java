@@ -52,7 +52,7 @@ public class BeautyFragment extends Fragment
         {
             super.onPreExecute();
             pDialogBeauty = new ProgressDialog(getActivity());
-            pDialogBeauty.setMessage("Please wait...");
+            pDialogBeauty.setMessage(getResources().getString(R.string.wait));
             pDialogBeauty.setIndeterminate(false);
             pDialogBeauty.setCancelable(true);
             pDialogBeauty.show();
@@ -119,8 +119,10 @@ public class BeautyFragment extends Fragment
 
                                 btn.setText(parsedJson.get(keys[i + 1]));
 
-                                editText.setText(" " + parsedJson.get(keys[i + 2])
-                                        + parsedJson.get(keys[i + 3]));
+                                String eText = " " + parsedJson.get(keys[i + 2])
+                                        + parsedJson.get(keys[i + 3]);
+
+                                editText.setText(eText);
 
                                 btn.setBackgroundResource(R.drawable.gradient_1);
                                 btn.setTextColor(Color.rgb(255,255,255));

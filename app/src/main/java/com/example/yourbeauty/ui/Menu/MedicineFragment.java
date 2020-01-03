@@ -51,7 +51,7 @@ public class MedicineFragment extends Fragment
         {
             super.onPreExecute();
             pDialogMedicine = new ProgressDialog(getActivity());
-            pDialogMedicine.setMessage("Please wait...");
+            pDialogMedicine.setMessage(getResources().getString(R.string.wait));
             pDialogMedicine.setIndeterminate(false);
             pDialogMedicine.setCancelable(true);
             pDialogMedicine.show();
@@ -124,8 +124,10 @@ public class MedicineFragment extends Fragment
                                     editText.setBackgroundColor(Color.rgb(230,230,230));
                                     editText.setEnabled(false);
                                     editText.setTextColor(Color.rgb(0,0,0));
-                                    editText.setText(" " + parsedJson.get(keys[i + 2])
-                                            + parsedJson.get(keys[i + 3]));
+                                    String eText = " " + parsedJson.get(keys[i + 2])
+                                            + parsedJson.get(keys[i + 3]);
+
+                                    editText.setText(eText);
                                     editText.setGravity(Gravity.CENTER);
 
                                     final String argument = parsedJson.get(keys[i]);

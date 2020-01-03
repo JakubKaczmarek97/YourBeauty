@@ -68,7 +68,7 @@ public class SignInFragment extends Fragment
         {
             super.onPreExecute();
             pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Please wait to Sign In...");
+            pDialog.setMessage(getResources().getString(R.string.wait_sign_in));
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();
@@ -107,7 +107,7 @@ public class SignInFragment extends Fragment
             }
             catch (Exception e)
             {
-                System.out.println("Błąd: " + e);
+                System.out.println("Error: " + e);
             }
             return null;
         }
@@ -118,7 +118,7 @@ public class SignInFragment extends Fragment
             if(parsedJson.isEmpty())
             {
                 Toast.makeText(getActivity(),
-                        "Bad e-mail or password!", Toast.LENGTH_LONG).show();
+                        R.string.bad_mail_pass, Toast.LENGTH_LONG).show();
             }
             else
             {

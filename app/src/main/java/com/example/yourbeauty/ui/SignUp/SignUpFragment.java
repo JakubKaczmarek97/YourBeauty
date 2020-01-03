@@ -13,8 +13,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.yourbeauty.R;
+import com.example.yourbeauty.ui.home.HomeFragment;
 
 import java.util.Objects;
 
@@ -33,9 +35,9 @@ public class SignUpFragment extends Fragment
     private EditText inputName;
     private EditText inputSecondName;
     private EditText inputSurname;
-    private EditText inputdateOfBirth;
-    private RadioButton inputgenderWoman;
-    private RadioButton inputgenderMan;
+    private EditText inputDateOfBirth;
+    private RadioButton inputGenderWoman;
+    private RadioButton inputGenderMan;
     private EditText inputEmail;
     private EditText inputPassword;
     private EditText inputAccountNumber;
@@ -49,9 +51,9 @@ public class SignUpFragment extends Fragment
         inputName = view.findViewById(R.id.plainName);
         inputSecondName = view.findViewById(R.id.plainSecondName);
         inputSurname = view.findViewById(R.id.plainSurname);
-        inputdateOfBirth = view.findViewById(R.id.plainDateOfBirth);
-        inputgenderWoman = view.findViewById(R.id.buttonWoman);
-        inputgenderMan = view.findViewById(R.id.buttonMan);
+        inputDateOfBirth = view.findViewById(R.id.plainDateOfBirth);
+        inputGenderWoman = view.findViewById(R.id.buttonWoman);
+        inputGenderMan = view.findViewById(R.id.buttonMan);
         inputEmail = view.findViewById(R.id.plainMail);
         inputPassword = view.findViewById(R.id.plainPassword);
         inputAccountNumber = view.findViewById(R.id.plainBankAccountNumber);
@@ -78,7 +80,7 @@ public class SignUpFragment extends Fragment
         {
             super.onPreExecute();
             pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Please wait to sign up...");
+            pDialog.setMessage(getResources().getString(R.string.wait_sign_up));
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();
@@ -91,14 +93,14 @@ public class SignUpFragment extends Fragment
             String name = inputName.getText().toString();
             String secondName = inputSecondName.getText().toString();
             String surname = inputSurname.getText().toString();
-            String dateOfBirth = inputdateOfBirth.getText().toString();
+            String dateOfBirth = inputDateOfBirth.getText().toString();
             String gender="";
 
-            if(inputgenderWoman.isChecked())
+            if(inputGenderWoman.isChecked())
             {
                 gender ="W";
             }
-            else if(inputgenderMan.isChecked())
+            else if(inputGenderMan.isChecked())
             {
                 gender = "M";
             }
@@ -130,13 +132,13 @@ public class SignUpFragment extends Fragment
             {
                 Response response = client.newCall(request).execute();
                 String result = Objects.requireNonNull(response.body()).string();
-                System.out.println("Response:" + result);
+                System.out.println(result);
                 SUCCESS = 1;
             }
             catch (Exception e)
             {
                 SUCCESS = 0;
-                System.out.println("Błąd: " + e);
+                System.out.println("Error: " + e);
             }
             return null;
         }
@@ -151,12 +153,20 @@ public class SignUpFragment extends Fragment
                     {
                         //Display success message
                         Toast.makeText(getActivity(),
-                                "User Added", Toast.LENGTH_LONG).show();
+                                R.string.user_added, Toast.LENGTH_LONG).show();
+
+                        HomeFragment homeFragment = new HomeFragment();
+
+                        FragmentTransaction transaction =
+                                Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                        transaction.replace(R.id.fragment_sign_up, homeFragment);
+                        transaction.addToBackStack(null).commit();
+
                     }
                     else
                     {
                         Toast.makeText(getActivity(),
-                                "Some error occurred while adding new user",
+                                R.string.some_error,
                                 Toast.LENGTH_LONG).show();
                     }
                 }

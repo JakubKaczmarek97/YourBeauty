@@ -122,8 +122,6 @@ public class JsonParser
             key = "userType";
             value = jsonObject.getString("userType");
 
-            System.out.println("JSON 2: " + key + " " + value);
-
             map.put(key,value);
         }
 
@@ -159,18 +157,13 @@ public class JsonParser
                 String key = i + "_Name";
                 String value = jsonObject.getString(key);
 
-                System.out.println("JSON 1: " + key + " " + value);
-
                 map.put(key,value);
 
                 key = i + "_Surname";
                 value = jsonObject.getString(key);
 
-                System.out.println("JSON 2: " + key + " " + value);
-
                 map.put(key,value);
             }
-
         }
 
         return map;
