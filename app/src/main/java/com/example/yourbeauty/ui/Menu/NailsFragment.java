@@ -117,7 +117,7 @@ public class NailsFragment extends Fragment
 
                                 btn.setText(parsedJson.get(keys[i + 1]));
 
-                                String eText = " " + parsedJson.get(keys[i + 2])
+                                String eText = " " + parsedJson.get(keys[i + 2]) + "\n"
                                         + parsedJson.get(keys[i + 3]);
 
                                 editText.setText(eText);

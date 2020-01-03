@@ -135,7 +135,7 @@
                         android:text="@string/aesthetic_medicine"
                         android:gravity="bottom|center"
                         android:paddingBottom="10dp"
-                        android:textSize="30sp"
+                        android:textSize="36sp"
                         android:textAllCaps="false"
                         android:textColor="#FFFFFF"
                         />

@@ -124,7 +124,7 @@ public class MedicineFragment extends Fragment
                                     editText.setBackgroundColor(Color.rgb(230,230,230));
                                     editText.setEnabled(false);
                                     editText.setTextColor(Color.rgb(0,0,0));
-                                    String eText = " " + parsedJson.get(keys[i + 2])
+                                    String eText = " " + parsedJson.get(keys[i + 2]) + "\n"
                                             + parsedJson.get(keys[i + 3]);
 
                                     editText.setText(eText);

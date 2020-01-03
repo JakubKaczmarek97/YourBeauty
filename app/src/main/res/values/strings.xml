@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">YourBeauty</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_desc">Navigation header</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
 
 
     <!-- Side Menu and Toast message -->
@@ -18,7 +18,7 @@
 
     <!-- OrderZone -->
     <string name="no_workers">No workers available</string>
-    <string name="wait_workers">Please wait to list all workers…</string>
+    <string name="wait_workers">Please wait for list all workers…</string>
 
 
     <!-- Menu -->
@@ -34,24 +34,24 @@
     <string name="hairdressers">Hairdressers</string>
     <string name="barbers">Barbers</string>
     <string name="beauticians">Beauticians</string>
-    <string name="aesthetic_medicine">Aesthetic Medicine</string>
-    <string name="manicure">Manicure</string>
+    <string name="aesthetic_medicine">Medicine</string>
+    <string name="manicure" translatable="false">Manicure</string>
     <string name="dietetics">Dietetics</string>
     <string name="wait">Please wait…</string>
 
     <!-- ServicesFragment -->
-    <string name="no_services">No services found at database</string>
+    <string name="no_services">No services found in database</string>
     <string name="sign_in_first">You have to sign in first!</string>
     <string name="price"> Price: </string>
     <string name="time"> Time: </string>
-    <string name="wait_services">Please wait to list all services…</string>
+    <string name="wait_services">Please wait for list of all services…</string>
 
     <!-- SignInFragment -->
-    <string name="wait_sign_in">Please wait to sign in…</string>
+    <string name="wait_sign_in">Please wait for sign in…</string>
     <string name="bad_mail_pass">Bad e-mail or password!</string>
 
     <!-- SignUpFragment -->
-    <string name="wait_sign_up">Please wait to sign up…</string>
+    <string name="wait_sign_up">Please wait for sign up…</string>
     <string name="user_added">User Added</string>
     <string name="some_error">Some error occurred while adding new user</string>
 
@@ -73,7 +73,7 @@
 
     <!-- Sign In Layout -->
     <string name="signin">Sign In</string>
-    <string name="sign_in_mail">E-Mail: </string>
+    <string name="sign_in_mail" translatable="false">E-Mail: </string>
     <string name="sign_in_pass">Password: </string>
 
     <!-- Sign Up Layout -->
@@ -83,12 +83,10 @@
     <string name="signup_surname">Surname: </string>
     <string name="signup_birth">Date Of Birth: </string>
     <string name="signup_gender">Choose Gender: </string>
-    <string name="signup_mail">E-Mail: </string>
+    <string name="signup_mail" translatable="false">E-Mail: </string>
     <string name="signup_pass">Password: </string>
     <string name="signup_account">Account Number: </string>
     <string name="gender_man">Man</string>
     <string name="gender_woman">Woman</string>
-
-
 
 </resources>
