@@ -20,6 +20,8 @@
             android:layout_height="wrap_content"
             android:text="Services:"
             android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:fontFamily="@font/oregano"
             android:textAlignment="center"/>
 
     </LinearLayout>

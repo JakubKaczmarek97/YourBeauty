@@ -55,4 +55,12 @@
     <string name="user_added">User Added</string>
     <string name="some_error">Some error occurred while adding new user</string>
 
+    <!-- LAYOUTS -->
+    <string name="barber_frag">Barbers:</string>
+    <string name="beauty_frag">Beauticians:</string>
+    <string name="diet_frag">Dietetics:</string>
+    <string name="hair_frag">Hairdressers:</string>
+    <string name="medicine_frag">Medics:</string>
+    <string name="nails_frag">Manicurists:</string>
+
 </resources>

@@ -18,8 +18,10 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Beauticians Fragment"
+            android:text="@string/beauty_frag"
             android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:fontFamily="@font/oregano"
             android:textAlignment="center"/>
 
     </LinearLayout>
