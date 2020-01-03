@@ -2,6 +2,7 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
@@ -24,7 +25,8 @@
             app:layout_constraintHorizontal_bias="0.56"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logoyourbeauty" />
+            app:srcCompat="@drawable/logoyourbeauty"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/twSignIn"
@@ -35,7 +37,7 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/oregano"
             android:textColor="#FFFFFF"
-            android:text="Sign In"
+            android:text="@string/signin"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +51,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/oregano"
-            android:text="E-Mail:"
+            android:text="@string/sign_in_mail"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/plainEmail"
@@ -64,7 +66,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/oregano"
-            android:text="Password:"
+            android:text="@string/sign_in_pass"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/plainPass"
@@ -81,7 +83,9 @@
             android:textColor="#FFFFFF"
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/twSignIn" />
+            app:layout_constraintTop_toBottomOf="@+id/twSignIn"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor" />
 
         <EditText
             android:id="@+id/plainPass"
@@ -93,7 +97,9 @@
             android:inputType="textPassword"
             android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plainEmail" />
+            app:layout_constraintTop_toBottomOf="@+id/plainEmail"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor" />
 
         <Button
             android:id="@+id/btnSignIn"
@@ -103,7 +109,7 @@
             android:layout_marginEnd="32dp"
             android:backgroundTint="#B8ECF8"
             android:fontFamily="@font/oregano"
-            android:text="Sign In"
+            android:text="@string/signin"
             android:textColor="#000000"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"

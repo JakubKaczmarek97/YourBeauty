@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/fragment_order_zone"
         android:orientation="vertical">
 
@@ -21,9 +21,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select date of visit:"
+            android:text="@string/select_date"
             android:textColor="#FFFFFF"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textAlignment="center"/>
 
         <CalendarView
@@ -36,9 +36,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select worker:"
+            android:text="@string/select_worker"
             android:textColor="#FFFFFF"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textAlignment="center"/>
 
 
@@ -62,7 +62,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="32dp"
             android:backgroundTint="#B8ECF8"
-            android:text="NEXT"
+            android:text="@string/next_button"
             android:fontFamily="@font/oregano"
             android:layout_gravity="end"
             android:textColor="#000000"/>

@@ -3,6 +3,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_sign_up"
@@ -29,7 +30,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logoyourbeauty" />
+            app:srcCompat="@drawable/logoyourbeauty"
+            tools:ignore="ContentDescription" />
 
 
         <TextView
@@ -40,7 +42,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/oregano"
-            android:text="Sign Up"
+            android:text="@string/signup"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +57,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/oregano"
-            android:text="Name:"
+            android:text="@string/signup_name"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/plainName"
@@ -73,7 +75,8 @@
             android:inputType="textPersonName"
             android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tw_signup" />
+            app:layout_constraintTop_toBottomOf="@+id/tw_signup"
+            tools:ignore="Autofill,LabelFor" />
 
         <TextView
             android:id="@+id/twSecondName"
@@ -83,7 +86,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/oregano"
-            android:text="Second Name:"
+            android:text="@string/signup_second_name"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/plainSecondName"
@@ -100,7 +103,8 @@
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plainName" />
+            app:layout_constraintTop_toBottomOf="@+id/plainName"
+            tools:ignore="Autofill,LabelFor" />
 
         <EditText
             android:id="@+id/plainSurname"
@@ -112,7 +116,8 @@
             android:textColor="#FFFFFF"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plainSecondName" />
+            app:layout_constraintTop_toBottomOf="@+id/plainSecondName"
+            tools:ignore="Autofill,LabelFor" />
 
 
         <EditText
@@ -125,7 +130,8 @@
             android:textColor="#FFFFFF"
             android:inputType="date"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plainSurname" />
+            app:layout_constraintTop_toBottomOf="@+id/plainSurname"
+            tools:ignore="Autofill,LabelFor" />
 
         <RadioGroup
             android:layout_width="210dp"
@@ -140,7 +146,7 @@
                 android:id="@+id/buttonWoman"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Woman"
+                android:text="@string/gender_woman"
                 android:textColor="#FFFFFF"
                 android:buttonTint="#B8ECF8"
                 android:checked="true" />
@@ -148,7 +154,7 @@
                 android:id="@+id/buttonMan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Man"
+                android:text="@string/gender_man"
                 android:textColor="#FFFFFF"
                 android:buttonTint="#B8ECF8" />
 
@@ -165,7 +171,8 @@
             android:inputType="textPersonName"
             android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plainGenderGroup" />
+            app:layout_constraintTop_toBottomOf="@+id/plainGenderGroup"
+            tools:ignore="Autofill,LabelFor" />
 
         <EditText
             android:id="@+id/plainPassword"
@@ -177,7 +184,8 @@
             android:textColor="#FFFFFF"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plainMail" />
+            app:layout_constraintTop_toBottomOf="@+id/plainMail"
+            tools:ignore="Autofill,LabelFor" />
 
         <EditText
             android:id="@+id/plainBankAccountNumber"
@@ -187,9 +195,10 @@
             android:layout_marginEnd="32dp"
             android:ems="10"
             android:textColor="#FFFFFF"
-            android:inputType=""
+            android:inputType="numberDecimal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plainPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/plainPassword"
+            tools:ignore="Autofill,LabelFor" />
 
         <TextView
             android:id="@+id/twSurname"
@@ -199,7 +208,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/oregano"
-            android:text="Surname:"
+            android:text="@string/signup_surname"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/plainSurname"
@@ -214,7 +223,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/oregano"
-            android:text="Date Of Birth:"
+            android:text="@string/signup_birth"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/plainDateOfBirth"
@@ -229,7 +238,7 @@
             android:layout_marginTop="62dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/oregano"
-            android:text="Choose gender: "
+            android:text="@string/signup_gender"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/plainGenderGroup"
@@ -244,7 +253,7 @@
             android:layout_marginTop="52dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/oregano"
-            android:text="E-Mail:"
+            android:text="@string/signup_mail"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/plainMail"
@@ -259,7 +268,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/oregano"
-            android:text="Password:"
+            android:text="@string/signup_pass"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/plainPassword"
@@ -274,7 +283,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/oregano"
-            android:text="Account number:"
+            android:text="@string/signup_account"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/plainBankAccountNumber"
@@ -289,7 +298,7 @@
             android:layout_marginEnd="32dp"
             android:backgroundTint="#B8ECF8"
             android:fontFamily="@font/oregano"
-            android:text="Sign Up"
+            android:text="@string/signup"
             android:textColor="#000000"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"

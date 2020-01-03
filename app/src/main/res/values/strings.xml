@@ -63,4 +63,32 @@
     <string name="medicine_frag">Medics:</string>
     <string name="nails_frag">Manicurists:</string>
 
+    <!-- OrderZone Layout -->
+    <string name="select_date">Select date of visit:</string>
+    <string name="select_worker">Select worker:</string>
+    <string name="next_button">NEXT</string>
+
+    <!-- Services Layout -->
+    <string name="services">Services:</string>
+
+    <!-- Sign In Layout -->
+    <string name="signin">Sign In</string>
+    <string name="sign_in_mail">E-Mail: </string>
+    <string name="sign_in_pass">Password: </string>
+
+    <!-- Sign Up Layout -->
+    <string name="signup">Sign Up</string>
+    <string name="signup_name">Name: </string>
+    <string name="signup_second_name">Second Name: </string>
+    <string name="signup_surname">Surname: </string>
+    <string name="signup_birth">Date Of Birth: </string>
+    <string name="signup_gender">Choose Gender: </string>
+    <string name="signup_mail">E-Mail: </string>
+    <string name="signup_pass">Password: </string>
+    <string name="signup_account">Account Number: </string>
+    <string name="gender_man">Man</string>
+    <string name="gender_woman">Woman</string>
+
+
+
 </resources>
