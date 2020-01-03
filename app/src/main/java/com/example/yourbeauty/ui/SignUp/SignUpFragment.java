@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.yourbeauty.JsonParser;
 import com.example.yourbeauty.R;
 import com.example.yourbeauty.ui.home.HomeFragment;
 
@@ -132,8 +133,14 @@ public class SignUpFragment extends Fragment
             {
                 Response response = client.newCall(request).execute();
                 String result = Objects.requireNonNull(response.body()).string();
-                System.out.println(result);
-                SUCCESS = 1;
+                JsonParser jsonParser = new JsonParser();
+                final String parsedSignUp;
+                parsedSignUp = jsonParser.parseSignUp(result);
+
+                if(parsedSignUp.equals("1"))
+                {
+                    SUCCESS = 1;
+                }
             }
             catch (Exception e)
             {

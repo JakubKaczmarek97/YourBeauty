@@ -168,4 +168,23 @@ public class JsonParser
 
         return map;
     }
+
+    public String parseSignUp(String s) throws Exception
+    {
+        json = s;
+        JSONObject jsonObject;
+        int validate = 0;       //Is success == 1 ?
+
+        try
+        {
+            jsonObject = new JSONObject(json);
+            validate = jsonObject.getInt("success");
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+
+        return String.valueOf(validate);
+    }
 }
