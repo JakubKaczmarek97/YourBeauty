@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -19,7 +20,10 @@ import androidx.fragment.app.Fragment;
 import com.example.yourbeauty.JsonParser;
 import com.example.yourbeauty.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedHashMap;
+import java.util.Locale;
 import java.util.Objects;
 
 import okhttp3.FormBody;
@@ -34,9 +38,17 @@ public class OrderZoneFragment extends Fragment
     private View view;
     private String selectedService;
 
+    private String currentDate;
+
+
+
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
+        Date date = new Date();
+        currentDate = formatter.format(date);
+
         view = inflater.inflate(R.layout.fragment_order_zone, container, false);
         selectedService = Objects.requireNonNull(getArguments()).getString("ServiceID");
         String firmData = getArguments().getString("FirmData");
@@ -46,6 +58,7 @@ public class OrderZoneFragment extends Fragment
         EditText edit = new EditText(getActivity());
         edit.setText(firmData);
         edit.setTextColor(Color.rgb(255,255,255));
+        edit.setEnabled(false);
         firms.addView(edit);
 
         new OrderZoneFragment.ListAllWorkers().execute();
@@ -141,6 +154,50 @@ public class OrderZoneFragment extends Fragment
 
                             Button next = view.findViewById(R.id.btnNext);
                             next.setEnabled(true);
+
+                            CalendarView calendarView = view.findViewById(R.id.calendarView);
+
+
+                            calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener()
+                            {
+                                @Override
+                                public void onSelectedDayChange
+                                        (@NonNull CalendarView calendarView, int selected_year, int selected_month, int selected_day)
+                                {
+                                    String dayOfMonth;
+                                    String month;
+
+                                    if(selected_day < 10)
+                                    {
+                                        dayOfMonth= "0" + selected_day;
+                                    }
+                                    else
+                                    {
+                                        dayOfMonth = "" + selected_day;
+                                    }
+
+                                    if(selected_month < 9)
+                                    {
+                                        month = "0" + (selected_month + 1);
+                                    }
+                                    else
+                                    {
+                                        month = "" + (selected_month + 1);
+                                    }
+
+                                    currentDate = dayOfMonth + "." + month + "." + selected_year;
+                                }
+                            });
+
+                            next.setOnClickListener(new View.OnClickListener()
+                            {
+                                @Override
+                                public void onClick(View v)
+                                {
+
+                                    System.out.println(currentDate);
+                                }
+                            });
 
                         }
                     }
