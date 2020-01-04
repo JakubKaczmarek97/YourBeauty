@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -53,7 +55,7 @@ public class HoursFragment extends Fragment
         {
             super.onPreExecute();
              pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage(getResources().getString(R.string.wait_workers));
+            pDialog.setMessage(getResources().getString(R.string.wait_hours));
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();
@@ -95,12 +97,12 @@ public class HoursFragment extends Fragment
                     public void run()
                     {
                         LinearLayout linear = view.findViewById(R.id.hours_linear);
+                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
+                                (LinearLayout.LayoutParams.MATCH_PARENT,
+                                        LinearLayout.LayoutParams.WRAP_CONTENT);
+
                         if(parsedHours.isEmpty())
                         {
-                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
-                                    (LinearLayout.LayoutParams.MATCH_PARENT,
-                                            LinearLayout.LayoutParams.WRAP_CONTENT);
-
                             Button btn = new Button(getActivity());
                             btn.setText(R.string.no_hours);
                             btn.setBackgroundResource(R.drawable.gradient_1);
@@ -111,17 +113,25 @@ public class HoursFragment extends Fragment
                         }
                         else
                         {
-                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
-                                    (LinearLayout.LayoutParams.MATCH_PARENT,
-                                            LinearLayout.LayoutParams.WRAP_CONTENT);
+                            final RadioGroup radioGroup = view.findViewById(R.id.radio_group_hours);
 
-                            Button btn = new Button(getActivity());
-                            btn.setText("I Found something!!!");
-                            btn.setBackgroundResource(R.drawable.gradient_1);
-                            btn.setTextColor(Color.rgb(255,255,255));
+                            for (int i = 0; i < Objects.requireNonNull(keys).length; i++)
+                            {
+                                RadioButton rb = new RadioButton(getActivity());
+                                String rbText = parsedHours.get(keys[i]);
 
-                            params.setMargins(10, 3, 10, 3);
-                            linear.addView(btn, params);
+                                rb.setText(rbText);
+                                rb.setTextColor(Color.rgb(230,230,230));
+                                rb.setTextSize(18);
+
+                                if(i==0)
+                                    rb.setChecked(true);
+
+                                //rb.setId(Integer.parseInt(Objects.requireNonNull(parsedHours.get(keys[i]))));
+
+                                params.setMargins(5, 0, 5, 8);
+                                radioGroup.addView(rb);
+                            }
                         }
 
                     }

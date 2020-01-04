@@ -8,10 +8,14 @@
     android:clickable="true"
     android:focusable="true">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/hours_linear">
 
         <TextView
@@ -24,5 +28,11 @@
             android:fontFamily="@font/oregano"
             android:textAlignment="center"/>
 
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radio_group_hours"/>
+
     </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

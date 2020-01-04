@@ -142,7 +142,7 @@ public class OrderZoneFragment extends Fragment
                                     LinearLayout.LayoutParams.MATCH_PARENT,
                                     LinearLayout.LayoutParams.WRAP_CONTENT);
 
-                            final RadioGroup radioGroup = view.findViewById(R.id.radio_group);
+                            final RadioGroup radioGroup = view.findViewById(R.id.radio_group_orders);
 
                             for (int i = 0; i < Objects.requireNonNull(keys).length; i += 3)
                             {
@@ -152,7 +152,10 @@ public class OrderZoneFragment extends Fragment
                                 rb.setText(rbText);
                                 rb.setTextColor(Color.rgb(230,230,230));
                                 rb.setTextSize(18);
-                                rb.setChecked(true);
+
+                                if(i==0)
+                                    rb.setChecked(true);
+
                                 rb.setId(Integer.parseInt(Objects.requireNonNull(parsedWorkers.get(keys[i]))));
 
                                 params.setMargins(5, 0, 5, 8);
