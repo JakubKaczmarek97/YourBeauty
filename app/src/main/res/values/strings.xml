@@ -57,6 +57,7 @@
 
     <!-- Hours Fragment -->
     <string name="wait_hours">Please wait for list all available hours…</string>
+    <string name="no_hours">No hours available</string>
 
     <!-- LAYOUTS -->
     <string name="barber_frag">Barbers:</string>

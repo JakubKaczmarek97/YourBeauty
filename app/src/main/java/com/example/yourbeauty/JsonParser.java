@@ -188,7 +188,8 @@ public class JsonParser
         {
             jsonObject = new JSONObject(json);
             validate = jsonObject.getInt("success");
-            amount = jsonObject.getInt("query_amount");
+            if(validate > 0 )
+                amount = jsonObject.getInt("query_amount");
         }
         catch (JSONException e)
         {

@@ -134,6 +134,7 @@ public class ServicesFragment extends Fragment
                                 final String firmData = " " + parsedServices.get(keys[i + 2]) + "\n"
                                         + " " + getResources().getString(R.string.price)+ " " + parsedServices.get(keys[i + 3]) + "\n"
                                         + " " + getResources().getString(R.string.time) + " " + parsedServices.get(keys[i + 4]);
+                                final String serviceTime = parsedServices.get(keys[i + 4]);
 
                                 edit.setText(firmData);
 
@@ -149,7 +150,7 @@ public class ServicesFragment extends Fragment
                                         }
                                         else    //User is logged in
                                         {
-                                            changeFragment(argument, firmData);
+                                            changeFragment(argument, firmData, serviceTime);
                                         }
                                     }
                                 });
@@ -174,13 +175,14 @@ public class ServicesFragment extends Fragment
         }
     }
 
-    private void changeFragment(String message, String data)
+    private void changeFragment(String ID, String data, String time)
     {
         OrderZoneFragment orderZoneFragment = new OrderZoneFragment();
 
         Bundle args = new Bundle();
-        args.putString("ServiceID", message);
+        args.putString("ServiceID", ID);
         args.putString("FirmData", data);
+        args.putString("Time", time);
         orderZoneFragment.setArguments(args);
 
         FragmentTransaction transaction = (Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();

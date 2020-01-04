@@ -57,4 +57,5 @@
     <string name="welcome">Witamy w strefie urody. \n  Znajdź usługę, której szukasz.</string>
     <string name="hours">"Dostępne godziny: "</string>
     <string name="wait_hours">Proszę czekać na listę dostępnych godzin…</string>
+    <string name="no_hours">Brak dostępnych godzin usług</string>
 </resources>

@@ -1,11 +1,14 @@
 package com.example.yourbeauty.LoggedUser;
 
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -26,20 +29,17 @@ public class HoursFragment extends Fragment
 {
     private ProgressDialog pDialog;
     private View view;
-   // private String selectedService;
-
-   // private String currentDate;
+    private String timeOfService;
+    private String dateVisit;
+    private String workerID;
 
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-
         view = inflater.inflate(R.layout.fragment_hours, container, false);
-        //selectedService = Objects.requireNonNull(getArguments()).getString("ServiceID");
-        //String firmData = getArguments().getString("FirmData");
-
-       // LinearLayout firms = view.findViewById(R.id.firm_data);
-
+        timeOfService = Objects.requireNonNull(getArguments()).getString("TimeOfService");
+        dateVisit = Objects.requireNonNull(getArguments()).getString("DateVisit");
+        workerID = Objects.requireNonNull(getArguments()).getString("ID_Worker");
 
         new HoursFragment.ListAllHours().execute();
 
@@ -65,9 +65,9 @@ public class HoursFragment extends Fragment
             OkHttpClient client = new OkHttpClient();
 
             RequestBody postData = new FormBody.Builder()
-                    .add("timeOfService", "todo")
-                    .add("dateVisit", "todo")
-                    .add("idWorker", "todo")
+                    .add("timeOfService", timeOfService)
+                    .add("dateVisit", dateVisit)
+                    .add("idWorker", workerID)
                     .build();
 
             String url_order_zone = "http://10.0.2.2/bayb/prepare_hour.php";
@@ -83,15 +83,47 @@ public class HoursFragment extends Fragment
                 //Use of JsonParser class.
 
                 JsonParser jsonParser = new JsonParser();
-                final LinkedHashMap<String, String> parsedWorkers;
-                parsedWorkers = jsonParser.parseWorkers(result);
-                final Object[] keys = parsedWorkers.keySet().toArray();
+                final LinkedHashMap<String, String> parsedHours;
+                parsedHours = jsonParser.parseHours(result);
+                final Object[] keys = parsedHours.keySet().toArray();
 
                 //Generate buttons dynamically based on JSON
 
-                Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable() {
+                Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable()
+                {
                     @Override
-                    public void run() {
+                    public void run()
+                    {
+                        LinearLayout linear = view.findViewById(R.id.hours_linear);
+                        if(parsedHours.isEmpty())
+                        {
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
+                                    (LinearLayout.LayoutParams.MATCH_PARENT,
+                                            LinearLayout.LayoutParams.WRAP_CONTENT);
+
+                            Button btn = new Button(getActivity());
+                            btn.setText(R.string.no_hours);
+                            btn.setBackgroundResource(R.drawable.gradient_1);
+                            btn.setTextColor(Color.rgb(255,255,255));
+
+                            params.setMargins(10, 3, 10, 3);
+                            linear.addView(btn, params);
+                        }
+                        else
+                        {
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
+                                    (LinearLayout.LayoutParams.MATCH_PARENT,
+                                            LinearLayout.LayoutParams.WRAP_CONTENT);
+
+                            Button btn = new Button(getActivity());
+                            btn.setText("I Found something!!!");
+                            btn.setBackgroundResource(R.drawable.gradient_1);
+                            btn.setTextColor(Color.rgb(255,255,255));
+
+                            params.setMargins(10, 3, 10, 3);
+                            linear.addView(btn, params);
+                        }
+
                     }
                 });
 

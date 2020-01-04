@@ -40,8 +40,9 @@ public class OrderZoneFragment extends Fragment
     private String selectedService;
 
     private String currentDate;
+    private String selectedDate;
 
-
+    private String serviceTime;
 
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -49,10 +50,12 @@ public class OrderZoneFragment extends Fragment
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
         Date date = new Date();
         currentDate = formatter.format(date);
+        selectedDate = currentDate;
 
         view = inflater.inflate(R.layout.fragment_order_zone, container, false);
         selectedService = Objects.requireNonNull(getArguments()).getString("ServiceID");
         String firmData = getArguments().getString("FirmData");
+        serviceTime = Objects.requireNonNull(getArguments()).getString("Time");
 
         LinearLayout firms = view.findViewById(R.id.firm_data);
 
@@ -190,7 +193,7 @@ public class OrderZoneFragment extends Fragment
                                         month = "" + (selected_month + 1);
                                     }
 
-                                    currentDate = dayOfMonth + "." + month + "." + selected_year;
+                                    selectedDate = dayOfMonth + "." + month + "." + selected_year;
                                 }
                             });
 
@@ -200,8 +203,9 @@ public class OrderZoneFragment extends Fragment
                                 public void onClick(View v)
                                 {
                                     System.out.println(currentDate + " " + radioGroup.getCheckedRadioButtonId());
+                                    String ID = String.valueOf(radioGroup.getCheckedRadioButtonId());
 
-                                    //Tutaj umieścić przesyłanie daty i pracownika do kolejnego okna (HoursFragment?);
+                                    changeToHours(selectedDate,ID, serviceTime);
                                 }
                             });
 
@@ -222,13 +226,14 @@ public class OrderZoneFragment extends Fragment
         }
     }
 
-    private void changeToHours(String message)
+    private void changeToHours(String dateVisit, String idWorker, String timeOfService)
     {
         HoursFragment hoursFragment = new HoursFragment();
 
         Bundle args = new Bundle();
-        args.putString("ServiceID", message);
-        //args.putString("FirmData", data);
+        args.putString("DateVisit", dateVisit);
+        args.putString("ID_Worker", idWorker);
+        args.putString("TimeOfService", timeOfService);
         hoursFragment.setArguments(args);
 
         FragmentTransaction transaction = (Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
