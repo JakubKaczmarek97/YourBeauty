@@ -8,16 +8,16 @@ import java.util.LinkedHashMap;
 public class JsonParser
 {
     private String json;
+    private JSONObject jsonObject;
+    private LinkedHashMap<String, String> map;
+    private int validate = 0;   //Is (success == 1) ?
+    private int amount = 0;
 
     public LinkedHashMap<String,String> parseJson(String s) throws Exception
     {
         json = s;
+        map = new LinkedHashMap<>();
 
-        LinkedHashMap<String, String> map = new LinkedHashMap<>();
-
-        JSONObject jsonObject;
-        int validate = 0;       //Is success == 1 ?
-        int amount = 0;         //Amount of firms
         try
         {
             jsonObject = new JSONObject(json);
@@ -53,12 +53,7 @@ public class JsonParser
     public LinkedHashMap<String,String> parseServices(String s) throws Exception
     {
         json = s;
-
-        LinkedHashMap<String, String> map = new LinkedHashMap<>();
-
-        JSONObject jsonObject;
-        int validate = 0;       //Is success == 1 ?
-        int amount = 0;         //Amount of firms
+        map = new LinkedHashMap<>();
 
         try
         {
@@ -95,10 +90,7 @@ public class JsonParser
     public LinkedHashMap<String, String> parseLogin(String s) throws Exception
     {
         json = s;
-        JSONObject jsonObject;
-        int validate = 0;       //Is success == 1 ?
-
-        LinkedHashMap<String, String> map = new LinkedHashMap<>();
+        map = new LinkedHashMap<>();
 
         try
         {
@@ -131,11 +123,7 @@ public class JsonParser
     public LinkedHashMap<String, String> parseWorkers(String s) throws Exception
     {
         json = s;
-        JSONObject jsonObject;
-        int validate = 0;       //Is success == 1 ?
-        int amount = 0;         //Number of workers
-
-        LinkedHashMap<String, String> map = new LinkedHashMap<>();
+        map = new LinkedHashMap<>();
 
         try
         {
@@ -177,8 +165,6 @@ public class JsonParser
     public String parseSignUp(String s)
     {
         json = s;
-        JSONObject jsonObject;
-        int validate = 0;       //Is success == 1 ?
 
         try
         {
@@ -191,5 +177,31 @@ public class JsonParser
         }
 
         return String.valueOf(validate);
+    }
+
+    public LinkedHashMap<String, String> parseHours(String h) throws Exception
+    {
+        json = h;
+        map = new LinkedHashMap<>();
+
+        try
+        {
+            jsonObject = new JSONObject(json);
+            validate = jsonObject.getInt("success");
+            amount = jsonObject.getInt("query_amount");
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+
+        for(int i=0; i<amount; i++)
+        {
+            String key = i + "_hour";
+            String value = jsonObject.getString(key);
+
+            map.put(key, value);
+        }
+        return map;
     }
 }
