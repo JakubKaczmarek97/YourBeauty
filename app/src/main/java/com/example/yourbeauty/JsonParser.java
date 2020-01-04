@@ -154,8 +154,13 @@ public class JsonParser
 
             for(int i=0; i<amount; i++)
             {
-                String key = i + "_Name";
+                String key = i + "_idWorker";
                 String value = jsonObject.getString(key);
+
+                map.put(key,value);
+
+                key = i + "_Name";
+                value = jsonObject.getString(key);
 
                 map.put(key,value);
 
@@ -169,7 +174,7 @@ public class JsonParser
         return map;
     }
 
-    public String parseSignUp(String s) throws Exception
+    public String parseSignUp(String s)
     {
         json = s;
         JSONObject jsonObject;

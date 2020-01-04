@@ -138,19 +138,23 @@ public class OrderZoneFragment extends Fragment
                                     LinearLayout.LayoutParams.MATCH_PARENT,
                                     LinearLayout.LayoutParams.WRAP_CONTENT);
 
-                            for (int i = 0; i < Objects.requireNonNull(keys).length; i += 2)
-                            {
-                                RadioGroup radioGroup = view.findViewById(R.id.radio_group);
+                            final RadioGroup radioGroup = view.findViewById(R.id.radio_group);
 
+                            for (int i = 0; i < Objects.requireNonNull(keys).length; i += 3)
+                            {
                                 RadioButton rb = new RadioButton(getActivity());
-                                String rbText = parsedWorkers.get(keys[i]) + " " + parsedWorkers.get(keys[i+1]);
+                                String rbText = parsedWorkers.get(keys[i+1]) + " " + parsedWorkers.get(keys[i+2]);
+
                                 rb.setText(rbText);
                                 rb.setTextColor(Color.rgb(230,230,230));
                                 rb.setTextSize(18);
+                                rb.setChecked(true);
+                                rb.setId(Integer.parseInt(Objects.requireNonNull(parsedWorkers.get(keys[i]))));
 
                                 params.setMargins(5, 0, 5, 8);
                                 radioGroup.addView(rb);
                             }
+
 
                             Button next = view.findViewById(R.id.btnNext);
                             next.setEnabled(true);
@@ -194,8 +198,9 @@ public class OrderZoneFragment extends Fragment
                                 @Override
                                 public void onClick(View v)
                                 {
+                                    System.out.println(currentDate + " " + radioGroup.getCheckedRadioButtonId());
 
-                                    System.out.println(currentDate);
+                                    //Tutaj umieścić przesyłanie daty i pracownika do kolejnego okna (HoursFragment?);
                                 }
                             });
 
