@@ -50,9 +50,11 @@
     <string name="time">"Czas: "</string>
     <string name="user_added">Dodano użytkownika</string>
     <string name="wait">Proszę czekać…</string>
-    <string name="wait_services">Proszę czekać na listę wszystkich usług</string>
+    <string name="wait_services">Proszę czekać na listę wszystkich usług…</string>
     <string name="wait_sign_in">Proszę czekać na zalogowanie…</string>
     <string name="wait_sign_up">Proszę czekać na zarejestrowanie…</string>
     <string name="wait_workers">Proszę czekać na listę wszystkich pracowników…</string>
     <string name="welcome">Witamy w strefie urody. \n  Znajdź usługę, której szukasz.</string>
+    <string name="hours">"Dostępne godziny: "</string>
+    <string name="wait_hours">Proszę czekać na listę dostępnych godzin…</string>
 </resources>

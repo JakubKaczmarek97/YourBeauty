@@ -16,6 +16,7 @@ import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.yourbeauty.JsonParser;
 import com.example.yourbeauty.R;
@@ -219,5 +220,19 @@ public class OrderZoneFragment extends Fragment
         {
             pDialog.dismiss();
         }
+    }
+
+    private void changeToHours(String message)
+    {
+        HoursFragment hoursFragment = new HoursFragment();
+
+        Bundle args = new Bundle();
+        args.putString("ServiceID", message);
+        //args.putString("FirmData", data);
+        hoursFragment.setArguments(args);
+
+        FragmentTransaction transaction = (Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+        transaction.replace(R.id.fragment_order_zone, hoursFragment);
+        transaction.addToBackStack(null).commit();
     }
 }
