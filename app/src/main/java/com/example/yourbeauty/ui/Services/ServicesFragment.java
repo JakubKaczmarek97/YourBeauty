@@ -37,11 +37,16 @@ public class ServicesFragment extends Fragment
     private View view;
     private String selectedFirm;
 
+    private String firmName;
+    private String firmData;
+
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         view = inflater.inflate(R.layout.fragment_services, container, false);
-        selectedFirm = Objects.requireNonNull(getArguments()).getString("YourKey");
+        selectedFirm = Objects.requireNonNull(getArguments()).getString("FirmID");
+        firmName = Objects.requireNonNull(getArguments()).getString("FirmName");
+        firmData = Objects.requireNonNull(getArguments()).getString("FirmData");
 
         new ServicesFragment.ListAllServices().execute();
 
@@ -121,7 +126,14 @@ public class ServicesFragment extends Fragment
                                 Button btn = new Button(getActivity());
                                 EditText edit = new EditText(getActivity());
 
-                                btn.setText(parsedServices.get(keys[i + 1]));
+                                final String argument = parsedServices.get(keys[i]);
+                                final String firmData = " " + parsedServices.get(keys[i + 2]) + "\n"
+                                        + " " + getResources().getString(R.string.price)+ " " + parsedServices.get(keys[i + 3]) + "\n"
+                                        + " " + getResources().getString(R.string.time) + " " + parsedServices.get(keys[i + 4]);
+                                final String serviceTime = parsedServices.get(keys[i + 4]);
+                                final String serviceName = parsedServices.get(keys[i + 1]);
+
+                                btn.setText(serviceName);
                                 btn.setBackgroundResource(R.drawable.gradient_1);
                                 btn.setTextColor(Color.rgb(255,255,255));
                                 btn.setGravity(Gravity.CENTER);
@@ -129,13 +141,6 @@ public class ServicesFragment extends Fragment
                                 edit.setBackgroundColor(Color.rgb(230,230,230));
                                 edit.setEnabled(false);
                                 edit.setTextColor(Color.rgb(0,0,0));
-
-                                final String argument = parsedServices.get(keys[i]);
-                                final String firmData = " " + parsedServices.get(keys[i + 2]) + "\n"
-                                        + " " + getResources().getString(R.string.price)+ " " + parsedServices.get(keys[i + 3]) + "\n"
-                                        + " " + getResources().getString(R.string.time) + " " + parsedServices.get(keys[i + 4]);
-                                final String serviceTime = parsedServices.get(keys[i + 4]);
-
                                 edit.setText(firmData);
 
                                 btn.setOnClickListener(new View.OnClickListener()
@@ -150,7 +155,7 @@ public class ServicesFragment extends Fragment
                                         }
                                         else    //User is logged in
                                         {
-                                            changeFragment(argument, firmData, serviceTime);
+                                            changeFragment(argument, firmData, serviceTime, serviceName);
                                         }
                                     }
                                 });
@@ -175,14 +180,17 @@ public class ServicesFragment extends Fragment
         }
     }
 
-    private void changeFragment(String ID, String data, String time)
+    private void changeFragment(String ID, String data, String time, String serviceName)
     {
         OrderZoneFragment orderZoneFragment = new OrderZoneFragment();
 
         Bundle args = new Bundle();
         args.putString("ServiceID", ID);
-        args.putString("FirmData", data);
+        args.putString("ServiceData", data);
         args.putString("Time", time);
+        args.putString("FirmName", firmName);
+        args.putString("FirmData", firmData);
+        args.putString("ServiceName", serviceName);
         orderZoneFragment.setArguments(args);
 
         FragmentTransaction transaction = (Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();

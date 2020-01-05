@@ -48,10 +48,16 @@ public class OrderZoneFragment extends Fragment
     private boolean enabled;
 
     private String serviceTime;
+    private String serviceData;
+    private String serviceName;
+    private String firmName;
+    private String firmData;
 
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
+        view = inflater.inflate(R.layout.fragment_order_zone, container, false);
+
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         Date date = new Date();
         currentDate = formatter.format(date);
@@ -62,18 +68,29 @@ public class OrderZoneFragment extends Fragment
         selected = Integer.parseInt
                 (selectedDate.substring(0,4) + selectedDate.substring(5,7) + selectedDate.substring(8));
 
-        view = inflater.inflate(R.layout.fragment_order_zone, container, false);
+        //Not displayed
         selectedService = Objects.requireNonNull(getArguments()).getString("ServiceID");
-        String firmData = getArguments().getString("FirmData");
         serviceTime = Objects.requireNonNull(getArguments()).getString("Time");
+
+        //Displayed
+        serviceData = Objects.requireNonNull(getArguments()).getString("ServiceData");
+        serviceName = Objects.requireNonNull(getArguments()).getString("ServiceName");
+        firmName = Objects.requireNonNull(getArguments()).getString("FirmName");
+        firmData = Objects.requireNonNull(getArguments()).getString("FirmData");
 
         LinearLayout firms = view.findViewById(R.id.firm_data);
 
-        EditText edit = new EditText(getActivity());
-        edit.setText(firmData);
-        edit.setTextColor(Color.rgb(255,255,255));
-        edit.setEnabled(false);
-        firms.addView(edit);
+        EditText firm = new EditText(getActivity());
+        firm.setText(firmName + "\n" + firmData);
+        firm.setTextColor(Color.rgb(255,255,255));
+        firm.setEnabled(false);
+        firms.addView(firm);
+
+        EditText service = new EditText(getActivity());
+        service.setText(serviceName + "\n" + serviceData);
+        service.setTextColor(Color.rgb(255,255,255));
+        service.setEnabled(false);
+        firms.addView(service);
 
         new OrderZoneFragment.ListAllWorkers().execute();
 
