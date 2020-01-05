@@ -43,6 +43,10 @@ public class OrderZoneFragment extends Fragment
     private String currentDate;
     private String selectedDate;
 
+    private int current;
+    private int selected;
+    private boolean enabled;
+
     private String serviceTime;
 
     public View onCreateView
@@ -52,6 +56,11 @@ public class OrderZoneFragment extends Fragment
         Date date = new Date();
         currentDate = formatter.format(date);
         selectedDate = currentDate;
+
+        current = Integer.parseInt
+                (currentDate.substring(0,4) + currentDate.substring(5,7) + currentDate.substring(8));
+        selected = Integer.parseInt
+                (selectedDate.substring(0,4) + selectedDate.substring(5,7) + selectedDate.substring(8));
 
         view = inflater.inflate(R.layout.fragment_order_zone, container, false);
         selectedService = Objects.requireNonNull(getArguments()).getString("ServiceID");
@@ -137,7 +146,7 @@ public class OrderZoneFragment extends Fragment
 
                             Button next = view.findViewById(R.id.btnNext);
                             next.setEnabled(false);
-                            next.setClickable(false);
+                            enabled = false;
                             next.setTextColor(Color.rgb(150,150,150));
                         }
                         else {
@@ -146,6 +155,7 @@ public class OrderZoneFragment extends Fragment
                                     LinearLayout.LayoutParams.WRAP_CONTENT);
 
                             next.setEnabled(false);
+                            enabled = false;
                             next.setTextColor(Color.rgb(150,150,150));
 
                             final RadioGroup radioGroup = view.findViewById(R.id.radio_group_orders);
@@ -172,8 +182,19 @@ public class OrderZoneFragment extends Fragment
                                 {
                                     if(radioGroup.getCheckedRadioButtonId() != -1)
                                     {
-                                        next.setEnabled(true);
-                                        next.setTextColor(Color.rgb(0,0,0));
+                                        System.out.println("Int current: " + current + " Int selected: " + selected + "  " + selectedDate);
+                                        enabled = true;
+
+                                        if(selected >= current)
+                                        {
+                                            next.setEnabled(true);
+                                            next.setTextColor(Color.rgb(0,0,0));
+                                        }
+                                        else
+                                        {
+                                            next.setEnabled(false);
+                                            next.setTextColor(Color.rgb(150,150,150));
+                                        }
                                     }
                                 }
                             });
@@ -206,8 +227,24 @@ public class OrderZoneFragment extends Fragment
                                         month = "" + (selected_month + 1);
                                     }
 
-                                    //selectedDate = dayOfMonth + "." + month + "." + selected_year;
                                     selectedDate = selected_year + "-" + month + "-" + dayOfMonth;
+
+                                    current = Integer.parseInt
+                                            (currentDate.substring(0,4) + currentDate.substring(5,7) + currentDate.substring(8));
+                                    selected = Integer.parseInt
+                                            (selectedDate.substring(0,4) + selectedDate.substring(5,7) + selectedDate.substring(8));
+
+                                    if(enabled && selected >= current)
+                                    {
+                                        next.setEnabled(true);
+                                        next.setTextColor(Color.rgb(0,0,0));
+                                    }
+                                    else
+                                    {
+                                        next.setEnabled(false);
+                                        next.setTextColor(Color.rgb(150,150,150));
+                                    }
+
                                 }
                             });
 
