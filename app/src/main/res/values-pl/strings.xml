@@ -58,4 +58,5 @@
     <string name="hours">"Dostępne godziny: "</string>
     <string name="wait_hours">Proszę czekać na listę dostępnych godzin…</string>
     <string name="no_hours">Brak dostępnych godzin usług</string>
+    <string name="summary">Podsumowanie zamówienia:</string>
 </resources>

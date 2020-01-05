@@ -96,4 +96,7 @@
     <!-- Hours Layout -->
     <string name="hours">Available Hours: </string>
 
+    <!-- Summary Layout -->
+    <string name="summary">Order summary: </string>
+
 </resources>
