@@ -13,6 +13,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.yourbeauty.JsonParser;
@@ -88,6 +89,7 @@ public class HoursFragment extends Fragment
                 final LinkedHashMap<String, String> parsedHours;
                 parsedHours = jsonParser.parseHours(result);
                 final Object[] keys = parsedHours.keySet().toArray();
+                final Button next = view.findViewById(R.id.btnNext_Hours);
 
                 //Generate buttons dynamically based on JSON
 
@@ -110,9 +112,17 @@ public class HoursFragment extends Fragment
 
                             params.setMargins(10, 3, 10, 3);
                             linear.addView(btn, params);
+
+                            Button next = view.findViewById(R.id.btnNext_Hours);
+                            next.setEnabled(false);
+                            next.setTextColor(Color.rgb(150,150,150));
                         }
                         else
                         {
+
+                            next.setEnabled(false);
+                            next.setTextColor(Color.rgb(150,150,150));
+
                             final RadioGroup radioGroup = view.findViewById(R.id.radio_group_hours);
 
                             for (int i = 0; i < Objects.requireNonNull(keys).length; i++)
@@ -123,15 +133,38 @@ public class HoursFragment extends Fragment
                                 rb.setText(rbText);
                                 rb.setTextColor(Color.rgb(230,230,230));
                                 rb.setTextSize(18);
-
-                                if(i==0)
-                                    rb.setChecked(true);
+                                rb.setButtonTintList(ContextCompat.getColorStateList(getActivity(), R.color.radio_buttons));
 
                                 //rb.setId(Integer.parseInt(Objects.requireNonNull(parsedHours.get(keys[i]))));
 
                                 params.setMargins(5, 0, 5, 8);
                                 radioGroup.addView(rb);
                             }
+
+                            radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+                            {
+                                @Override
+                                public void onCheckedChanged(RadioGroup radioGroup, int i)
+                                {
+                                    if(radioGroup.getCheckedRadioButtonId() != -1)
+                                    {
+                                        next.setEnabled(true);
+                                        next.setTextColor(Color.rgb(0,0,0));
+                                    }
+                                }
+                            });
+
+                            next.setOnClickListener(new View.OnClickListener()
+                            {
+                                @Override
+                                public void onClick(View v)
+                                {
+
+
+                                    //if(next.isEnabled())
+                                       //TODO: changeToSummary
+                                }
+                            });
                         }
 
                     }

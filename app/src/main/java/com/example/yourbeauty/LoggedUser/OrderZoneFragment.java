@@ -15,6 +15,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -109,6 +110,7 @@ public class OrderZoneFragment extends Fragment
                 final LinkedHashMap<String, String> parsedWorkers;
                 parsedWorkers = jsonParser.parseWorkers(result);
                 final Object[] keys = parsedWorkers.keySet().toArray();
+                final Button next = view.findViewById(R.id.btnNext);
 
                 //Generate buttons dynamically based on JSON
 
@@ -135,12 +137,16 @@ public class OrderZoneFragment extends Fragment
 
                             Button next = view.findViewById(R.id.btnNext);
                             next.setEnabled(false);
+                            next.setClickable(false);
                             next.setTextColor(Color.rgb(150,150,150));
                         }
                         else {
                             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                                     LinearLayout.LayoutParams.MATCH_PARENT,
                                     LinearLayout.LayoutParams.WRAP_CONTENT);
+
+                            next.setEnabled(false);
+                            next.setTextColor(Color.rgb(150,150,150));
 
                             final RadioGroup radioGroup = view.findViewById(R.id.radio_group_orders);
 
@@ -152,23 +158,27 @@ public class OrderZoneFragment extends Fragment
                                 rb.setText(rbText);
                                 rb.setTextColor(Color.rgb(230,230,230));
                                 rb.setTextSize(18);
-
-                                if(i==0)
-                                    rb.setChecked(true);
-
                                 rb.setId(Integer.parseInt(Objects.requireNonNull(parsedWorkers.get(keys[i]))));
+                                rb.setButtonTintList(ContextCompat.getColorStateList(getActivity(), R.color.radio_buttons));
 
                                 params.setMargins(5, 0, 5, 8);
                                 radioGroup.addView(rb);
                             }
 
-
-                            Button next = view.findViewById(R.id.btnNext);
-                            next.setEnabled(true);
+                            radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+                            {
+                                @Override
+                                public void onCheckedChanged(RadioGroup radioGroup, int i)
+                                {
+                                    if(radioGroup.getCheckedRadioButtonId() != -1)
+                                    {
+                                        next.setEnabled(true);
+                                        next.setTextColor(Color.rgb(0,0,0));
+                                    }
+                                }
+                            });
 
                             CalendarView calendarView = view.findViewById(R.id.calendarView);
-
-
                             calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener()
                             {
                                 @Override
@@ -209,7 +219,8 @@ public class OrderZoneFragment extends Fragment
                                     System.out.println(selectedDate + " " + radioGroup.getCheckedRadioButtonId());
                                     String ID = String.valueOf(radioGroup.getCheckedRadioButtonId());
 
-                                    changeToHours(selectedDate,ID, serviceTime);
+                                    if(next.isEnabled())
+                                        changeToHours(selectedDate,ID, serviceTime);
                                 }
                             });
 
