@@ -47,7 +47,7 @@ public class OrderZoneFragment extends Fragment
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         Date date = new Date();
         currentDate = formatter.format(date);
         selectedDate = currentDate;
@@ -196,7 +196,8 @@ public class OrderZoneFragment extends Fragment
                                         month = "" + (selected_month + 1);
                                     }
 
-                                    selectedDate = dayOfMonth + "." + month + "." + selected_year;
+                                    //selectedDate = dayOfMonth + "." + month + "." + selected_year;
+                                    selectedDate = selected_year + "-" + month + "-" + dayOfMonth;
                                 }
                             });
 
@@ -205,7 +206,7 @@ public class OrderZoneFragment extends Fragment
                                 @Override
                                 public void onClick(View v)
                                 {
-                                    System.out.println(currentDate + " " + radioGroup.getCheckedRadioButtonId());
+                                    System.out.println(selectedDate + " " + radioGroup.getCheckedRadioButtonId());
                                     String ID = String.valueOf(radioGroup.getCheckedRadioButtonId());
 
                                     changeToHours(selectedDate,ID, serviceTime);
