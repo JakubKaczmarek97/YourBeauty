@@ -107,38 +107,35 @@ public class NailsFragment extends Fragment
 
                             for (int i = 0; i < keys.length; i += 4)
                             {
-
                                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
                                         (LinearLayout.LayoutParams.MATCH_PARENT,
-                                        LinearLayout.LayoutParams.WRAP_CONTENT);
+                                                LinearLayout.LayoutParams.WRAP_CONTENT);
 
                                 Button btn = new Button(getActivity());
                                 EditText editText = new EditText(getActivity());
 
-                                btn.setText(parsedJson.get(keys[i + 1]));
-
-                                String eText = " " + parsedJson.get(keys[i + 2]) + "\n"
+                                final String bText = parsedJson.get(keys[i + 1]);                   //Name of Firm
+                                final String eText = " " + parsedJson.get(keys[i + 2]) + "\n"       //Address
                                         + parsedJson.get(keys[i + 3]);
+                                final String argument = parsedJson.get(keys[i]);                    //Firm ID
 
-                                editText.setText(eText);
-
+                                btn.setText(bText);
                                 btn.setBackgroundResource(R.drawable.gradient_1);
                                 btn.setTextColor(Color.rgb(255,255,255));
+                                btn.setGravity(Gravity.CENTER);
+
                                 editText.setBackgroundColor(Color.rgb(230,230,230));
                                 editText.setEnabled(false);
                                 editText.setTextColor(Color.rgb(0,0,0));
-
-                                btn.setGravity(Gravity.CENTER);
+                                editText.setText(eText);
                                 editText.setGravity(Gravity.CENTER);
-
-                                final String argument = parsedJson.get(keys[i]);
 
                                 btn.setOnClickListener(new View.OnClickListener()
                                 {
                                     @Override
                                     public void onClick(View v)
                                     {
-                                        changeFragment(argument);
+                                        changeFragment(argument, bText, eText);
                                     }
                                 });
 
@@ -162,12 +159,14 @@ public class NailsFragment extends Fragment
         }
     }
 
-    private void changeFragment(String message)
+    private void changeFragment(String ID, String name, String data)
     {
         ServicesFragment servicesFragment = new ServicesFragment();
 
         Bundle args = new Bundle();
-        args.putString("YourKey", message);
+        args.putString("FirmID", ID);
+        args.putString("FirmName", name);
+        args.putString("FirmData", data);
         servicesFragment.setArguments(args);
 
         FragmentTransaction transaction = (Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
