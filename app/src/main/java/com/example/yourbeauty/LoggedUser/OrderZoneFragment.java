@@ -303,6 +303,13 @@ public class OrderZoneFragment extends Fragment
         args.putString("DateVisit", dateVisit);
         args.putString("ID_Worker", idWorker);
         args.putString("TimeOfService", timeOfService);
+
+        String firm = firmName + "\n" + firmData;
+        String service = serviceName + "\n" + serviceData;
+
+        args.putString("FirmData", firm);
+        args.putString("ServiceData", service);
+
         hoursFragment.setArguments(args);
 
         FragmentTransaction transaction = (Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();

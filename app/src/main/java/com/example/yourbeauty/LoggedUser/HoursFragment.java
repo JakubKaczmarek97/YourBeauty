@@ -15,6 +15,7 @@ import android.widget.RadioGroup;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.yourbeauty.JsonParser;
 import com.example.yourbeauty.R;
@@ -36,6 +37,10 @@ public class HoursFragment extends Fragment
     private String dateVisit;
     private String workerID;
 
+    private String firmData;
+    private String serviceData;
+    private String selectedHour;
+
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -43,6 +48,10 @@ public class HoursFragment extends Fragment
         timeOfService = Objects.requireNonNull(getArguments()).getString("TimeOfService");
         dateVisit = Objects.requireNonNull(getArguments()).getString("DateVisit");
         workerID = Objects.requireNonNull(getArguments()).getString("ID_Worker");
+
+        //Firm and service data to SummaryFragment
+        firmData = Objects.requireNonNull(getArguments()).getString("FirmData");
+        serviceData = Objects.requireNonNull(getArguments()).getString("ServiceData");
 
         new HoursFragment.ListAllHours().execute();
 
@@ -119,7 +128,6 @@ public class HoursFragment extends Fragment
                         }
                         else
                         {
-
                             next.setEnabled(false);
                             next.setTextColor(Color.rgb(150,150,150));
 
@@ -141,15 +149,19 @@ public class HoursFragment extends Fragment
                                 radioGroup.addView(rb);
                             }
 
+
+
                             radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
                             {
                                 @Override
-                                public void onCheckedChanged(RadioGroup radioGroup, int i)
+                                public void onCheckedChanged(RadioGroup radioGroup, int checkedID)
                                 {
-                                    if(radioGroup.getCheckedRadioButtonId() != -1)
+                                    if(checkedID != -1)
                                     {
                                         next.setEnabled(true);
                                         next.setTextColor(Color.rgb(0,0,0));
+                                        RadioButton radioButton = view.findViewById(checkedID);
+                                        selectedHour = radioButton.getText().toString();
                                     }
                                 }
                             });
@@ -159,14 +171,11 @@ public class HoursFragment extends Fragment
                                 @Override
                                 public void onClick(View v)
                                 {
-
-
-                                    //if(next.isEnabled())
-                                       //TODO: changeToSummary
+                                    if(next.isEnabled())
+                                       changeFragment();
                                 }
                             });
                         }
-
                     }
                 });
 
@@ -180,5 +189,21 @@ public class HoursFragment extends Fragment
         {
             pDialog.dismiss();
         }
+    }
+
+    private void changeFragment()
+    {
+        SummaryFragment summaryFragment = new SummaryFragment();
+
+        Bundle args = new Bundle();
+        args.putString("FirmData", firmData);
+        args.putString("ServiceData", serviceData);
+        args.putString("SelectedHour", selectedHour);
+
+        summaryFragment.setArguments(args);
+
+        FragmentTransaction transaction = (Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+        transaction.replace(R.id.fragment_hours, summaryFragment);
+        transaction.addToBackStack(null).commit();
     }
 }
