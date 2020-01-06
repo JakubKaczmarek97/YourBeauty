@@ -21,7 +21,7 @@
     <string name="menu_signup">Zarejestruj</string>
     <string name="my_orders">Moje zamówienia</string>
     <string name="my_profile">Mój profil</string>
-    <string name="nails_frag">Manikiurzy:</string>
+    <string name="nails_frag">Manikiurzyści:</string>
     <string name="next_button">DALEJ</string>
     <string name="no_barbers">Nie znaleziono fryzjerów w bazie danych</string>
     <string name="no_beauticians">Nie znaleziono kosmetyczek w bazie danych</string>
@@ -54,7 +54,7 @@
     <string name="wait_sign_in">Proszę czekać na zalogowanie…</string>
     <string name="wait_sign_up">Proszę czekać na zarejestrowanie…</string>
     <string name="wait_workers">Proszę czekać na listę wszystkich pracowników…</string>
-    <string name="welcome">Witamy w strefie urody. \n  Znajdź usługę, której szukasz.</string>
+    <string name="welcome">Witamy w strefie piękna. \n  Znajdź usługę, której szukasz.</string>
     <string name="hours">"Dostępne godziny: "</string>
     <string name="wait_hours">Proszę czekać na listę dostępnych godzin…</string>
     <string name="no_hours">Brak dostępnych godzin usług</string>
