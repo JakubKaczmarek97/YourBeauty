@@ -60,4 +60,10 @@
     <string name="no_hours">Brak dostępnych godzin usług</string>
     <string name="summary">Podsumowanie zamówienia:</string>
     <string name="profile">"Mój profil: "</string>
+    <string name="userBirth">"Data urodzin: "</string>
+    <string name="userName">"Imię: "</string>
+    <string name="userName2">"Drugie Imię: "</string>
+    <string name="userSurname">"Nazwisko: "</string>
+    <string name="userAccountNumber">"Numer konta: "</string>
+    <string name="userGender">"Płeć: "</string>
 </resources>
