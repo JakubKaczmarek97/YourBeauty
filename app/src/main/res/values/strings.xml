@@ -99,4 +99,12 @@
     <!-- Summary Layout -->
     <string name="summary">Order summary: </string>
 
+    <!-- My Profile Layout -->
+    <string name="profile">My Profile: </string>
+    <string name="userName">Name: </string>
+    <string name="userName2">Second Name: </string>
+    <string name="userSurname">Surname: </string>
+    <string name="userBirth">Date Of Birth: </string>
+
+
 </resources>
