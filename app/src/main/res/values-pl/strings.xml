@@ -67,4 +67,6 @@
     <string name="userAccountNumber">"Numer konta: "</string>
     <string name="userGender">"Płeć: "</string>
     <string name="wait_profile">Proszę czekać na listę danych użytkownika...</string>
+    <string name="btn_without_pay">Zamów bez zapłaty z góry</string>
+    <string name="btn_with_pay">Zamów, płacąc z góry</string>
 </resources>

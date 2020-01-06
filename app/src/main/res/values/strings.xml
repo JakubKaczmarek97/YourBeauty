@@ -101,6 +101,8 @@
 
     <!-- Summary Layout -->
     <string name="summary">Order summary: </string>
+    <string name="btn_without_pay">Order without pay in advance</string>
+    <string name="btn_with_pay">Order with pay in advance</string>
 
     <!-- My Profile Layout -->
     <string name="profile">My Profile: </string>

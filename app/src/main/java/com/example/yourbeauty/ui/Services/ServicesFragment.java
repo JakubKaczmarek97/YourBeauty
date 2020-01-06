@@ -35,8 +35,8 @@ public class ServicesFragment extends Fragment
 {
     private ProgressDialog pDialog;
     private View view;
-    private String selectedFirm;
 
+    private String selectedFirm;
     private String firmName;
     private String firmData;
 

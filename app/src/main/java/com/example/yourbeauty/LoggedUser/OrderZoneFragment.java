@@ -309,6 +309,7 @@ public class OrderZoneFragment extends Fragment
 
         args.putString("FirmData", firm);
         args.putString("ServiceData", service);
+        args.putString("ID_Service", selectedService);
 
         hoursFragment.setArguments(args);
 

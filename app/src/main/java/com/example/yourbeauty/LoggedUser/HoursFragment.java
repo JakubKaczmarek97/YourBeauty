@@ -40,6 +40,7 @@ public class HoursFragment extends Fragment
     private String firmData;
     private String serviceData;
     private String selectedHour;
+    private String serviceID;
 
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -52,6 +53,7 @@ public class HoursFragment extends Fragment
         //Firm and service data to SummaryFragment
         firmData = Objects.requireNonNull(getArguments()).getString("FirmData");
         serviceData = Objects.requireNonNull(getArguments()).getString("ServiceData");
+        serviceID = Objects.requireNonNull(getArguments()).getString("ID_Service");
 
         new HoursFragment.ListAllHours().execute();
 
@@ -64,7 +66,7 @@ public class HoursFragment extends Fragment
         protected void onPreExecute()
         {
             super.onPreExecute();
-             pDialog = new ProgressDialog(getActivity());
+            pDialog = new ProgressDialog(getActivity());
             pDialog.setMessage(getResources().getString(R.string.wait_hours));
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -149,8 +151,6 @@ public class HoursFragment extends Fragment
                                 radioGroup.addView(rb);
                             }
 
-
-
                             radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
                             {
                                 @Override
@@ -199,6 +199,9 @@ public class HoursFragment extends Fragment
         args.putString("FirmData", firmData);
         args.putString("ServiceData", serviceData);
         args.putString("SelectedHour", selectedHour);
+        args.putString("ServiceID", serviceID);
+        args.putString("DateVisit", dateVisit);
+        args.putString("WorkerID", workerID);
 
         summaryFragment.setArguments(args);
 

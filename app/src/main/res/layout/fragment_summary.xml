@@ -36,15 +36,25 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/btnNext_Hours"
+                android:id="@+id/btn_Without_Pay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:layout_marginEnd="32dp"
                 android:backgroundTint="#B8ECF8"
-                android:text="@string/next_button"
+                android:text="@string/btn_without_pay"
                 android:fontFamily="@font/oregano"
-                android:layout_gravity="end"
+                android:layout_gravity="center"
+                android:textColor="#000000"/>
+
+            <Button
+                android:id="@+id/btn_With_Pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="#B8ECF8"
+                android:text="@string/btn_with_pay"
+                android:fontFamily="@font/oregano"
+                android:layout_gravity="center"
                 android:textColor="#000000"/>
 
         </LinearLayout>
