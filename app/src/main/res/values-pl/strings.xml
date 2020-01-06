@@ -66,4 +66,5 @@
     <string name="userSurname">"Nazwisko: "</string>
     <string name="userAccountNumber">"Numer konta: "</string>
     <string name="userGender">"Płeć: "</string>
+    <string name="wait_profile">Proszę czekać na listę danych użytkownika...</string>
 </resources>

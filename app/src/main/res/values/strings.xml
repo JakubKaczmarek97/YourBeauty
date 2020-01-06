@@ -59,6 +59,9 @@
     <string name="wait_hours">Please wait for list all available hours…</string>
     <string name="no_hours">No hours available</string>
 
+    <!-- My Profile Fragment -->
+    <string name="wait_profile">Please wait for list user data…</string>
+
     <!-- LAYOUTS -->
     <string name="barber_frag">Barbers:</string>
     <string name="beauty_frag">Beauticians:</string>

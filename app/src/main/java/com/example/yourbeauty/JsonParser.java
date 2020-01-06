@@ -205,4 +205,56 @@ public class JsonParser
         }
         return map;
     }
+
+    public LinkedHashMap<String, String> parseUserProfile(String p) throws Exception
+    {
+        json = p;
+        map = new LinkedHashMap<>();
+        try
+        {
+            jsonObject = new JSONObject(json);
+            validate = jsonObject.getInt("success");
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+
+        String key = "surname";
+        String value = jsonObject.getString(key);
+
+        map.put(key, value);
+
+        key = "name";
+        value = jsonObject.getString(key);
+
+        map.put(key, value);
+
+        key = "name2";
+        value = jsonObject.getString(key);
+
+        map.put(key, value);
+
+        key = "dateOfBirth";
+        value = jsonObject.getString(key);
+
+        map.put(key, value);
+
+        key = "gender";
+        value = jsonObject.getString(key);
+
+        map.put(key, value);
+
+        key = "email";
+        value = jsonObject.getString(key);
+
+        map.put(key, value);
+
+        key = "bankAccountNumber";
+        value = jsonObject.getString(key);
+
+        map.put(key, value);
+
+        return map;
+    }
 }
