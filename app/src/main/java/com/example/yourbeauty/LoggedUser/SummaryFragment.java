@@ -27,7 +27,7 @@ public class SummaryFragment extends Fragment
     private String workerID;
     private String serviceID;
     private String clientID;
-    private String payInAdvance = "false";
+    private String payInAdvance = "N";
 
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

@@ -62,6 +62,12 @@
     <!-- My Profile Fragment -->
     <string name="wait_profile">Please wait for list user data…</string>
 
+    <!--Make Order Fragment -->
+    <string name="wait_make">Please wait for make an order…</string>
+    <string name="order_error">Error in ordering visit \n Please go back and verify your order</string>
+    <string name="thank_order">Visit ordered. \n Thank you for making an order using YourBeauty!</string>
+    <string name="back_home">Back to Home Page</string>
+
     <!-- LAYOUTS -->
     <string name="barber_frag">Barbers:</string>
     <string name="beauty_frag">Beauticians:</string>
@@ -113,6 +119,5 @@
     <string name="userGender">Gender: </string>
     <string name="userMail" translatable="false">E-Mail: </string>
     <string name="userAccountNumber">Account Number: </string>
-
 
 </resources>
