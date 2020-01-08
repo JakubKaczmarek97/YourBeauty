@@ -257,4 +257,73 @@ public class JsonParser
 
         return map;
     }
+
+    public LinkedHashMap<String, String> parseOrders(String o) throws Exception
+    {
+        json = o;
+
+        System.out.println("JSON: " + json);
+        map = new LinkedHashMap<>();
+
+        try
+        {
+            jsonObject = new JSONObject(json);
+            validate = jsonObject.getInt("success");
+            amount = jsonObject.getInt("query_amount");
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+
+        for(int i=0; i<amount; i++)
+        {
+            String key = "nameService_" + i;
+            String value = jsonObject.getString(key);
+
+            map.put(key, value);
+
+            key = "name_" + i;
+            value = jsonObject.getString(key);
+
+            map.put(key, value);
+
+            key = "surname_" + i;
+            value = jsonObject.getString(key);
+
+            map.put(key, value);
+
+            key = "dateVisit_" + i;
+            value = jsonObject.getString(key);
+
+            map.put(key, value);
+
+            key = "hourVisit_" + i;
+            value = jsonObject.getString(key);
+
+            map.put(key, value);
+
+            key = "nameOfCompany_" + i;
+            value = jsonObject.getString(key);
+
+            map.put(key, value);
+
+            key = "city_" + i;
+            value = jsonObject.getString(key);
+
+            map.put(key, value);
+
+            key = "street_" + i;
+            value = jsonObject.getString(key);
+
+            map.put(key, value);
+
+            key = "payInAdvance_" + i;
+            value = jsonObject.getString(key);
+
+            map.put(key, value);
+        }
+
+        return map;
+    }
 }
