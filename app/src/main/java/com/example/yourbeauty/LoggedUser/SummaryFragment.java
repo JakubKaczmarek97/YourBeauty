@@ -45,7 +45,7 @@ public class SummaryFragment extends Fragment
         LinearLayout summary = view.findViewById(R.id.summary_linear);
 
         EditText editText = new EditText(getActivity());
-        editText.setText(firmData + "\n\n" + serviceData + "\n\n" + selectedHour);
+        editText.setText(firmData + "\n\n" + serviceData + "\n\n" + selectedDate + "\n" + selectedHour);
         editText.setTextColor(Color.rgb(255,255,255));
         editText.setEnabled(false);
         summary.addView(editText);
