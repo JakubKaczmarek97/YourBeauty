@@ -18,11 +18,18 @@ import com.google.android.material.navigation.NavigationView;
 public class UserActivity extends AppCompatActivity
 {
     private static String userId = "";
+    private static String userCity = "";
+
     private AppBarConfiguration mAppBarConfiguration;
 
     public static String getUserId()
     {
         return userId;
+    }
+
+    public static String getUserCity()
+    {
+        return userCity;
     }
 
     @Override
@@ -32,6 +39,7 @@ public class UserActivity extends AppCompatActivity
         setContentView(R.layout.activity_user);
 
         userId = getIntent().getStringExtra("USER_ID");
+        userCity = getIntent().getStringExtra("CITY_NAME");
 
         Toolbar toolbar = findViewById(R.id.toolbar_user);
         setSupportActionBar(toolbar);

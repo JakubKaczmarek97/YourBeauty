@@ -1,7 +1,6 @@
 package com.example.yourbeauty.ui.SignIn;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,9 +12,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.yourbeauty.JsonParser;
-import com.example.yourbeauty.LoggedUser.UserActivity;
+import com.example.yourbeauty.LoggedUser.UserCityFragment;
 import com.example.yourbeauty.R;
 
 import java.util.LinkedHashMap;
@@ -122,10 +122,24 @@ public class SignInFragment extends Fragment
             }
             else
             {
+                /*
                 Intent intent = new Intent(getActivity(), UserActivity.class);
                 intent.putExtra("USER_ID", userId);
                 startActivity(intent);
                 Objects.requireNonNull(getActivity()).finish();
+                 */
+
+                UserCityFragment userCityFragment = new UserCityFragment();
+
+                Bundle args = new Bundle();
+                args.putString("USER_ID", userId);
+
+                userCityFragment.setArguments(args);
+
+                FragmentTransaction transaction =
+                        Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                transaction.replace(R.id.fragment_sign_in, userCityFragment);
+                transaction.addToBackStack(null).commit();
             }
         }
     }

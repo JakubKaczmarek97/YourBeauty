@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:fillViewport="true"
     android:clickable="true"
-    android:focusable="true">
+    android:focusable="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#212432"
+    android:id="@+id/fragment_sign_in">
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#212432">
+        >
 
         <ImageView
             android:id="@+id/imageView2"
@@ -116,3 +122,4 @@
             app:layout_constraintTop_toBottomOf="@+id/plainPass" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
+</RelativeLayout>
