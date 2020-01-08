@@ -120,5 +120,6 @@
     <string name="userGender">Gender: </string>
     <string name="userMail" translatable="false">E-Mail: </string>
     <string name="userAccountNumber">Account Number: </string>
+    <string name="userCity">City: </string>
 
 </resources>
