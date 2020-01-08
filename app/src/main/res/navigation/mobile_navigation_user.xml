@@ -25,6 +25,12 @@
         tools:layout="@layout/fragment_my_orders"/>
 
     <fragment
+        android:id="@+id/nav_my_city"
+        android:name="com.example.yourbeauty.LoggedUser.ChangeCityFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_change_city"/>
+
+    <fragment
         android:id="@+id/nav_logout"
         android:name="com.example.yourbeauty.LoggedUser.LogoutFragment"
         android:label=" " />

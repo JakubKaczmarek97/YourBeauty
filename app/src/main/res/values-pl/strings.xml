@@ -73,4 +73,5 @@
     <string name="back_home">Powrót do Strony Głównej</string>
     <string name="order_error">Błąd w zamawianiu wizyty. Proszę wrócić i sprawdzić swoje zamówienie</string>
     <string name="thank_order">Wizyta zamówiona. Dziękujemy za złożenie zamówienia przy użyciu YourBeauty!</string>
+    <string name="my_city">Moje miasto</string>
 </resources>

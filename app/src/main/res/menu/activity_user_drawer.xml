@@ -22,6 +22,12 @@
         android:icon="@drawable/ic_orders"/>
 
     <item
+        android:id="@+id/nav_my_city"
+        android:title="@string/my_city"
+        android:icon="@drawable/ic_city"
+        />
+
+    <item
         android:id="@+id/nav_logout"
         android:icon="@drawable/ic_logout"
         android:title="@string/menu_logout" />
