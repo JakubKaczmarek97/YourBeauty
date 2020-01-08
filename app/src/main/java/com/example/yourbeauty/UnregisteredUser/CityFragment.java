@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.yourbeauty.R;
@@ -110,7 +111,8 @@ public class CityFragment extends Fragment
                 FragmentTransaction transaction =
                         Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
                 transaction.replace(R.id.fragment_home, homeFragment);
-                transaction.addToBackStack(null).commit();
+                transaction.commit();
+                Objects.requireNonNull(getFragmentManager()).popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 change = "changed";
                 break;
 
