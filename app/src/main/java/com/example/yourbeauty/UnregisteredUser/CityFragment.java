@@ -21,6 +21,7 @@ import com.example.yourbeauty.ui.Menu.DietFragment;
 import com.example.yourbeauty.ui.Menu.HairFragment;
 import com.example.yourbeauty.ui.Menu.MedicineFragment;
 import com.example.yourbeauty.ui.Menu.NailsFragment;
+import com.example.yourbeauty.ui.home.HomeFragment;
 
 import java.util.Objects;
 
@@ -28,7 +29,7 @@ public class CityFragment extends Fragment
 {
     private EditText editText;
     private Button saveButton;
-    private String change;
+    private String change = " ";
 
     private static final String SHARED_PREFS = "sharedPrefs";
     private String CITY_NAME = "city_name";
@@ -39,7 +40,10 @@ public class CityFragment extends Fragment
     {
         View view = inflater.inflate(R.layout.fragment_user_city, container, false);
 
-        change = Objects.requireNonNull(getArguments()).getString("CHANGE");
+        if(!change.equals("changed"))
+        {
+            change = Objects.requireNonNull(getArguments()).getString("CHANGE");
+        }
 
         editText = view.findViewById(R.id.editText);
         saveButton = view.findViewById(R.id.save_button);
@@ -100,13 +104,25 @@ public class CityFragment extends Fragment
     {
         switch(change)
         {
-            case "Hair":
-                HairFragment hairFragment = new HairFragment();
+            default:
+                HomeFragment homeFragment = new HomeFragment();
 
                 FragmentTransaction transaction =
                         Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                transaction.replace(R.id.fragment_home, homeFragment);
+                transaction.addToBackStack(null).commit();
+                change = "changed";
+                break;
+
+
+            case "Hair":
+                HairFragment hairFragment = new HairFragment();
+
+                transaction =
+                        Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
                 transaction.replace(R.id.fragment_home, hairFragment);
                 transaction.addToBackStack(null).commit();
+                change = "changed";
                 break;
 
             case "Barber":
@@ -116,6 +132,7 @@ public class CityFragment extends Fragment
                         Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
                 transaction.replace(R.id.fragment_home, barberFragment);
                 transaction.addToBackStack(null).commit();
+                change = "changed";
                 break;
 
             case "Beauty":
@@ -125,6 +142,7 @@ public class CityFragment extends Fragment
                         Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
                 transaction.replace(R.id.fragment_home, beautyFragment);
                 transaction.addToBackStack(null).commit();
+                change = "changed";
                 break;
 
             case "Medic":
@@ -134,6 +152,7 @@ public class CityFragment extends Fragment
                         Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
                 transaction.replace(R.id.fragment_home, medicineFragment);
                 transaction.addToBackStack(null).commit();
+                change = "changed";
                 break;
 
             case "Nails":
@@ -143,6 +162,7 @@ public class CityFragment extends Fragment
                         Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
                 transaction.replace(R.id.fragment_home, nailsFragment);
                 transaction.addToBackStack(null).commit();
+                change = "changed";
                 break;
 
             case "Diet":
@@ -152,6 +172,7 @@ public class CityFragment extends Fragment
                         Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
                 transaction.replace(R.id.fragment_home, dietFragment);
                 transaction.addToBackStack(null).commit();
+                change = "changed";
                 break;
         }
     }
