@@ -41,6 +41,8 @@ public class UserActivity extends AppCompatActivity
         userId = getIntent().getStringExtra("USER_ID");
         userCity = getIntent().getStringExtra("CITY_NAME");
 
+        System.out.println("CITY NAME: " + userCity);
+
         Toolbar toolbar = findViewById(R.id.toolbar_user);
         setSupportActionBar(toolbar);
 
@@ -100,6 +102,7 @@ public class UserActivity extends AppCompatActivity
     protected void onDestroy()
     {
         userId = "";
+        userCity = "";
         super.onDestroy();
     }
 }

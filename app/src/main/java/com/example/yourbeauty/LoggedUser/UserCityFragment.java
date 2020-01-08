@@ -26,8 +26,8 @@ public class UserCityFragment extends Fragment
     private Button saveButton;
 
     private static final String SHARED_PREFS = "sharedPrefs";
-    private static final String CITY_NAME = "city_name";
-    private static final String IS_SAVED = "is_saved";
+    private String CITY_NAME = "city_name";
+    private String IS_SAVED = "is_saved";
 
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -35,6 +35,9 @@ public class UserCityFragment extends Fragment
         View view = inflater.inflate(R.layout.fragment_user_city, container, false);
 
         userID = Objects.requireNonNull(getArguments()).getString("USER_ID");
+
+        IS_SAVED += userID;
+        CITY_NAME += userID;
 
         editText = view.findViewById(R.id.editText);
         saveButton = view.findViewById(R.id.save_button);
