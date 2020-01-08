@@ -1,4 +1,4 @@
-package com.example.yourbeauty.LoggedUser;
+package com.example.yourbeauty;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -14,7 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.yourbeauty.R;
+import com.example.yourbeauty.LoggedUser.UserActivity;
 
 import java.util.Objects;
 

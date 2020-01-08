@@ -18,6 +18,9 @@ public class LogoutFragment extends Fragment
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
+        UserActivity.setUserId("");
+        UserActivity.setUserCity("");
+
         Intent intent = new Intent(getActivity(), MainActivity.class);
         startActivity(intent);
         Objects.requireNonNull(getActivity()).finish();

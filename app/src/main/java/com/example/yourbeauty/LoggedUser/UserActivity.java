@@ -32,6 +32,16 @@ public class UserActivity extends AppCompatActivity
         return userCity;
     }
 
+    public static void setUserId(String userId)
+    {
+        UserActivity.userId = userId;
+    }
+
+    public static void setUserCity(String userCity)
+    {
+        UserActivity.userCity = userCity;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -96,13 +106,5 @@ public class UserActivity extends AppCompatActivity
         }
         else
             super.onBackPressed();
-    }
-
-    @Override
-    protected void onDestroy()
-    {
-        userId = "";
-        userCity = "";
-        super.onDestroy();
     }
 }

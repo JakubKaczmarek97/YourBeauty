@@ -11,7 +11,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.yourbeauty.LoggedUser.UserActivity;
 import com.example.yourbeauty.R;
+import com.example.yourbeauty.UnregisteredUser.CityFragment;
 import com.example.yourbeauty.ui.Menu.BarberFragment;
 import com.example.yourbeauty.ui.Menu.BeautyFragment;
 import com.example.yourbeauty.ui.Menu.DietFragment;
@@ -37,17 +39,37 @@ public class HomeFragment extends Fragment
         Button btnNails = view.findViewById(R.id.btnNails);
         Button btnDiet = view.findViewById(R.id.btnFruit);
 
+        final String userID = UserActivity.getUserId();
+
         btnHair.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                HairFragment hairFragment = new HairFragment();
+                if(!userID.equals(""))
+                {
+                    HairFragment hairFragment = new HairFragment();
 
-                FragmentTransaction transaction =
-                        Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
-                transaction.replace(R.id.fragment_home, hairFragment);
-                transaction.addToBackStack(null).commit();
+                    FragmentTransaction transaction =
+                            Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                    transaction.replace(R.id.fragment_home, hairFragment);
+                    transaction.addToBackStack(null).commit();
+                }
+                else
+                {
+                    CityFragment cityFragment = new CityFragment();
+
+                    Bundle args = new Bundle();
+                    args.putString("CHANGE", "Hair");
+
+                    cityFragment.setArguments(args);
+
+                    FragmentTransaction transaction =
+                            Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                    transaction.replace(R.id.fragment_home, cityFragment);
+                    transaction.addToBackStack(null).commit();
+                }
+
             }
         });
 
@@ -56,12 +78,29 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                BarberFragment barberFragment = new BarberFragment();
+                if(!userID.equals(""))
+                {
+                    BarberFragment barberFragment = new BarberFragment();
 
-                FragmentTransaction transaction =
-                        Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
-                transaction.replace(R.id.fragment_home, barberFragment);
-                transaction.addToBackStack(null).commit();
+                    FragmentTransaction transaction =
+                            Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                    transaction.replace(R.id.fragment_home, barberFragment);
+                    transaction.addToBackStack(null).commit();
+                }
+                else
+                {
+                    CityFragment cityFragment = new CityFragment();
+
+                    Bundle args = new Bundle();
+                    args.putString("CHANGE", "Barber");
+
+                    cityFragment.setArguments(args);
+
+                    FragmentTransaction transaction =
+                            Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                    transaction.replace(R.id.fragment_home, cityFragment);
+                    transaction.addToBackStack(null).commit();
+                }
             }
         });
 
@@ -70,12 +109,29 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                BeautyFragment beautyFragment = new BeautyFragment();
+                if(!userID.equals(""))
+                {
+                    BeautyFragment beautyFragment = new BeautyFragment();
 
-                FragmentTransaction transaction =
-                        Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
-                transaction.replace(R.id.fragment_home, beautyFragment);
-                transaction.addToBackStack(null).commit();
+                    FragmentTransaction transaction =
+                            Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                    transaction.replace(R.id.fragment_home, beautyFragment);
+                    transaction.addToBackStack(null).commit();
+                }
+                else
+                {
+                    CityFragment cityFragment = new CityFragment();
+
+                    Bundle args = new Bundle();
+                    args.putString("CHANGE", "Beauty");
+
+                    cityFragment.setArguments(args);
+
+                    FragmentTransaction transaction =
+                            Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                    transaction.replace(R.id.fragment_home, cityFragment);
+                    transaction.addToBackStack(null).commit();
+                }
             }
         });
 
@@ -84,12 +140,30 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                MedicineFragment medicineFragment = new MedicineFragment();
+                if(!userID.equals(""))
+                {
+                    MedicineFragment medicineFragment = new MedicineFragment();
 
-                FragmentTransaction transaction =
-                        Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
-                transaction.replace(R.id.fragment_home, medicineFragment);
-                transaction.addToBackStack(null).commit();
+                    FragmentTransaction transaction =
+                            Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                    transaction.replace(R.id.fragment_home, medicineFragment);
+                    transaction.addToBackStack(null).commit();
+                }
+                else
+                {
+                    CityFragment cityFragment = new CityFragment();
+
+                    Bundle args = new Bundle();
+                    args.putString("CHANGE", "Medic");
+
+                    cityFragment.setArguments(args);
+
+                    FragmentTransaction transaction =
+                            Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                    transaction.replace(R.id.fragment_home, cityFragment);
+                    transaction.addToBackStack(null).commit();
+                }
+
             }
         });
 
@@ -98,12 +172,29 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                NailsFragment nailsFragment = new NailsFragment();
+                if(!userID.equals(""))
+                {
+                    NailsFragment nailsFragment = new NailsFragment();
 
-                FragmentTransaction transaction =
-                        Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
-                transaction.replace(R.id.fragment_home, nailsFragment);
-                transaction.addToBackStack(null).commit();
+                    FragmentTransaction transaction =
+                            Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                    transaction.replace(R.id.fragment_home, nailsFragment);
+                    transaction.addToBackStack(null).commit();
+                }
+                else
+                {
+                    CityFragment cityFragment = new CityFragment();
+
+                    Bundle args = new Bundle();
+                    args.putString("CHANGE", "Nails");
+
+                    cityFragment.setArguments(args);
+
+                    FragmentTransaction transaction =
+                            Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                    transaction.replace(R.id.fragment_home, cityFragment);
+                    transaction.addToBackStack(null).commit();
+                }
             }
         });
 
@@ -112,12 +203,29 @@ public class HomeFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                DietFragment dietFragment = new DietFragment();
+                if(!userID.equals(""))
+                {
+                    DietFragment dietFragment = new DietFragment();
 
-                FragmentTransaction transaction =
-                        Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
-                transaction.replace(R.id.fragment_home, dietFragment);
-                transaction.addToBackStack(null).commit();
+                    FragmentTransaction transaction =
+                            Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                    transaction.replace(R.id.fragment_home, dietFragment);
+                    transaction.addToBackStack(null).commit();
+                }
+                else
+                {
+                    CityFragment cityFragment = new CityFragment();
+
+                    Bundle args = new Bundle();
+                    args.putString("CHANGE", "Diet");
+
+                    cityFragment.setArguments(args);
+
+                    FragmentTransaction transaction =
+                            Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                    transaction.replace(R.id.fragment_home, cityFragment);
+                    transaction.addToBackStack(null).commit();
+                }
             }
         });
 

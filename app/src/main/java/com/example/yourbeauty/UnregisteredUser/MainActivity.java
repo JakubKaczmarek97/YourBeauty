@@ -19,11 +19,20 @@ public class MainActivity extends AppCompatActivity
 {
     private AppBarConfiguration mAppBarConfiguration;
 
+    private static String userCity = "";
+
+    public static String getUserCity()
+    {
+        return userCity;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        userCity = getIntent().getStringExtra("CITY_NAME");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
