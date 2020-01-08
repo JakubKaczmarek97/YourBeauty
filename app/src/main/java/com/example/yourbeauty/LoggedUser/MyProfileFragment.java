@@ -35,7 +35,6 @@ public class MyProfileFragment extends Fragment
     private String userGender;
     private String userMail;
     private String userAccountNumber;
-    private String userCity;
 
     private EditText showName;
     private EditText showSecondName;
@@ -44,7 +43,6 @@ public class MyProfileFragment extends Fragment
     private EditText showGender;
     private EditText showMail;
     private EditText showAccountNumber;
-    private EditText showCity;
 
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -58,7 +56,6 @@ public class MyProfileFragment extends Fragment
         showGender = view.findViewById(R.id.showGender);
         showMail = view.findViewById(R.id.showMail);
         showAccountNumber = view.findViewById(R.id.showNumber);
-        showCity = view.findViewById(R.id.showCity);
 
         new MyProfileFragment.ListUserProfile().execute();
 
@@ -114,8 +111,6 @@ public class MyProfileFragment extends Fragment
                 userMail = parsedUserProfile.get(keys[5]);
                 userAccountNumber = parsedUserProfile.get(keys[6]);
 
-                userCity = UserActivity.getUserCity();
-
                 Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable()
                 {
                     @Override
@@ -128,7 +123,6 @@ public class MyProfileFragment extends Fragment
                         showGender.setText(userGender);
                         showMail.setText(userMail);
                         showAccountNumber.setText(userAccountNumber);
-                        showCity.setText(userCity);
 
                         showName.setTextColor(Color.rgb(255,255,255));
                         showSecondName.setTextColor(Color.rgb(255,255,255));
@@ -137,7 +131,6 @@ public class MyProfileFragment extends Fragment
                         showGender.setTextColor(Color.rgb(255,255,255));
                         showMail.setTextColor(Color.rgb(255,255,255));
                         showAccountNumber.setTextColor(Color.rgb(255,255,255));
-                        showCity.setTextColor(Color.rgb(255,255,255));
                     }
                 });
 
