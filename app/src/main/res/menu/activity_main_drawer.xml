@@ -10,9 +10,11 @@
             android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_signin"
+            android:icon="@drawable/ic_sign_in"
             android:title="@string/menu_signin" />
         <item
             android:id="@+id/nav_signup"
+            android:icon="@drawable/ic_register"
             android:title="@string/menu_signup" />
 
         <item
