@@ -13,10 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.yourbeauty.LoggedUser.UserActivity;
+import com.example.yourbeauty.UnregisteredUser.MainActivity;
 
 public class ChangeCityFragment extends Fragment
 {
-    private static final String SHARED_PREFS = "sharedPrefs";
     private String CITY_NAME = "city_name";
 
     private String userCity;
@@ -49,6 +49,7 @@ public class ChangeCityFragment extends Fragment
         {
             SharedPrefs.saveData(getActivity(),CITY_NAME, editText.getText().toString());
             UserActivity.setUserCity(editText.getText().toString());
+            MainActivity.setUserCity(editText.getText().toString());
 
             Toast.makeText(getActivity(),"Data saved", Toast.LENGTH_SHORT).show();
         }

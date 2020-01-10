@@ -59,6 +59,8 @@ public class CityFragment extends Fragment
             SharedPrefs.saveData(getActivity(),CITY_NAME, editText.getText().toString());
             SharedPrefs.saveData(getActivity(),IS_SAVED,"true");
 
+            MainActivity.setUserCity(editText.getText().toString());
+
             Toast.makeText(getActivity(),"Data saved", Toast.LENGTH_SHORT).show();
         }
         else
@@ -72,6 +74,8 @@ public class CityFragment extends Fragment
     {
         String text = SharedPrefs.loadData(getActivity(), IS_SAVED);
         String userCity = SharedPrefs.loadData(getActivity(),CITY_NAME);
+
+        MainActivity.setUserCity(userCity);
 
         if(!Objects.requireNonNull(text).equals("true"))
         {

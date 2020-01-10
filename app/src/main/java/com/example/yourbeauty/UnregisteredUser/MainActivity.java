@@ -26,6 +26,10 @@ public class MainActivity extends AppCompatActivity
         return userCity;
     }
 
+    public static void setUserCity(String userCity) {
+        MainActivity.userCity = userCity;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

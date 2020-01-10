@@ -19,6 +19,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.yourbeauty.JsonParser;
 import com.example.yourbeauty.LoggedUser.UserActivity;
 import com.example.yourbeauty.R;
+import com.example.yourbeauty.SharedPrefs;
+import com.example.yourbeauty.UnregisteredUser.MainActivity;
 import com.example.yourbeauty.ui.Services.ServicesFragment;
 
 import java.util.LinkedHashMap;
@@ -61,11 +63,24 @@ public class MedicineFragment extends Fragment
         @Override
         protected String doInBackground(String... strings)
         {
-            OkHttpClient client = new OkHttpClient();
+            String userID = UserActivity.getUserId();
+            String isLogged = SharedPrefs.loadData(getActivity(), "is_logged_in" + userID);
 
-            RequestBody postData = new FormBody.Builder()
-                    .add("city", UserActivity.getUserCity())
-                    .build();
+            OkHttpClient client = new OkHttpClient();
+            RequestBody postData;
+
+            if(isLogged.equals("true"))
+            {
+                postData = new FormBody.Builder()
+                        .add("city", UserActivity.getUserCity())
+                        .build();
+            }
+            else
+            {
+                postData = new FormBody.Builder()
+                        .add("city", MainActivity.getUserCity())
+                        .build();
+            }
 
             String url_estetic = "http://10.0.2.2/bayb/display_category_estetic.php";
             Request request = new Request.Builder()

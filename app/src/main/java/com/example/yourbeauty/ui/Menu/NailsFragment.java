@@ -19,6 +19,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.yourbeauty.JsonParser;
 import com.example.yourbeauty.LoggedUser.UserActivity;
 import com.example.yourbeauty.R;
+import com.example.yourbeauty.SharedPrefs;
+import com.example.yourbeauty.UnregisteredUser.MainActivity;
 import com.example.yourbeauty.ui.Services.ServicesFragment;
 
 import java.util.LinkedHashMap;
@@ -60,12 +62,24 @@ public class NailsFragment extends Fragment
         @Override
         protected String doInBackground(String... strings)
         {
+            String userID = UserActivity.getUserId();
+            String isLogged = SharedPrefs.loadData(getActivity(), "is_logged_in" + userID);
+
             OkHttpClient client = new OkHttpClient();
+            RequestBody postData;
 
-            RequestBody postData = new FormBody.Builder()
-                    .add("city", UserActivity.getUserCity())
-                    .build();
-
+            if(isLogged.equals("true"))
+            {
+                postData = new FormBody.Builder()
+                        .add("city", UserActivity.getUserCity())
+                        .build();
+            }
+            else
+            {
+                postData = new FormBody.Builder()
+                        .add("city", MainActivity.getUserCity())
+                        .build();
+            }
             String url_nails = "http://10.0.2.2/bayb/display_category_nails.php";
             Request request = new Request.Builder()
                     .url(url_nails)
