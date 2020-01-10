@@ -31,7 +31,7 @@ public class SplashActivity extends AppCompatActivity
 
         final Intent intent;
 
-        if(noLogout.equals("Nobody"))
+        if(noLogout.equals("Nobody") || noLogout.equals(""))
         {
             intent = new Intent(this, MainActivity.class);
         }
