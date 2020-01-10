@@ -2,6 +2,7 @@ package com.example.yourbeauty.ui.Menu;
 
 import android.app.ProgressDialog;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -106,15 +108,19 @@ public class NailsFragment extends Fragment
                     {
                         LinearLayout linear = view.findViewById(R.id.fragment_nails);
 
-                        if(parsedJson.isEmpty()) {
-                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
-                                    (LinearLayout.LayoutParams.MATCH_PARENT,
-                                    LinearLayout.LayoutParams.WRAP_CONTENT);
+                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
+                                (LinearLayout.LayoutParams.MATCH_PARENT,
+                                        LinearLayout.LayoutParams.WRAP_CONTENT);
 
+                        Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.oregano);
+
+                        if(parsedJson.isEmpty())
+                        {
                             Button btn = new Button(getActivity());
                             btn.setText(R.string.no_manicurists);
                             btn.setBackgroundResource(R.drawable.gradient_1);
                             btn.setTextColor(Color.rgb(255,255,255));
+                            btn.setTypeface(typeface);
 
                             params.setMargins(10, 3, 10, 3);
                             linear.addView(btn, params);
@@ -123,10 +129,6 @@ public class NailsFragment extends Fragment
 
                             for (int i = 0; i < keys.length; i += 4)
                             {
-                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
-                                        (LinearLayout.LayoutParams.MATCH_PARENT,
-                                                LinearLayout.LayoutParams.WRAP_CONTENT);
-
                                 Button btn = new Button(getActivity());
                                 EditText editText = new EditText(getActivity());
 
@@ -139,12 +141,14 @@ public class NailsFragment extends Fragment
                                 btn.setBackgroundResource(R.drawable.gradient_1);
                                 btn.setTextColor(Color.rgb(255,255,255));
                                 btn.setGravity(Gravity.CENTER);
+                                btn.setTypeface(typeface);
 
                                 editText.setBackgroundColor(Color.rgb(230,230,230));
                                 editText.setEnabled(false);
                                 editText.setTextColor(Color.rgb(0,0,0));
                                 editText.setText(eText);
                                 editText.setGravity(Gravity.CENTER);
+                                editText.setTypeface(typeface);
 
                                 btn.setOnClickListener(new View.OnClickListener()
                                 {
@@ -164,7 +168,7 @@ public class NailsFragment extends Fragment
                 });
             } catch (Exception e)
             {
-                System.out.println("Błąd: " + e);
+                System.out.println("Error: " + e);
             }
             return null;
         }

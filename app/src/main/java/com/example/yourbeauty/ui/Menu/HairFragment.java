@@ -2,6 +2,7 @@ package com.example.yourbeauty.ui.Menu;
 
 import android.app.ProgressDialog;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -64,22 +66,27 @@ public class HairFragment extends Fragment
         {
             String userID = UserActivity.getUserId();
             String isLogged = SharedPrefs.loadData(getActivity(), "is_logged_in" + userID);
+            String userCity;
 
             OkHttpClient client = new OkHttpClient();
             RequestBody postData;
 
             if(isLogged.equals("true"))
             {
-                postData = new FormBody.Builder()
-                        .add("city", UserActivity.getUserCity())
-                        .build();
+                System.out.println("IS_LOGGED = TRUE");
+                userCity = UserActivity.getUserCity();
             }
             else
             {
-                postData = new FormBody.Builder()
-                        .add("city", MainActivity.getUserCity())
-                        .build();
+                System.out.println("IS_LOGGED = FALSE");
+                userCity = MainActivity.getUserCity();
             }
+
+            System.out.println("User_City: " + userCity);
+
+            postData = new FormBody.Builder()
+                    .add("city", userCity)
+                    .build();
 
             String url_hairdressers = "http://10.0.2.2/bayb/display_category_hairdressers.php";
             Request request = new Request.Builder()
@@ -107,16 +114,19 @@ public class HairFragment extends Fragment
                     {
                         LinearLayout linear = view.findViewById(R.id.fragment_hair);
 
+                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
+                                (LinearLayout.LayoutParams.MATCH_PARENT,
+                                        LinearLayout.LayoutParams.WRAP_CONTENT);
+
+                        Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.oregano);
+
                         if(parsedJson.isEmpty())
                         {
-                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
-                                    (LinearLayout.LayoutParams.MATCH_PARENT,
-                                    LinearLayout.LayoutParams.WRAP_CONTENT);
-
                             Button btn = new Button(getActivity());
                             btn.setText(R.string.no_hairdressers);
                             btn.setBackgroundResource(R.drawable.gradient_1);
                             btn.setTextColor(Color.rgb(255,255,255));
+                            btn.setTypeface(typeface);
 
                             params.setMargins(10, 3, 10, 3);
                             linear.addView(btn, params);
@@ -125,10 +135,6 @@ public class HairFragment extends Fragment
 
                             for (int i = 0; i < keys.length; i += 4)
                             {
-                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
-                                        (LinearLayout.LayoutParams.MATCH_PARENT,
-                                        LinearLayout.LayoutParams.WRAP_CONTENT);
-
                                 Button btn = new Button(getActivity());
                                 EditText editText = new EditText(getActivity());
 
@@ -141,12 +147,14 @@ public class HairFragment extends Fragment
                                 btn.setBackgroundResource(R.drawable.gradient_1);
                                 btn.setTextColor(Color.rgb(255,255,255));
                                 btn.setGravity(Gravity.CENTER);
+                                btn.setTypeface(typeface);
 
                                 editText.setBackgroundColor(Color.rgb(230,230,230));
                                 editText.setEnabled(false);
                                 editText.setTextColor(Color.rgb(0,0,0));
                                 editText.setText(eText);
                                 editText.setGravity(Gravity.CENTER);
+                                editText.setTypeface(typeface);
 
                                 btn.setOnClickListener(new View.OnClickListener()
                                 {
@@ -166,7 +174,7 @@ public class HairFragment extends Fragment
                 });
             } catch (Exception e)
             {
-                System.out.println("Błąd: " + e);
+                System.out.println("Error: " + e);
             }
             return null;
         }

@@ -14,6 +14,8 @@ import com.example.yourbeauty.UnregisteredUser.MainActivity;
 
 public class SplashActivity extends AppCompatActivity
 {
+    private String CITY_NAME = "city_name";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
@@ -27,8 +29,6 @@ public class SplashActivity extends AppCompatActivity
 
         String noLogout = SharedPrefs.loadData(this,"who_is_logged");
 
-        System.out.println("SPLASH: " + noLogout);
-
         final Intent intent;
 
         if(noLogout.equals("Nobody") || noLogout.equals(""))
@@ -39,9 +39,10 @@ public class SplashActivity extends AppCompatActivity
         {
             intent = new Intent(this, UserActivity.class);
 
-            String city_name = SharedPrefs.loadData(this,"city_name" + noLogout);
-            intent.putExtra("USER_ID", noLogout);
-            intent.putExtra("USER_CITY", city_name);
+            CITY_NAME += noLogout;
+
+            String city_name = SharedPrefs.loadData(this,CITY_NAME);
+
             UserActivity.setUserId(noLogout);
             UserActivity.setUserCity(city_name);
         }

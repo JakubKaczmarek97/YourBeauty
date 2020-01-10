@@ -17,8 +17,8 @@ import com.google.android.material.navigation.NavigationView;
 
 public class UserActivity extends AppCompatActivity
 {
-    private static String userId = "";
-    private static String userCity = "";
+    private static String userId;
+    private static String userCity;
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -47,9 +47,6 @@ public class UserActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
-
-        userId = getIntent().getStringExtra("USER_ID");
-        userCity = getIntent().getStringExtra("CITY_NAME");
 
         Toolbar toolbar = findViewById(R.id.toolbar_user);
         setSupportActionBar(toolbar);
