@@ -4,8 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:id="@+id/activity_splash"
+    android:background="@drawable/gradient_1"
     android:gravity="center">
 
     <ImageView
