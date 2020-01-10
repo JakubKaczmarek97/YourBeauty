@@ -18,6 +18,8 @@ import androidx.fragment.app.Fragment;
 import com.example.yourbeauty.JsonParser;
 import com.example.yourbeauty.R;
 
+import org.json.JSONObject;
+
 import java.util.LinkedHashMap;
 import java.util.Objects;
 
@@ -62,6 +64,8 @@ public class MyProfileFragment extends Fragment
         showGender = view.findViewById(R.id.showGender);
         showMail = view.findViewById(R.id.showMail);
         showAccountNumber = view.findViewById(R.id.showNumber);
+
+        btn = view.findViewById(R.id.profile_edit_button);
 
         new MyProfileFragment.ListUserProfile().execute();
 
@@ -157,14 +161,39 @@ public class MyProfileFragment extends Fragment
                         showMail.setTypeface(typeface);
                         showAccountNumber.setTypeface(typeface);
 
-                        btn = view.findViewById(R.id.profile_edit_button);
-
                         btn.setOnClickListener(new View.OnClickListener()
                         {
                             @Override
                             public void onClick(View view)
                             {
-                                updateUserProfile();
+                                showName.setEnabled(true);
+                                showSecondName.setEnabled(true);
+                                showSurname.setEnabled(true);
+                                showBirth.setEnabled(true);
+                                showGender.setEnabled(true);
+                                showMail.setEnabled(true);
+                                showAccountNumber.setEnabled(true);
+
+                                btn.setText("Update");
+
+                                btn.setOnClickListener(new View.OnClickListener()
+                                {
+                                    @Override
+                                    public void onClick(View view)
+                                    {
+                                        showName.setEnabled(false);
+                                        showSecondName.setEnabled(false);
+                                        showSurname.setEnabled(false);
+                                        showBirth.setEnabled(false);
+                                        showGender.setEnabled(false);
+                                        showMail.setEnabled(false);
+                                        showAccountNumber.setEnabled(false);
+
+                                        new MyProfileFragment.UpdateUserProfile().execute();
+
+                                        btn.setText("Edit");
+                                    }
+                                });
                             }
                         });
                     }
@@ -182,16 +211,80 @@ public class MyProfileFragment extends Fragment
         {
             pDialog.dismiss();
         }
+
     }
 
-    public void updateUserProfile()
+    class UpdateUserProfile extends AsyncTask<String,String,String>
     {
-        showName.setEnabled(true);
-        showSecondName.setEnabled(true);
-        showSurname.setEnabled(true);
-        showBirth.setEnabled(true);
-        showGender.setEnabled(true);
-        showMail.setEnabled(true);
-        showAccountNumber.setEnabled(true);
+        @Override
+        protected void onPreExecute()
+        {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(getActivity());
+            pDialog.setMessage("Please wait to update...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... strings)
+        {
+            String Name = showName.getText().toString();
+            String SecondName = showSecondName.getText().toString();
+            String Surname = showSurname.getText().toString();
+            String Birth = showBirth.getText().toString();
+            String Gender = showGender.getText().toString();
+            String Mail = showMail.getText().toString();
+            String AccountNumber = showAccountNumber.getText().toString();
+
+            String ID = UserActivity.getUserId();
+
+            OkHttpClient client = new OkHttpClient();
+
+            RequestBody postData = new FormBody.Builder()
+                    .add("id", ID)
+                    .add("surname", Surname)
+                    .add("name", Name)
+                    .add("name2", SecondName)
+                    .add("dateOfBirth", Birth)
+                    .add("gender", Gender)
+                    .add("email", Mail)
+                    .add("bankAccountNumber",AccountNumber)
+                    .build();
+
+            String url_update = "http://10.0.2.2/bayb/update_user_profile.php";
+            Request request = new Request.Builder()
+                    .url(url_update)
+                    .post(postData)
+                    .build();
+
+            try
+            {
+                Response response = client.newCall(request).execute();
+                String result = Objects.requireNonNull(response.body()).string();
+
+                int validate;
+                String message;
+
+                JSONObject jsonObject = new JSONObject(result);
+                validate = jsonObject.getInt("success");
+                message = jsonObject.getString("message");
+
+                System.out.println("SUCCESS: " + validate + " Message: " + message);
+
+            }
+            catch (Exception e) {
+                System.out.println("Error: " + e);
+            }
+
+            return null;
+
+        }
+
+        protected void onPostExecute(String s)
+        {
+            pDialog.dismiss();
+        }
     }
 }
