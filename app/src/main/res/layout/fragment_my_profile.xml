@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -8,15 +9,20 @@
     android:fitsSystemWindows="true"
     android:id="@+id/fragment_my_profile">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#212432">
+            android:background="#212432"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/profile_title"
@@ -29,184 +35,218 @@
                 android:text="@string/my_profile"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                android:layout_gravity="center_horizontal"/>
 
-            <TextView
-                android:id="@+id/userName"
-                android:layout_width="wrap_content"
+            <TableRow
+                android:id="@+id/Row1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/oregano"
-                android:text="@string/userName"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toStartOf="@+id/showName"
-                app:layout_constraintHorizontal_bias="0.433"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profile_title" />
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/profile_title">
 
-            <EditText
-                android:id="@+id/showName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:textColor="#FFFFFF"
-                android:enabled="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profile_title"
-                tools:ignore="Autofill,LabelFor" />
+                <TextView
+                    android:id="@+id/userName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/oregano"
+                    android:text="@string/userName"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp" />
 
-            <TextView
-                android:id="@+id/userSecondName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/oregano"
-                android:text="@string/userName2"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toStartOf="@+id/plainSecondName"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/userName" />
+                <EditText
+                    android:id="@+id/showName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:inputType="textPersonName"
+                    android:textColor="#FFFFFF"
+                    android:textAlignment="textEnd"
+                    tools:ignore="Autofill,LabelFor" />
 
-            <EditText
-                android:id="@+id/showSecondName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="32dp"
-                android:textColor="#FFFFFF"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:enabled="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/showName"
-                tools:ignore="Autofill,LabelFor" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/userSurname"
-                android:layout_width="wrap_content"
+            <TableRow
+                android:id="@+id/Row2"
+                app:layout_constraintTop_toBottomOf="@+id/Row1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/oregano"
-                android:text="@string/userSurname"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toStartOf="@+id/showSecondName"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/userSecondName" />
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/showSurname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="32dp"
-                android:textColor="#FFFFFF"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:enabled="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/showSecondName"
-                tools:ignore="Autofill,LabelFor" />
+                <TextView
+                    android:id="@+id/userSecondName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/oregano"
+                    android:text="@string/userName2"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp" />
 
-            <TextView
-                android:id="@+id/userDateOfBirth"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/oregano"
-                android:text="@string/userBirth"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toStartOf="@+id/showBirth"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/userSurname" />
+                <EditText
+                    android:id="@+id/showSecondName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:textColor="#FFFFFF"
+                    android:textAlignment="textEnd"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:enabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/showName"
+                    tools:ignore="Autofill,LabelFor" />
 
-            <EditText
-                android:id="@+id/showBirth"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="32dp"
-                android:textColor="#FFFFFF"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:enabled="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/showSurname"
-                tools:ignore="Autofill,LabelFor" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/userGender"
-                android:layout_width="wrap_content"
+            <TableRow
+                android:id="@+id/Row3"
+                app:layout_constraintTop_toBottomOf="@+id/Row2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/oregano"
-                android:text="@string/userGender"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toStartOf="@+id/showGender"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/userDateOfBirth" />
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/showGender"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="32dp"
-                android:textColor="#FFFFFF"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:enabled="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/showBirth"
-                tools:ignore="Autofill,LabelFor" />
+                <TextView
+                    android:id="@+id/userSurname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/oregano"
+                    android:text="@string/userSurname"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp" />
 
-            <TextView
-                android:id="@+id/userMail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/oregano"
-                android:text="@string/userMail"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toStartOf="@+id/showMail"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/userGender" />
+                <EditText
+                    android:id="@+id/showSurname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="32dp"
+                    android:textColor="#FFFFFF"
+                    android:textAlignment="textEnd"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:enabled="false"
+                    tools:ignore="Autofill,LabelFor" />
 
-            <EditText
-                android:id="@+id/showMail"
-                android:layout_width="wrap_content"
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/Row4"
+                app:layout_constraintTop_toBottomOf="@+id/Row3"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="32dp"
-                android:textColor="#FFFFFF"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:enabled="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/showGender"
-                tools:ignore="Autofill,LabelFor" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/userDateOfBirth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/oregano"
+                    android:text="@string/userBirth"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp" />
+
+                <EditText
+                    android:id="@+id/showBirth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="32dp"
+                    android:textColor="#FFFFFF"
+                    android:textAlignment="textEnd"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:enabled="false"
+                    tools:ignore="Autofill,LabelFor" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/Row5"
+                app:layout_constraintTop_toBottomOf="@+id/Row4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/userGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/oregano"
+                    android:text="@string/userGender"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp" />
+
+                <EditText
+                    android:id="@+id/showGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="32dp"
+                    android:textColor="#FFFFFF"
+                    android:textAlignment="textEnd"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:enabled="false"
+                    tools:ignore="Autofill,LabelFor" />
+
+            </TableRow>
+
+
+            <TableRow
+                android:id="@+id/Row6"
+                app:layout_constraintTop_toBottomOf="@+id/Row5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/userMail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/oregano"
+                    android:text="@string/userMail"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp" />
+
+                <EditText
+                    android:id="@+id/showMail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="32dp"
+                    android:textColor="#FFFFFF"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:enabled="false"
+                    android:textAlignment="textEnd"
+                    tools:ignore="Autofill,LabelFor" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/Row7"
+                app:layout_constraintTop_toBottomOf="@+id/Row6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/userAccountNumber"
@@ -218,10 +258,7 @@
                 android:fontFamily="@font/oregano"
                 android:text="@string/userAccountNumber"
                 android:textColor="#FFFFFF"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toStartOf="@+id/showNumber"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/userMail" />
+                android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/showNumber"
@@ -232,11 +269,13 @@
                 android:textColor="#FFFFFF"
                 android:ems="10"
                 android:inputType="numberDecimal"
+                android:textAlignment="textEnd"
                 android:enabled="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/showMail"
                 tools:ignore="Autofill,LabelFor" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </TableRow>
+
+        </LinearLayout>
     </ScrollView>
-</RelativeLayout>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

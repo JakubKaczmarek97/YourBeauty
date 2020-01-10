@@ -2,6 +2,7 @@ package com.example.yourbeauty.LoggedUser;
 
 import android.app.ProgressDialog;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -52,9 +54,6 @@ public class MakeOrderFragment extends Fragment
         idWorker = Objects.requireNonNull(getArguments()).getString("ID_Worker");
         idClient = Objects.requireNonNull(getArguments()).getString("ID_Client");
 
-        System.out.println("Make Order: " + idService + " " + dateVisit + " " +
-                hourVisit + " " + payInAdvance + " " + idWorker + " " + idClient);
-
         new MakeOrderFragment.MakeOrder().execute();
 
         return view;
@@ -88,9 +87,9 @@ public class MakeOrderFragment extends Fragment
                     .add("idClient", idClient)
                     .build();
 
-            String url_order_zone = "http://10.0.2.2/bayb/order_visit.php";
+            String url_make_order = "http://10.0.2.2/bayb/order_visit.php";
             Request request = new Request.Builder()
-                    .url(url_order_zone)
+                    .url(url_make_order)
                     .post(postData)
                     .build();
 
@@ -99,12 +98,11 @@ public class MakeOrderFragment extends Fragment
                 Response response = client.newCall(request).execute();
                 String result = Objects.requireNonNull(response.body()).string();
 
-                System.out.println("Result: " + result);
-
                 JSONObject jsonObject = new JSONObject(result);
                 final int validate = jsonObject.getInt("success");
 
-                Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable() {
+                Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable()
+                {
                     @Override
                     public void run()
                     {
@@ -113,10 +111,13 @@ public class MakeOrderFragment extends Fragment
                                 (LinearLayout.LayoutParams.MATCH_PARENT,
                                         LinearLayout.LayoutParams.WRAP_CONTENT);
 
+                        Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.oregano);
+
                         EditText edit = new EditText(getActivity());
                         edit.setTextColor(Color.rgb(255,255,255));
                         edit.setEnabled(false);
                         edit.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                        edit.setTypeface(typeface);
 
                         if(validate == 1)
                         {
@@ -126,6 +127,7 @@ public class MakeOrderFragment extends Fragment
                             homeButton.setText(R.string.back_home);
                             homeButton.setBackgroundResource(R.drawable.gradient_1);
                             homeButton.setTextColor(Color.rgb(255,255,255));
+                            homeButton.setTypeface(typeface);
 
                             homeButton.setOnClickListener(new View.OnClickListener()
                             {
@@ -164,6 +166,5 @@ public class MakeOrderFragment extends Fragment
         {
             pDialog.dismiss();
         }
-
     }
 }

@@ -2,6 +2,7 @@ package com.example.yourbeauty.LoggedUser;
 
 import android.app.ProgressDialog;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.yourbeauty.JsonParser;
@@ -92,7 +94,8 @@ public class MyProfileFragment extends Fragment
                     .post(postData)
                     .build();
 
-            try {
+            try
+            {
                 Response response = client.newCall(request).execute();
                 String result = Objects.requireNonNull(response.body()).string();
 
@@ -131,9 +134,29 @@ public class MyProfileFragment extends Fragment
                         showGender.setTextColor(Color.rgb(255,255,255));
                         showMail.setTextColor(Color.rgb(255,255,255));
                         showAccountNumber.setTextColor(Color.rgb(255,255,255));
+
+
+                        showName.setTextSize(24);
+                        showSecondName.setTextSize(24);
+                        showSurname.setTextSize(24);
+                        showBirth.setTextSize(24);
+                        showGender.setTextSize(24);
+                        showMail.setTextSize(24);
+                        showAccountNumber.setTextSize(24);
+
+
+
+                        Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.oregano);
+
+                        showName.setTypeface(typeface);
+                        showSecondName.setTypeface(typeface);
+                        showSurname.setTypeface(typeface);
+                        showBirth.setTypeface(typeface);
+                        showGender.setTypeface(typeface);
+                        showMail.setTypeface(typeface);
+                        showAccountNumber.setTypeface(typeface);
                     }
                 });
-
             }
             catch (Exception e)
             {

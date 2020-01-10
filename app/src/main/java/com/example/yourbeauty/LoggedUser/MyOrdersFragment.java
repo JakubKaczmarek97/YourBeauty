@@ -2,6 +2,7 @@ package com.example.yourbeauty.LoggedUser;
 
 import android.app.ProgressDialog;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.yourbeauty.JsonParser;
@@ -90,6 +92,8 @@ public class MyOrdersFragment extends Fragment
                     {
                         LinearLayout linear = view.findViewById(R.id.orders_linear);
 
+                        Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.oregano);
+
                         if(parsedOrders.isEmpty())
                         {
                             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
@@ -100,6 +104,7 @@ public class MyOrdersFragment extends Fragment
                             btn.setText("You don't have ordered visits");
                             btn.setBackgroundResource(R.drawable.gradient_1);
                             btn.setTextColor(Color.rgb(255,255,255));
+                            btn.setTypeface(typeface);
 
                             params.setMargins(10, 3, 10, 3);
                             linear.addView(btn, params);
@@ -113,24 +118,24 @@ public class MyOrdersFragment extends Fragment
                                                 LinearLayout.LayoutParams.WRAP_CONTENT);
 
                                 EditText edit = new EditText(getActivity());
+                                edit.setTypeface(typeface);
 
                                 final String orderData =
                                         parsedOrders.get(keys[i]) + "\n"
                                         + parsedOrders.get(keys[i+1]) + " "
                                         + parsedOrders.get(keys[i+2]) + "\n"
-                                        + parsedOrders.get(keys[i+3]) + " "
+                                        + parsedOrders.get(keys[i+3]) + "   "
                                         + parsedOrders.get(keys[i+4]) + "\n"
                                         + parsedOrders.get(keys[i+5]) + "\n"
                                         + parsedOrders.get(keys[i+6]) + " "
                                         + parsedOrders.get(keys[i+7]) + "\n"
-                                        + parsedOrders.get(keys[i+8]);
+                                        + "Pay In Advance: " + parsedOrders.get(keys[i+8]);
 
                                 edit.setBackgroundColor(Color.rgb(230,230,230));
                                 edit.setEnabled(false);
                                 edit.setTextColor(Color.rgb(0,0,0));
                                 edit.setText(orderData);
                                 edit.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-
 
                                 params.setMargins(15, 0, 15, 8);
                                 linear.addView(edit,params);

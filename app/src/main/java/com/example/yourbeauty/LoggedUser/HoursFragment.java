@@ -2,6 +2,7 @@ package com.example.yourbeauty.LoggedUser;
 
 import android.app.ProgressDialog;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -84,9 +86,9 @@ public class HoursFragment extends Fragment
                     .add("idWorker", workerID)
                     .build();
 
-            String url_order_zone = "http://10.0.2.2/bayb/prepare_hour.php";
+            String url_hours = "http://10.0.2.2/bayb/prepare_hour.php";
             Request request = new Request.Builder()
-                    .url(url_order_zone)
+                    .url(url_hours)
                     .post(postData)
                     .build();
             try
@@ -144,8 +146,8 @@ public class HoursFragment extends Fragment
                                 rb.setTextColor(Color.rgb(230,230,230));
                                 rb.setTextSize(18);
                                 rb.setButtonTintList(ContextCompat.getColorStateList(getActivity(), R.color.radio_buttons));
-
-                                //rb.setId(Integer.parseInt(Objects.requireNonNull(parsedHours.get(keys[i]))));
+                                Typeface typeface = ResourcesCompat.getFont(getActivity(),R.font.oregano);
+                                rb.setTypeface(typeface);
 
                                 params.setMargins(5, 0, 5, 8);
                                 radioGroup.addView(rb);
