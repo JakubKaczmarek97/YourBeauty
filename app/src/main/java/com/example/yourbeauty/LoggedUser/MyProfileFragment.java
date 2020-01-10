@@ -14,6 +14,7 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.yourbeauty.JsonParser;
 import com.example.yourbeauty.R;
@@ -51,11 +52,13 @@ public class MyProfileFragment extends Fragment
     private EditText showAccountNumber;
 
     private Button btn;
+    private String ID;
 
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         view = inflater.inflate(R.layout.fragment_my_profile, container, false);
+        ID = UserActivity.getUserId();
 
         showName = view.findViewById(R.id.showName);
         showSecondName = view.findViewById(R.id.showSecondName);
@@ -66,6 +69,22 @@ public class MyProfileFragment extends Fragment
         showAccountNumber = view.findViewById(R.id.showNumber);
 
         btn = view.findViewById(R.id.profile_edit_button);
+
+        Button pass = view.findViewById(R.id.profile_edit_password);
+
+        pass.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                ChangePasswordFragment changePasswordFragment = new ChangePasswordFragment();
+
+                FragmentTransaction transaction =
+                        Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                transaction.replace(R.id.fragment_my_profile, changePasswordFragment);
+                transaction.addToBackStack(null).commit();
+            }
+        });
 
         new MyProfileFragment.ListUserProfile().execute();
 
