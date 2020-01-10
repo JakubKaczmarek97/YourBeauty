@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -38,6 +40,7 @@ public class SignInFragment extends Fragment
     private LinkedHashMap<String, String> parsedJson = new LinkedHashMap<>();
 
     private String userId;
+    private String noLogout = "false";
 
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -47,6 +50,7 @@ public class SignInFragment extends Fragment
         inputEmail = view.findViewById(R.id.plainEmail);
         inputPassword = view.findViewById(R.id.plainPass);
 
+
         Button signIn = view.findViewById(R.id.btnSignIn);
 
         signIn.setOnClickListener(new View.OnClickListener()
@@ -55,6 +59,20 @@ public class SignInFragment extends Fragment
             public void onClick(View v)
             {
                 new SignInFragment.UserLogin().execute();
+            }
+        });
+
+        CheckBox checkBox = view.findViewById(R.id.noLogoutCheck);
+
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked)
+            {
+                if(isChecked)
+                    noLogout = "true";
+                else
+                    noLogout = "false";
             }
         });
 
@@ -122,17 +140,11 @@ public class SignInFragment extends Fragment
             }
             else
             {
-                /*
-                Intent intent = new Intent(getActivity(), UserActivity.class);
-                intent.putExtra("USER_ID", userId);
-                startActivity(intent);
-                Objects.requireNonNull(getActivity()).finish();
-                 */
-
                 UserCityFragment userCityFragment = new UserCityFragment();
 
                 Bundle args = new Bundle();
                 args.putString("USER_ID", userId);
+                args.putString("NO_LOGOUT", noLogout);
 
                 userCityFragment.setArguments(args);
 

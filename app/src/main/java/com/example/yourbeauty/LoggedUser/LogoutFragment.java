@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.yourbeauty.SharedPrefs;
 import com.example.yourbeauty.UnregisteredUser.MainActivity;
 
 import java.util.Objects;
@@ -20,6 +21,8 @@ public class LogoutFragment extends Fragment
     {
         UserActivity.setUserId("");
         UserActivity.setUserCity("");
+
+        SharedPrefs.saveData(getActivity(),"who_is_logged","Nobody");
 
         Intent intent = new Intent(getActivity(), MainActivity.class);
         startActivity(intent);
