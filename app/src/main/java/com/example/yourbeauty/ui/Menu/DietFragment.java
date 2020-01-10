@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.yourbeauty.JsonParser;
+import com.example.yourbeauty.LoggedUser.UserActivity;
 import com.example.yourbeauty.R;
 import com.example.yourbeauty.ui.Services.ServicesFragment;
 
@@ -63,6 +64,7 @@ public class DietFragment extends Fragment
             OkHttpClient client = new OkHttpClient();
 
             RequestBody postData = new FormBody.Builder()
+                    .add("city", UserActivity.getUserCity())
                     .build();
 
             String url_diet = "http://10.0.2.2/bayb/display_category_dietetics.php";

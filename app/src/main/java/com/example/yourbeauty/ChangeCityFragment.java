@@ -1,7 +1,5 @@
 package com.example.yourbeauty;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.yourbeauty.LoggedUser.UserActivity;
-
-import java.util.Objects;
 
 public class ChangeCityFragment extends Fragment
 {
@@ -49,29 +45,22 @@ public class ChangeCityFragment extends Fragment
 
     private void saveData()
     {
-        SharedPreferences sharedPreferences =
-                Objects.requireNonNull(getActivity()).getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
         if(!editText.getText().toString().isEmpty())
         {
-            editor.putString(CITY_NAME, editText.getText().toString());
+            SharedPrefs.saveData(getActivity(),CITY_NAME, editText.getText().toString());
+            UserActivity.setUserCity(editText.getText().toString());
+
             Toast.makeText(getActivity(),"Data saved", Toast.LENGTH_SHORT).show();
         }
         else
         {
             Toast.makeText(getActivity(),"City name can't be empty! ", Toast.LENGTH_SHORT).show();
         }
-
-        editor.apply();
     }
 
     private void loadData()
     {
-        SharedPreferences sharedPreferences =
-                Objects.requireNonNull(getActivity()).getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-
-        userCity = sharedPreferences.getString(CITY_NAME, "");
+        userCity = SharedPrefs.loadData(getActivity(),CITY_NAME);
 
         String setText = "Your City: " + userCity;
         textView.setText(setText);

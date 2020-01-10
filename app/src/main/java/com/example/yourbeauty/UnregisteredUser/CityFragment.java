@@ -56,9 +56,6 @@ public class CityFragment extends Fragment
     {
         if(!editText.getText().toString().isEmpty())
         {
-            //editor.putString(CITY_NAME, editText.getText().toString());
-            //editor.putString(IS_SAVED, "true");
-
             SharedPrefs.saveData(getActivity(),CITY_NAME, editText.getText().toString());
             SharedPrefs.saveData(getActivity(),IS_SAVED,"true");
 
@@ -73,9 +70,6 @@ public class CityFragment extends Fragment
 
     private void loadData()
     {
-        //String text = sharedPreferences.getString(IS_SAVED, "");
-        //String userCity = sharedPreferences.getString(CITY_NAME, "");
-
         String text = SharedPrefs.loadData(getActivity(), IS_SAVED);
         String userCity = SharedPrefs.loadData(getActivity(),CITY_NAME);
 
