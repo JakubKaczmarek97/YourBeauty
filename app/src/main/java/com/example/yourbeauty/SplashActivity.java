@@ -29,11 +29,14 @@ public class SplashActivity extends AppCompatActivity
 
         String noLogout = SharedPrefs.loadData(this,"who_is_logged");
 
+        System.out.println("SPLASH: " + noLogout);
+
         final Intent intent;
 
-        if(noLogout.equals("Nobody") || noLogout.equals(""))
+        if(noLogout.equals("Nobody") || noLogout.equals(" "))
         {
             intent = new Intent(this, MainActivity.class);
+            UserActivity.setUserId("");
         }
         else
         {

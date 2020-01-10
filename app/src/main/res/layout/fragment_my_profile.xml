@@ -292,6 +292,16 @@
                     tools:ignore="Autofill,LabelFor" />
             </TableRow>
 
+            <Button
+                android:id="@+id/profile_edit_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit"
+                android:layout_marginTop="32dp"
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="#B8ECF8"
+                android:fontFamily="@font/oregano"/>
+
         </LinearLayout>
     </ScrollView>
     </RelativeLayout>

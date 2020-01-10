@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -29,6 +30,7 @@ import okhttp3.Response;
 public class MyProfileFragment extends Fragment
 {
     private ProgressDialog pDialog;
+    private View view;
 
     private String userName;
     private String userSecondName;
@@ -46,10 +48,12 @@ public class MyProfileFragment extends Fragment
     private EditText showMail;
     private EditText showAccountNumber;
 
+    private Button btn;
+
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.fragment_my_profile, container, false);
+        view = inflater.inflate(R.layout.fragment_my_profile, container, false);
 
         showName = view.findViewById(R.id.showName);
         showSecondName = view.findViewById(R.id.showSecondName);
@@ -135,7 +139,6 @@ public class MyProfileFragment extends Fragment
                         showMail.setTextColor(Color.rgb(255,255,255));
                         showAccountNumber.setTextColor(Color.rgb(255,255,255));
 
-
                         showName.setTextSize(24);
                         showSecondName.setTextSize(24);
                         showSurname.setTextSize(24);
@@ -143,8 +146,6 @@ public class MyProfileFragment extends Fragment
                         showGender.setTextSize(24);
                         showMail.setTextSize(24);
                         showAccountNumber.setTextSize(24);
-
-
 
                         Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.oregano);
 
@@ -155,6 +156,17 @@ public class MyProfileFragment extends Fragment
                         showGender.setTypeface(typeface);
                         showMail.setTypeface(typeface);
                         showAccountNumber.setTypeface(typeface);
+
+                        btn = view.findViewById(R.id.profile_edit_button);
+
+                        btn.setOnClickListener(new View.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(View view)
+                            {
+                                updateUserProfile();
+                            }
+                        });
                     }
                 });
             }
@@ -170,5 +182,16 @@ public class MyProfileFragment extends Fragment
         {
             pDialog.dismiss();
         }
+    }
+
+    public void updateUserProfile()
+    {
+        showName.setEnabled(true);
+        showSecondName.setEnabled(true);
+        showSurname.setEnabled(true);
+        showBirth.setEnabled(true);
+        showGender.setEnabled(true);
+        showMail.setEnabled(true);
+        showAccountNumber.setEnabled(true);
     }
 }

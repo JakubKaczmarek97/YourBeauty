@@ -98,9 +98,11 @@ public class UserCityFragment extends Fragment
         else
         {
             Intent intent = new Intent(getActivity(), UserActivity.class);
-            intent.putExtra("USER_ID", userID);
-            intent.putExtra("CITY_NAME", userCity);
             intent.putExtra("IS_LOGGED_IN", isLoggedIn);
+
+            UserActivity.setUserId(userID);
+            UserActivity.setUserCity(userCity);
+
             startActivity(intent);
             Objects.requireNonNull(getActivity()).finish();
         }
