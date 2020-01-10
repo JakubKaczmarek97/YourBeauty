@@ -1,8 +1,6 @@
 package com.example.yourbeauty.LoggedUser;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.yourbeauty.R;
+import com.example.yourbeauty.SharedPrefs;
 
 import java.util.Objects;
 
@@ -49,14 +48,13 @@ public class UserCityFragment extends Fragment
 
     private void saveData()
     {
-        SharedPreferences sharedPreferences =
-                Objects.requireNonNull(getActivity()).getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
         if(!editText.getText().toString().isEmpty())
         {
-            editor.putString(CITY_NAME, editText.getText().toString());
-            editor.putString(IS_SAVED, "true");
+            //editor.putString(CITY_NAME, editText.getText().toString());
+            //editor.putString(IS_SAVED, "true");
+
+            SharedPrefs.saveData(getActivity(),CITY_NAME, editText.getText().toString());
+            SharedPrefs.saveData(getActivity(),IS_SAVED,"true");
 
             Toast.makeText(getActivity(),"Data saved", Toast.LENGTH_SHORT).show();
         }
@@ -65,16 +63,12 @@ public class UserCityFragment extends Fragment
             Toast.makeText(getActivity(),"City name can't be empty! ", Toast.LENGTH_SHORT).show();
         }
 
-        editor.apply();
-
     }
 
     private void loadData()
     {
-        SharedPreferences sharedPreferences =
-                Objects.requireNonNull(getActivity()).getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-        String text = sharedPreferences.getString(IS_SAVED, "");
-        String userCity = sharedPreferences.getString(CITY_NAME, "");
+        String text = SharedPrefs.loadData(getActivity(), IS_SAVED);
+        String userCity = SharedPrefs.loadData(getActivity(),CITY_NAME);
 
         if(!Objects.requireNonNull(text).equals("true"))
         {

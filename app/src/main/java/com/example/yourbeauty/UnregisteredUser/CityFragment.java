@@ -1,7 +1,5 @@
 package com.example.yourbeauty.UnregisteredUser;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +14,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.yourbeauty.R;
+import com.example.yourbeauty.SharedPrefs;
 import com.example.yourbeauty.ui.Menu.BarberFragment;
 import com.example.yourbeauty.ui.Menu.BeautyFragment;
 import com.example.yourbeauty.ui.Menu.DietFragment;
@@ -32,7 +31,6 @@ public class CityFragment extends Fragment
     private Button saveButton;
     private String change = " ";
 
-    private static final String SHARED_PREFS = "sharedPrefs";
     private String CITY_NAME = "city_name";
     private String IS_SAVED = "is_saved";
 
@@ -56,14 +54,13 @@ public class CityFragment extends Fragment
 
     private void saveData()
     {
-        SharedPreferences sharedPreferences =
-                Objects.requireNonNull(getActivity()).getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
         if(!editText.getText().toString().isEmpty())
         {
-            editor.putString(CITY_NAME, editText.getText().toString());
-            editor.putString(IS_SAVED, "true");
+            //editor.putString(CITY_NAME, editText.getText().toString());
+            //editor.putString(IS_SAVED, "true");
+
+            SharedPrefs.saveData(getActivity(),CITY_NAME, editText.getText().toString());
+            SharedPrefs.saveData(getActivity(),IS_SAVED,"true");
 
             Toast.makeText(getActivity(),"Data saved", Toast.LENGTH_SHORT).show();
         }
@@ -72,16 +69,15 @@ public class CityFragment extends Fragment
             Toast.makeText(getActivity(),"City name can't be empty! ", Toast.LENGTH_SHORT).show();
         }
 
-        editor.apply();
-
     }
 
     private void loadData()
     {
-        SharedPreferences sharedPreferences =
-                Objects.requireNonNull(getActivity()).getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-        String text = sharedPreferences.getString(IS_SAVED, "");
-        String userCity = sharedPreferences.getString(CITY_NAME, "");
+        //String text = sharedPreferences.getString(IS_SAVED, "");
+        //String userCity = sharedPreferences.getString(CITY_NAME, "");
+
+        String text = SharedPrefs.loadData(getActivity(), IS_SAVED);
+        String userCity = SharedPrefs.loadData(getActivity(),CITY_NAME);
 
         if(!Objects.requireNonNull(text).equals("true"))
         {
