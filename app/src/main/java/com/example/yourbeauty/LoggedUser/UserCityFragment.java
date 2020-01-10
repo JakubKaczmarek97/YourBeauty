@@ -27,9 +27,7 @@ public class UserCityFragment extends Fragment
     private String CITY_NAME = "city_name";
     private String IS_SAVED = "is_saved";
     private String IS_LOGGED_IN = "is_logged_in";
-    private String WHO_IS_LOGGED = "who_is_logged";
-
-    private String noLogoutChecked;
+    private final static String WHO_IS_LOGGED = "who_is_logged";
 
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -37,7 +35,7 @@ public class UserCityFragment extends Fragment
         View view = inflater.inflate(R.layout.fragment_user_city, container, false);
 
         userID = Objects.requireNonNull(getArguments()).getString("USER_ID");
-        noLogoutChecked = Objects.requireNonNull(getArguments()).getString("NO_LOGOUT");
+        String noLogoutChecked = Objects.requireNonNull(getArguments()).getString("NO_LOGOUT");
 
         if(Objects.requireNonNull(noLogoutChecked).equals("true"))
         {
@@ -47,8 +45,6 @@ public class UserCityFragment extends Fragment
         {
             SharedPrefs.saveData(getActivity(),WHO_IS_LOGGED, "Nobody");
         }
-
-        System.out.println(SharedPrefs.loadData(getActivity(),WHO_IS_LOGGED));
 
         IS_SAVED += userID;
         CITY_NAME += userID;

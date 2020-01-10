@@ -2,6 +2,7 @@ package com.example.yourbeauty.LoggedUser;
 
 import android.app.ProgressDialog;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -81,13 +83,15 @@ public class OrderZoneFragment extends Fragment
         LinearLayout firms = view.findViewById(R.id.firm_data);
 
         EditText firm = new EditText(getActivity());
-        firm.setText(firmName + "\n" + firmData);
+        String temp = firmName + "\n" + firmData;
+        firm.setText(temp);
         firm.setTextColor(Color.rgb(255,255,255));
         firm.setEnabled(false);
         firms.addView(firm);
 
         EditText service = new EditText(getActivity());
-        service.setText(serviceName + "\n" + serviceData);
+        temp = serviceName + "\n" + serviceData;
+        service.setText(temp);
         service.setTextColor(Color.rgb(255,255,255));
         service.setEnabled(false);
         firms.addView(service);
@@ -147,14 +151,17 @@ public class OrderZoneFragment extends Fragment
                     {
                         LinearLayout workers = view.findViewById(R.id.workers_list);
 
+                        Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.oregano);
+
                         if(parsedWorkers.isEmpty())
                         {
-                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                                    LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
+                                    (LinearLayout.LayoutParams.MATCH_PARENT,
                                     LinearLayout.LayoutParams.WRAP_CONTENT);
 
                             Button btn = new Button(getActivity());
-                            btn.setText(R.string.no_workers); // No workers available
+                            btn.setTypeface(typeface);
+                            btn.setText(R.string.no_workers);
                             btn.setBackgroundColor(Color.rgb(255,100,100));
                             btn.setTextColor(Color.rgb(255,255,255));
 
@@ -183,6 +190,7 @@ public class OrderZoneFragment extends Fragment
                                 String rbText = parsedWorkers.get(keys[i+1]) + " " + parsedWorkers.get(keys[i+2]);
 
                                 rb.setText(rbText);
+                                rb.setTypeface(typeface);
                                 rb.setTextColor(Color.rgb(230,230,230));
                                 rb.setTextSize(18);
                                 rb.setId(Integer.parseInt(Objects.requireNonNull(parsedWorkers.get(keys[i]))));

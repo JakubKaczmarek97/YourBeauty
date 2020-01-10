@@ -19,9 +19,6 @@ import java.util.Objects;
 
 public class SummaryFragment extends Fragment
 {
-    private View view;
-    private String firmData;
-    private String serviceData;
     private String selectedHour;
     private String selectedDate;
     private String workerID;
@@ -32,10 +29,10 @@ public class SummaryFragment extends Fragment
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        view = inflater.inflate(R.layout.fragment_summary, container, false);
+        View view = inflater.inflate(R.layout.fragment_summary, container, false);
 
-        firmData = Objects.requireNonNull(getArguments()).getString("FirmData");
-        serviceData = Objects.requireNonNull(getArguments()).getString("ServiceData");
+        String firmData = Objects.requireNonNull(getArguments()).getString("FirmData");
+        String serviceData = Objects.requireNonNull(getArguments()).getString("ServiceData");
         selectedHour = Objects.requireNonNull(getArguments()).getString("SelectedHour");
         selectedDate = Objects.requireNonNull(getArguments()).getString("DateVisit");
         workerID = Objects.requireNonNull(getArguments()).getString("WorkerID");
@@ -45,7 +42,8 @@ public class SummaryFragment extends Fragment
         LinearLayout summary = view.findViewById(R.id.summary_linear);
 
         EditText editText = new EditText(getActivity());
-        editText.setText(firmData + "\n\n" + serviceData + "\n\n" + selectedDate + "\n" + selectedHour);
+        String temp = firmData + "\n\n" + serviceData + "\n\n" + selectedDate + "\n" + selectedHour;
+        editText.setText(temp);
         editText.setTextColor(Color.rgb(255,255,255));
         editText.setEnabled(false);
         summary.addView(editText);
