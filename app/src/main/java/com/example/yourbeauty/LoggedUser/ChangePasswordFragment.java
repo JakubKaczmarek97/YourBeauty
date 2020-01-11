@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -27,7 +28,7 @@ import okhttp3.Response;
 public class ChangePasswordFragment extends Fragment
 {
     private ProgressDialog pDialog;
-    private View view;
+    private int validate;
 
     private EditText plainOldPass;
     private EditText plainNewPass;
@@ -36,7 +37,7 @@ public class ChangePasswordFragment extends Fragment
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        view = inflater.inflate(R.layout.fragment_change_password, container, false);
+        View view = inflater.inflate(R.layout.fragment_change_password, container, false);
 
         plainOldPass = view.findViewById(R.id.plainOldPass);
         plainNewPass = view.findViewById(R.id.plainNewPass);
@@ -76,13 +77,7 @@ public class ChangePasswordFragment extends Fragment
             String newPassword = plainNewPass.getText().toString();
             String confirmPassword = plainConfirm.getText().toString();
 
-            System.out.println("OLD: " + oldPassword);
-            System.out.println("NEW: " + newPassword);
-            System.out.println("CONFIRM: " + confirmPassword);
-
             String ID = UserActivity.getUserId();
-
-            System.out.println("ID: " + ID);
 
             OkHttpClient client = new OkHttpClient();
 
@@ -104,16 +99,8 @@ public class ChangePasswordFragment extends Fragment
                 Response response = client.newCall(request).execute();
                 String result = Objects.requireNonNull(response.body()).string();
 
-                System.out.println("RESULT: " + result);
-
-                int validate;
-                String message;
-
                 JSONObject jsonObject = new JSONObject(result);
                 validate = jsonObject.getInt("success");
-                message = jsonObject.getString("message");
-
-                System.out.println("SUCCESS: " + validate + " Message: " + message);
 
             }
             catch (Exception e) {
@@ -126,6 +113,26 @@ public class ChangePasswordFragment extends Fragment
 
         protected void onPostExecute(String s)
         {
+            Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable()
+            {
+                public void run()
+                {
+                    if(validate == 0)
+                    {
+                        Toast.makeText(getActivity(),
+                                "Wrong old or new password",
+                                Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(getActivity(),
+                                "Password updated successfully",
+                                Toast.LENGTH_LONG).show();
+                    }
+
+                }
+            });
+
             pDialog.dismiss();
         }
     }
