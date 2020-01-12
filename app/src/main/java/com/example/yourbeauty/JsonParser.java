@@ -210,6 +210,7 @@ public class JsonParser
     {
         json = p;
         map = new LinkedHashMap<>();
+
         try
         {
             jsonObject = new JSONObject(json);
@@ -235,22 +236,8 @@ public class JsonParser
 
         map.put(key, value);
 
-        key = "dateOfBirth";
-        value = jsonObject.getString(key);
-
-        map.put(key, value);
-
-        key = "gender";
-        value = jsonObject.getString(key);
-
-        map.put(key, value);
 
         key = "email";
-        value = jsonObject.getString(key);
-
-        map.put(key, value);
-
-        key = "bankAccountNumber";
         value = jsonObject.getString(key);
 
         map.put(key, value);

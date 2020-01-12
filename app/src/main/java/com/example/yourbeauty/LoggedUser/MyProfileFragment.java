@@ -36,18 +36,12 @@ public class MyProfileFragment extends Fragment
     private String userName;
     private String userSecondName;
     private String userSurname;
-    private String userBirth;
-    private String userGender;
     private String userMail;
-    private String userAccountNumber;
 
     private EditText showName;
     private EditText showSecondName;
     private EditText showSurname;
-    private EditText showBirth;
-    private EditText showGender;
     private EditText showMail;
-    private EditText showAccountNumber;
 
     private Button btn;
     private String ID;
@@ -61,10 +55,7 @@ public class MyProfileFragment extends Fragment
         showName = view.findViewById(R.id.showName);
         showSecondName = view.findViewById(R.id.showSecondName);
         showSurname = view.findViewById(R.id.showSurname);
-        showBirth = view.findViewById(R.id.showBirth);
-        showGender = view.findViewById(R.id.showGender);
         showMail = view.findViewById(R.id.showMail);
-        showAccountNumber = view.findViewById(R.id.showNumber);
 
         btn = view.findViewById(R.id.profile_edit_button);
 
@@ -134,10 +125,7 @@ public class MyProfileFragment extends Fragment
                 userSurname = parsedUserProfile.get(keys[0]);
                 userName = parsedUserProfile.get(keys[1]);
                 userSecondName = parsedUserProfile.get(keys[2]);
-                userBirth = parsedUserProfile.get(keys[3]);
-                userGender = parsedUserProfile.get(keys[4]);
-                userMail = parsedUserProfile.get(keys[5]);
-                userAccountNumber = parsedUserProfile.get(keys[6]);
+                userMail = parsedUserProfile.get(keys[3]);
 
                 Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable()
                 {
@@ -147,36 +135,24 @@ public class MyProfileFragment extends Fragment
                         showName.setText(userName);
                         showSecondName.setText(userSecondName);
                         showSurname.setText(userSurname);
-                        showBirth.setText(userBirth);
-                        showGender.setText(userGender);
                         showMail.setText(userMail);
-                        showAccountNumber.setText(userAccountNumber);
 
                         showName.setTextColor(Color.rgb(255,255,255));
                         showSecondName.setTextColor(Color.rgb(255,255,255));
                         showSurname.setTextColor(Color.rgb(255,255,255));
-                        showBirth.setTextColor(Color.rgb(255,255,255));
-                        showGender.setTextColor(Color.rgb(255,255,255));
                         showMail.setTextColor(Color.rgb(255,255,255));
-                        showAccountNumber.setTextColor(Color.rgb(255,255,255));
 
                         showName.setTextSize(24);
                         showSecondName.setTextSize(24);
                         showSurname.setTextSize(24);
-                        showBirth.setTextSize(24);
-                        showGender.setTextSize(24);
                         showMail.setTextSize(24);
-                        showAccountNumber.setTextSize(24);
 
                         Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.oregano);
 
                         showName.setTypeface(typeface);
                         showSecondName.setTypeface(typeface);
                         showSurname.setTypeface(typeface);
-                        showBirth.setTypeface(typeface);
-                        showGender.setTypeface(typeface);
                         showMail.setTypeface(typeface);
-                        showAccountNumber.setTypeface(typeface);
 
                         btn.setOnClickListener(new View.OnClickListener()
                         {
@@ -186,10 +162,7 @@ public class MyProfileFragment extends Fragment
                                 showName.setEnabled(true);
                                 showSecondName.setEnabled(true);
                                 showSurname.setEnabled(true);
-                                showBirth.setEnabled(true);
-                                showGender.setEnabled(true);
                                 showMail.setEnabled(true);
-                                showAccountNumber.setEnabled(true);
 
                                 btn.setText("Update");
 
@@ -201,10 +174,7 @@ public class MyProfileFragment extends Fragment
                                         showName.setEnabled(false);
                                         showSecondName.setEnabled(false);
                                         showSurname.setEnabled(false);
-                                        showBirth.setEnabled(false);
-                                        showGender.setEnabled(false);
                                         showMail.setEnabled(false);
-                                        showAccountNumber.setEnabled(false);
 
                                         new MyProfileFragment.UpdateUserProfile().execute();
 
@@ -250,10 +220,7 @@ public class MyProfileFragment extends Fragment
             String Name = showName.getText().toString();
             String SecondName = showSecondName.getText().toString();
             String Surname = showSurname.getText().toString();
-            String Birth = showBirth.getText().toString();
-            String Gender = showGender.getText().toString();
             String Mail = showMail.getText().toString();
-            String AccountNumber = showAccountNumber.getText().toString();
 
             String ID = UserActivity.getUserId();
 
@@ -264,10 +231,7 @@ public class MyProfileFragment extends Fragment
                     .add("surname", Surname)
                     .add("name", Name)
                     .add("name2", SecondName)
-                    .add("dateOfBirth", Birth)
-                    .add("gender", Gender)
                     .add("email", Mail)
-                    .add("bankAccountNumber",AccountNumber)
                     .build();
 
             String url_update = "http://10.0.2.2/bayb/update_user_profile.php";
