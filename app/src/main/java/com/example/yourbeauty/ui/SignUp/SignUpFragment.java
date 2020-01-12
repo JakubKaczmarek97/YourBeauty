@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,12 +35,8 @@ public class SignUpFragment extends Fragment
     private EditText inputName;
     private EditText inputSecondName;
     private EditText inputSurname;
-    private EditText inputDateOfBirth;
-    private RadioButton inputGenderWoman;
-    private RadioButton inputGenderMan;
     private EditText inputEmail;
     private EditText inputPassword;
-    private EditText inputAccountNumber;
 
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -52,12 +47,8 @@ public class SignUpFragment extends Fragment
         inputName = view.findViewById(R.id.plainName);
         inputSecondName = view.findViewById(R.id.plainSecondName);
         inputSurname = view.findViewById(R.id.plainSurname);
-        inputDateOfBirth = view.findViewById(R.id.plainDateOfBirth);
-        inputGenderWoman = view.findViewById(R.id.buttonWoman);
-        inputGenderMan = view.findViewById(R.id.buttonMan);
         inputEmail = view.findViewById(R.id.plainMail);
         inputPassword = view.findViewById(R.id.plainPassword);
-        inputAccountNumber = view.findViewById(R.id.plainBankAccountNumber);
 
         Button signUp = view.findViewById(R.id.buttonSignUp);
 
@@ -94,21 +85,8 @@ public class SignUpFragment extends Fragment
             String name = inputName.getText().toString();
             String secondName = inputSecondName.getText().toString();
             String surname = inputSurname.getText().toString();
-            String dateOfBirth = inputDateOfBirth.getText().toString();
-            String gender="";
-
-            if(inputGenderWoman.isChecked())
-            {
-                gender ="W";
-            }
-            else if(inputGenderMan.isChecked())
-            {
-                gender = "M";
-            }
-
             String Email = inputEmail.getText().toString();
             String Password = inputPassword.getText().toString();
-            String BankAccountNumber = inputAccountNumber.getText().toString();
 
             OkHttpClient client = new OkHttpClient();
 
@@ -116,12 +94,8 @@ public class SignUpFragment extends Fragment
                     .add("name", name)
                     .add("name2", secondName)
                     .add("surname", surname)
-                    .add("date_of_birth", dateOfBirth)
-                    .add("gender", gender)
-                    .add("account_type", "C")
                     .add("email", Email)
                     .add("password", Password)
-                    .add("bank_account_number", BankAccountNumber)
                     .build();
 
             String url_create_product = "http://10.0.2.2/bayb/add_new_user.php";

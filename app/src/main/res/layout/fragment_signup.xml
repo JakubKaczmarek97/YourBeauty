@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,12 +10,17 @@
     android:clickable="true"
     android:focusable="true">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#212432">
@@ -27,12 +32,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_gravity="center_horizontal"
             app:srcCompat="@drawable/logoyourbeauty"
             tools:ignore="ContentDescription" />
-
 
         <TextView
             android:id="@+id/tw_signup"
@@ -45,250 +47,179 @@
             android:text="@string/signup"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_gravity="center"
             app:layout_constraintTop_toBottomOf="@+id/imageViewLogo" />
 
-        <TextView
-            android:id="@+id/twName"
-            android:layout_width="wrap_content"
+        <TableRow
+            android:id="@+id/Row1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/oregano"
-            android:text="@string/signup_name"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/plainName"
-            app:layout_constraintHorizontal_bias="0.433"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tw_signup" />
-
-        <EditText
-            android:id="@+id/plainName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tw_signup"
-            tools:ignore="Autofill,LabelFor" />
+            app:layout_constraintTop_toBottomOf="@+id/profile_title">
 
-        <TextView
-            android:id="@+id/twSecondName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/oregano"
-            android:text="@string/signup_second_name"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/plainSecondName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/twName" />
-
-        <EditText
-            android:id="@+id/plainSecondName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="32dp"
-            android:textColor="#FFFFFF"
-            android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plainName"
-            tools:ignore="Autofill,LabelFor" />
-
-        <EditText
-            android:id="@+id/plainSurname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="32dp"
-            android:ems="10"
-            android:textColor="#FFFFFF"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plainSecondName"
-            tools:ignore="Autofill,LabelFor" />
-
-
-        <EditText
-            android:id="@+id/plainDateOfBirth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="32dp"
-            android:ems="10"
-            android:textColor="#FFFFFF"
-            android:inputType="date"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plainSurname"
-            tools:ignore="Autofill,LabelFor" />
-
-        <RadioGroup
-            android:layout_width="210dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/plainGenderGroup"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="32dp"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plainDateOfBirth">
-            <RadioButton
-                android:id="@+id/buttonWoman"
+            <TextView
+                android:id="@+id/twName"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/gender_woman"
+                android:layout_weight="1"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/oregano"
+                android:text="@string/userName"
                 android:textColor="#FFFFFF"
-                android:buttonTint="#B8ECF8"
-                android:checked="true" />
-            <RadioButton
-                android:id="@+id/buttonMan"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/plainName"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/gender_man"
+                android:layout_weight="1"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:ems="3"
+                android:maxLength="50"
+                android:inputType="textMultiLine"
                 android:textColor="#FFFFFF"
-                android:buttonTint="#B8ECF8" />
+                android:textAlignment="textEnd"
+                tools:ignore="Autofill,LabelFor" />
 
-        </RadioGroup>
+        </TableRow>
 
-
-        <EditText
-            android:id="@+id/plainMail"
-            android:layout_width="wrap_content"
+        <TableRow
+            android:id="@+id/Row2"
+            app:layout_constraintTop_toBottomOf="@+id/Row1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="52dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plainGenderGroup"
-            tools:ignore="Autofill,LabelFor" />
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/plainPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="32dp"
-            android:ems="10"
-            android:textColor="#FFFFFF"
-            android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plainMail"
-            tools:ignore="Autofill,LabelFor" />
+            <TextView
+                android:id="@+id/twSecondName"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/oregano"
+                android:text="@string/userName2"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
 
-        <EditText
-            android:id="@+id/plainBankAccountNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="32dp"
-            android:ems="10"
-            android:textColor="#FFFFFF"
-            android:inputType="numberDecimal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plainPassword"
-            tools:ignore="Autofill,LabelFor" />
+            <EditText
+                android:id="@+id/plainSecondName"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="#FFFFFF"
+                android:textAlignment="textEnd"
+                android:maxLength="50"
+                android:ems="5"
+                android:inputType="textMultiLine"
+                tools:ignore="Autofill,LabelFor" />
 
-        <TextView
-            android:id="@+id/twSurname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/oregano"
-            android:text="@string/signup_surname"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/plainSurname"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/twSecondName" />
+        </TableRow>
 
-        <TextView
-            android:id="@+id/twDateOfBirth"
-            android:layout_width="wrap_content"
+        <TableRow
+            android:id="@+id/Row3"
+            app:layout_constraintTop_toBottomOf="@+id/Row2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/oregano"
-            android:text="@string/signup_birth"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/plainDateOfBirth"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/twSurname" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/twGender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="62dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/oregano"
-            android:text="@string/signup_gender"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/plainGenderGroup"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/twDateOfBirth" />
+            <TextView
+                android:id="@+id/twSurname"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/oregano"
+                android:text="@string/userSurname"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/twMail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="52dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/oregano"
-            android:text="@string/signup_mail"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/plainMail"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/twGender" />
+            <EditText
+                android:id="@+id/plainSurname"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="#FFFFFF"
+                android:textAlignment="textEnd"
+                android:maxLength="50"
+                android:ems="4"
+                android:inputType="textMultiLine"
+                tools:ignore="Autofill,LabelFor" />
 
-        <TextView
-            android:id="@+id/twPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/oregano"
-            android:text="@string/signup_pass"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/plainPassword"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/twMail" />
+        </TableRow>
 
-        <TextView
-            android:id="@+id/twBankAccountNumber"
-            android:layout_width="wrap_content"
+        <TableRow
+            android:id="@+id/Row4"
+            app:layout_constraintTop_toBottomOf="@+id/Row3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/oregano"
-            android:text="@string/signup_account"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/plainBankAccountNumber"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/twPassword" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/twMail"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/oregano"
+                android:text="@string/userMail"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/plainMail"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="#FFFFFF"
+                android:ems="4"
+                android:maxLength="50"
+                android:inputType="textMultiLine"
+                android:textAlignment="textEnd"
+                tools:ignore="Autofill,LabelFor" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/Row5"
+            app:layout_constraintTop_toBottomOf="@+id/Row4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/twPassword"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/oregano"
+                android:text="Password: "
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/plainPassword"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="#FFFFFF"
+                android:ems="4"
+                android:maxLength="50"
+                android:inputType="textMultiLine|textPassword"
+                android:textAlignment="textEnd"
+                tools:ignore="Autofill,LabelFor" />
+
+        </TableRow>
 
         <Button
             android:id="@+id/buttonSignUp"
@@ -301,9 +232,9 @@
             android:text="@string/signup"
             android:textColor="#000000"
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/plainBankAccountNumber" />
+            android:layout_gravity="right"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </ScrollView>
-</RelativeLayout>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
