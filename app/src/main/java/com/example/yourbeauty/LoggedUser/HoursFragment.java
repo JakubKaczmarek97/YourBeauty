@@ -122,7 +122,7 @@ public class HoursFragment extends Fragment
                         {
                             Button btn = new Button(getActivity());
                             btn.setText(R.string.no_hours);
-                            btn.setBackgroundResource(R.drawable.gradient_1);
+                            btn.setBackgroundResource(R.drawable.gradient_buttons);
                             btn.setTextColor(Color.rgb(255,255,255));
 
                             params.setMargins(10, 3, 10, 3);

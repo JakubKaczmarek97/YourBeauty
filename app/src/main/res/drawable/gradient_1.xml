@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--
     <gradient
         android:angle="270"
         android:endColor="#111111"
-        android:startColor="#6998A0" /> -->
-
-    <gradient
-        android:type="linear"
-        android:centerX="0%"
-        android:startColor="#FFA849D1"
-        android:centerColor="#FFA849D1"
-        android:endColor="#FF00D4D4"
-        android:angle="45"/>
-
-    <!-- Dać to jedynie do buttonów !!!! -->
+        android:startColor="#6998A0" />
 </shape>

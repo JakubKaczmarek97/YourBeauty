@@ -108,9 +108,6 @@ public class MakeOrderFragment extends Fragment
                     public void run()
                     {
                         LinearLayout linear = view.findViewById(R.id.make_order_linear);
-                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
-                                (LinearLayout.LayoutParams.MATCH_PARENT,
-                                        LinearLayout.LayoutParams.WRAP_CONTENT);
 
                         Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.oregano);
 
@@ -126,7 +123,7 @@ public class MakeOrderFragment extends Fragment
 
                             Button homeButton = new Button(getActivity());
                             homeButton.setText(R.string.back_home);
-                            homeButton.setBackgroundResource(R.drawable.gradient_1);
+                            homeButton.setBackgroundResource(R.drawable.gradient_buttons);
                             homeButton.setTextColor(Color.rgb(255,255,255));
                             homeButton.setTypeface(typeface);
 
@@ -143,13 +140,13 @@ public class MakeOrderFragment extends Fragment
                                 }
                             });
 
-                            linear.addView(edit,params);
-                            linear.addView(homeButton, params);
+                            linear.addView(edit);
+                            linear.addView(homeButton);
                         }
                         else
                         {
                             edit.setText(R.string.order_error);
-                            linear.addView(edit,params);
+                            linear.addView(edit);
                         }
 
                     }

@@ -2,6 +2,7 @@ package com.example.yourbeauty.ui.Services;
 
 import android.app.ProgressDialog;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -14,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -101,6 +103,8 @@ public class ServicesFragment extends Fragment
                     {
                         LinearLayout linear = view.findViewById(R.id.services_linear);
 
+                        Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.oregano);
+
                         if(parsedServices.isEmpty())
                         {
                             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
@@ -111,6 +115,7 @@ public class ServicesFragment extends Fragment
                             btn.setText(R.string.no_services);
                             btn.setBackgroundResource(R.drawable.gradient_1);
                             btn.setTextColor(Color.rgb(255,255,255));
+                            btn.setTypeface(typeface);
 
                             params.setMargins(10, 3, 10, 3);
                             linear.addView(btn, params);
@@ -119,9 +124,13 @@ public class ServicesFragment extends Fragment
 
                             for (int i = 0; i < Objects.requireNonNull(keys).length; i += 5)
                             {
-                                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
+                                LinearLayout.LayoutParams btnParams = new LinearLayout.LayoutParams
+                                    (LinearLayout.LayoutParams.MATCH_PARENT,
+                                            LinearLayout.LayoutParams.WRAP_CONTENT);
+
+                                LinearLayout.LayoutParams editParams = new LinearLayout.LayoutParams
                                         (LinearLayout.LayoutParams.MATCH_PARENT,
-                                        LinearLayout.LayoutParams.WRAP_CONTENT);
+                                                LinearLayout.LayoutParams.WRAP_CONTENT);
 
                                 Button btn = new Button(getActivity());
                                 EditText edit = new EditText(getActivity());
@@ -134,16 +143,18 @@ public class ServicesFragment extends Fragment
                                 final String serviceName = parsedServices.get(keys[i + 1]);
                                 final String servicePrice = parsedServices.get(keys[i+3]);
 
-
                                 btn.setText(serviceName);
-                                btn.setBackgroundResource(R.drawable.gradient_1);
+                                btn.setBackgroundResource(R.drawable.gradient_buttons);
                                 btn.setTextColor(Color.rgb(255,255,255));
                                 btn.setGravity(Gravity.CENTER);
+                                btn.setTypeface(typeface);
 
                                 edit.setBackgroundColor(Color.rgb(230,230,230));
                                 edit.setEnabled(false);
                                 edit.setTextColor(Color.rgb(0,0,0));
                                 edit.setText(firmData);
+                                edit.setGravity(Gravity.CENTER);
+                                edit.setTypeface(typeface);
 
                                 btn.setOnClickListener(new View.OnClickListener()
                                 {
@@ -162,9 +173,11 @@ public class ServicesFragment extends Fragment
                                     }
                                 });
 
-                                params.setMargins(5, 0, 5, 8);
-                                linear.addView(btn);
-                                linear.addView(edit,params);
+                                btnParams.setMargins(5, 0, 5, 0);
+                                linear.addView(btn, btnParams);
+
+                                editParams.setMargins(5, 0, 5, 10);
+                                linear.addView(edit,editParams);
                             }
                         }
                     }

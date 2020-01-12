@@ -52,6 +52,7 @@ public class PayPalMainActivity extends AppCompatActivity
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
         intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payPalPayment);
         startActivityForResult(intent, PAYPAL_REQUEST_CODE);
+        finish();
     }
 
     @Override
@@ -68,8 +69,6 @@ public class PayPalMainActivity extends AppCompatActivity
                 {
                     Intent intent = new Intent();
                     setResult(808, intent);
-
-                    finish();
                 }
             } else if (resultCode == Activity.RESULT_CANCELED)
             {

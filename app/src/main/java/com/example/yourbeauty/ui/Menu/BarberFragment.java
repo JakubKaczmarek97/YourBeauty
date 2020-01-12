@@ -110,7 +110,11 @@ public class BarberFragment extends Fragment
                     {
                         LinearLayout linear = view.findViewById(R.id.fragment_barber);
 
-                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
+                        LinearLayout.LayoutParams btnParams = new LinearLayout.LayoutParams
+                                (LinearLayout.LayoutParams.MATCH_PARENT,
+                                        LinearLayout.LayoutParams.WRAP_CONTENT);
+
+                        LinearLayout.LayoutParams editParams = new LinearLayout.LayoutParams
                                 (LinearLayout.LayoutParams.MATCH_PARENT,
                                         LinearLayout.LayoutParams.WRAP_CONTENT);
 
@@ -120,12 +124,12 @@ public class BarberFragment extends Fragment
                         {
                             Button btn = new Button(getActivity());
                             btn.setText(R.string.no_barbers);
-                            btn.setBackgroundResource(R.drawable.gradient_1);
+                            btn.setBackgroundResource(R.drawable.gradient_buttons);
                             btn.setTextColor(Color.rgb(255,255,255));
                             btn.setTypeface(typeface);
 
-                            params.setMargins(10, 3, 10, 3);
-                            linear.addView(btn, params);
+                            btnParams.setMargins(10, 3, 10, 3);
+                            linear.addView(btn, btnParams);
                         }
                         else {
                             for (int i = 0; i < keys.length; i += 4)
@@ -139,7 +143,7 @@ public class BarberFragment extends Fragment
                                 final String argument = parsedJson.get(keys[i]);                    //Firm ID
 
                                 btn.setText(bText);
-                                btn.setBackgroundResource(R.drawable.gradient_1);
+                                btn.setBackgroundResource(R.drawable.gradient_buttons);
                                 btn.setTextColor(Color.rgb(255,255,255));
                                 btn.setGravity(Gravity.CENTER);
                                 btn.setTypeface(typeface);
@@ -160,9 +164,11 @@ public class BarberFragment extends Fragment
                                     }
                                 });
 
-                                params.setMargins(5, 0, 5, 8);
-                                linear.addView(btn);
-                                linear.addView(editText,params);
+                                btnParams.setMargins(5, 0, 5, 0);
+                                linear.addView(btn,btnParams);
+
+                                editParams.setMargins(5, 0, 5, 8);
+                                linear.addView(editText,editParams);
                             }
                         }
                     }

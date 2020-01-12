@@ -84,17 +84,27 @@ public class OrderZoneFragment extends Fragment
 
         LinearLayout firms = view.findViewById(R.id.firm_data);
 
+        Typeface typeface = ResourcesCompat.getFont(Objects.requireNonNull(getActivity()), R.font.oregano);
+
         EditText firm = new EditText(getActivity());
         String temp = firmName + "\n" + firmData;
         firm.setText(temp);
         firm.setTextColor(Color.rgb(255,255,255));
+        firm.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        firm.setTextSize(20);
+        firm.setTypeface(typeface);
         firm.setEnabled(false);
         firms.addView(firm);
 
         EditText service = new EditText(getActivity());
         temp = serviceName + "\n" + serviceData;
+
+        System.out.println(serviceName);
         service.setText(temp);
         service.setTextColor(Color.rgb(255,255,255));
+        service.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        service.setTextSize(20);
+        service.setTypeface(typeface);
         service.setEnabled(false);
         firms.addView(service);
 
@@ -164,7 +174,7 @@ public class OrderZoneFragment extends Fragment
                             Button btn = new Button(getActivity());
                             btn.setTypeface(typeface);
                             btn.setText(R.string.no_workers);
-                            btn.setBackgroundColor(Color.rgb(255,100,100));
+                            btn.setBackgroundResource(R.drawable.gradient_buttons);
                             btn.setTextColor(Color.rgb(255,255,255));
 
                             params.setMargins(10, 10, 10, 3);
@@ -193,8 +203,8 @@ public class OrderZoneFragment extends Fragment
 
                                 rb.setText(rbText);
                                 rb.setTypeface(typeface);
-                                rb.setTextColor(Color.rgb(230,230,230));
-                                rb.setTextSize(18);
+                                rb.setTextColor(Color.rgb(255,255,255));
+                                rb.setTextSize(20);
                                 rb.setId(Integer.parseInt(Objects.requireNonNull(parsedWorkers.get(keys[i]))));
                                 rb.setButtonTintList(ContextCompat.getColorStateList(getActivity(), R.color.radio_buttons));
 

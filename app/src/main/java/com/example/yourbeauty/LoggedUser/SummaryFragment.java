@@ -2,6 +2,7 @@ package com.example.yourbeauty.LoggedUser;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -46,11 +48,16 @@ public class SummaryFragment extends Fragment
 
         LinearLayout summary = view.findViewById(R.id.summary_linear);
 
+        Typeface typeface = ResourcesCompat.getFont(Objects.requireNonNull(getActivity()),R.font.oregano);
+
         EditText editText = new EditText(getActivity());
         String temp = firmData + "\n\n" + serviceData + "\n\n" + selectedDate + "\n" + selectedHour;
         editText.setText(temp);
         editText.setTextColor(Color.rgb(255,255,255));
         editText.setEnabled(false);
+        editText.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        editText.setTypeface(typeface);
+        editText.setTextSize(20);
         summary.addView(editText);
 
         Button btn_without_pay = view.findViewById(R.id.btn_Without_Pay);
@@ -84,7 +91,7 @@ public class SummaryFragment extends Fragment
     {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == 808)
+        if(resultCode == 808)
         {
             payInAdvance = "Y";
             makeOrder();

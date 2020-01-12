@@ -19,8 +19,6 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.yourbeauty.JsonParser;
 import com.example.yourbeauty.R;
 
-import org.json.JSONObject;
-
 import java.util.LinkedHashMap;
 import java.util.Objects;
 
@@ -280,20 +278,10 @@ public class MyProfileFragment extends Fragment
 
             try
             {
-                Response response = client.newCall(request).execute();
-                String result = Objects.requireNonNull(response.body()).string();
-
-                int validate;
-                String message;
-
-                JSONObject jsonObject = new JSONObject(result);
-                validate = jsonObject.getInt("success");
-                message = jsonObject.getString("message");
-
-                System.out.println("SUCCESS: " + validate + " Message: " + message);
-
+                client.newCall(request).execute();
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 System.out.println("Error: " + e);
             }
 

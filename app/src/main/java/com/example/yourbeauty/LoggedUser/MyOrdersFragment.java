@@ -120,7 +120,7 @@ public class MyOrdersFragment extends Fragment
                                 EditText edit = new EditText(getActivity());
                                 edit.setTypeface(typeface);
 
-                                final String orderData =
+                                String orderData =
                                         parsedOrders.get(keys[i]) + "\n"
                                         + parsedOrders.get(keys[i+1]) + " "
                                         + parsedOrders.get(keys[i+2]) + "\n"
@@ -128,16 +128,23 @@ public class MyOrdersFragment extends Fragment
                                         + parsedOrders.get(keys[i+4]) + "\n"
                                         + parsedOrders.get(keys[i+5]) + "\n"
                                         + parsedOrders.get(keys[i+6]) + " "
-                                        + parsedOrders.get(keys[i+7]) + "\n"
-                                        + "Pay In Advance: " + parsedOrders.get(keys[i+8]);
+                                        + parsedOrders.get(keys[i+7]) + "\n";
+
+                                if(parsedOrders.get(keys[i+8]).equals("Y"))
+                                {
+                                    orderData += "Payed in advance";
+                                }
+                                else
+                                    orderData += "Not payed";
 
                                 edit.setBackgroundColor(Color.rgb(230,230,230));
                                 edit.setEnabled(false);
                                 edit.setTextColor(Color.rgb(0,0,0));
                                 edit.setText(orderData);
+                                edit.setTextSize(24);
                                 edit.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
-                                params.setMargins(15, 0, 15, 8);
+                                params.setMargins(16, 0, 16, 12);
                                 linear.addView(edit,params);
                             }
                         }

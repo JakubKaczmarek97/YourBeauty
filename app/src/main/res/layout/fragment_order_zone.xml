@@ -26,7 +26,9 @@
             android:layout_height="wrap_content"
             android:text="@string/select_date"
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
+            android:textSize="24sp"
+            android:fontFamily="@font/oregano"
+            android:layout_marginBottom="16dp"
             android:textAlignment="center"/>
 
         <CalendarView
@@ -41,7 +43,10 @@
             android:layout_height="wrap_content"
             android:text="@string/select_worker"
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
+            android:textSize="24sp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/oregano"
             android:textAlignment="center"/>
 
 
@@ -54,6 +59,7 @@
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:id="@+id/radio_group_orders" />
 
         </LinearLayout>
