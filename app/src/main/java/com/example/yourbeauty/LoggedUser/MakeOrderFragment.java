@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.yourbeauty.R;
@@ -138,7 +139,7 @@ public class MakeOrderFragment extends Fragment
 
                                     FragmentTransaction transaction = (Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
                                     transaction.replace(R.id.fragment_summary, homeFragment);
-                                    transaction.addToBackStack(null).commit();
+                                    Objects.requireNonNull(getFragmentManager()).popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                                 }
                             });
 
