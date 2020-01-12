@@ -1,5 +1,6 @@
 package com.example.yourbeauty.LoggedUser;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.yourbeauty.PayPal.PayPalMainActivity;
 import com.example.yourbeauty.R;
 
 import java.util.Objects;
@@ -49,13 +51,24 @@ public class SummaryFragment extends Fragment
         summary.addView(editText);
 
         Button btn_without_pay = view.findViewById(R.id.btn_Without_Pay);
+        Button btn_with_pay = view.findViewById(R.id.btn_With_Pay);
 
         btn_without_pay.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
+                payInAdvance = "Y";
                 makeOrder();
+            }
+        });
+
+        btn_with_pay.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                startActivity(new Intent(getActivity(), PayPalMainActivity.class));
             }
         });
 
