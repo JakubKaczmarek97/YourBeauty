@@ -107,7 +107,7 @@ public class HairFragment extends Fragment
 
                 //Generate buttons dynamically based on JSON
 
-                getActivity().runOnUiThread(new Runnable()
+                Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable()
                 {
                     @Override
                     public void run()
