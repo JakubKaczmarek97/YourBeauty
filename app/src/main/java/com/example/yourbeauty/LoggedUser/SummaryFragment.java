@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -26,7 +27,8 @@ public class SummaryFragment extends Fragment
     private String workerID;
     private String serviceID;
     private String clientID;
-    private String payInAdvance = "N";
+    private String payInAdvance;
+    private String servicePrice;
 
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -40,6 +42,7 @@ public class SummaryFragment extends Fragment
         workerID = Objects.requireNonNull(getArguments()).getString("WorkerID");
         serviceID = Objects.requireNonNull(getArguments()).getString("ServiceID");
         clientID = UserActivity.getUserId();
+        servicePrice = Objects.requireNonNull(getArguments()).getString("ServicePrice");
 
         LinearLayout summary = view.findViewById(R.id.summary_linear);
 
@@ -58,7 +61,7 @@ public class SummaryFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                payInAdvance = "Y";
+                payInAdvance = "N";
                 makeOrder();
             }
         });
@@ -68,11 +71,24 @@ public class SummaryFragment extends Fragment
             @Override
             public void onClick(View view)
             {
-                startActivity(new Intent(getActivity(), PayPalMainActivity.class));
+                startActivityForResult
+                        (new Intent(getActivity(), PayPalMainActivity.class).putExtra("AMOUNT",servicePrice),808);
             }
         });
 
         return view;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 808)
+        {
+            payInAdvance = "Y";
+            makeOrder();
+        }
     }
 
     private void makeOrder()

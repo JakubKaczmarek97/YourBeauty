@@ -128,10 +128,12 @@ public class ServicesFragment extends Fragment
 
                                 final String argument = parsedServices.get(keys[i]);
                                 final String firmData = " " + parsedServices.get(keys[i + 2]) + "\n"
-                                        + " " + getResources().getString(R.string.price)+ " " + parsedServices.get(keys[i + 3]) + "\n"
-                                        + " " + getResources().getString(R.string.time) + " " + parsedServices.get(keys[i + 4]);
+                                        + " " + getResources().getString(R.string.price)+ " " + parsedServices.get(keys[i + 3]) + " PLN \n"
+                                        + " " + getResources().getString(R.string.time) + " " + parsedServices.get(keys[i + 4]) + " MIN";
                                 final String serviceTime = parsedServices.get(keys[i + 4]);
                                 final String serviceName = parsedServices.get(keys[i + 1]);
+                                final String servicePrice = parsedServices.get(keys[i+3]);
+
 
                                 btn.setText(serviceName);
                                 btn.setBackgroundResource(R.drawable.gradient_1);
@@ -155,7 +157,7 @@ public class ServicesFragment extends Fragment
                                         }
                                         else    //User is logged in
                                         {
-                                            changeFragment(argument, firmData, serviceTime, serviceName);
+                                            changeFragment(argument, firmData, serviceTime, serviceName, servicePrice);
                                         }
                                     }
                                 });
@@ -180,7 +182,7 @@ public class ServicesFragment extends Fragment
         }
     }
 
-    private void changeFragment(String ID, String data, String time, String serviceName)
+    private void changeFragment(String ID, String data, String time, String serviceName, String servicePrice)
     {
         OrderZoneFragment orderZoneFragment = new OrderZoneFragment();
 
@@ -191,6 +193,7 @@ public class ServicesFragment extends Fragment
         args.putString("FirmName", firmName);
         args.putString("FirmData", firmData);
         args.putString("ServiceName", serviceName);
+        args.putString("ServicePrice", servicePrice);
         orderZoneFragment.setArguments(args);
 
         FragmentTransaction transaction = (Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();

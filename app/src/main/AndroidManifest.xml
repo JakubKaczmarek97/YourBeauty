@@ -43,9 +43,6 @@
         <activity
             android:name=".PayPal.PayPalMainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".PayPal.PaymentDetails"
-            android:theme="@style/AppTheme.NoActionBar"/>
 
     </application>
 

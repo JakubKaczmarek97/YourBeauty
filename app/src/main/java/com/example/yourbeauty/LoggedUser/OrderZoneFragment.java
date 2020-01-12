@@ -54,6 +54,7 @@ public class OrderZoneFragment extends Fragment
     private String serviceName;
     private String firmName;
     private String firmData;
+    private String servicePrice;
 
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -73,6 +74,7 @@ public class OrderZoneFragment extends Fragment
         //Not displayed
         selectedService = Objects.requireNonNull(getArguments()).getString("ServiceID");
         serviceTime = Objects.requireNonNull(getArguments()).getString("Time");
+        servicePrice = Objects.requireNonNull(getArguments()).getString("ServicePrice");
 
         //Displayed
         serviceData = Objects.requireNonNull(getArguments()).getString("ServiceData");
@@ -318,6 +320,7 @@ public class OrderZoneFragment extends Fragment
         args.putString("FirmData", firm);
         args.putString("ServiceData", service);
         args.putString("ID_Service", selectedService);
+        args.putString("ServicePrice", servicePrice);
 
         hoursFragment.setArguments(args);
 

@@ -43,6 +43,7 @@ public class HoursFragment extends Fragment
     private String serviceData;
     private String selectedHour;
     private String serviceID;
+    private String servicePrice;
 
     public View onCreateView
             (@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -56,6 +57,7 @@ public class HoursFragment extends Fragment
         firmData = Objects.requireNonNull(getArguments()).getString("FirmData");
         serviceData = Objects.requireNonNull(getArguments()).getString("ServiceData");
         serviceID = Objects.requireNonNull(getArguments()).getString("ID_Service");
+        servicePrice = Objects.requireNonNull(getArguments()).getString("ServicePrice");
 
         new HoursFragment.ListAllHours().execute();
 
@@ -204,6 +206,7 @@ public class HoursFragment extends Fragment
         args.putString("ServiceID", serviceID);
         args.putString("DateVisit", dateVisit);
         args.putString("WorkerID", workerID);
+        args.putString("ServicePrice",servicePrice);
 
         summaryFragment.setArguments(args);
 

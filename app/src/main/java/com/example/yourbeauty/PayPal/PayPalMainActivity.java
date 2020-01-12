@@ -3,22 +3,16 @@ package com.example.yourbeauty.PayPal;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.yourbeauty.R;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
 import com.paypal.android.sdk.payments.PaymentActivity;
 import com.paypal.android.sdk.payments.PaymentConfirmation;
-
-import org.json.JSONException;
 
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -29,9 +23,6 @@ public class PayPalMainActivity extends AppCompatActivity
     private static PayPalConfiguration config = new PayPalConfiguration()
             .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX)       //Using sandbox for test
             .clientId(Config.PAYPAL_CLIENT_ID);
-
-    Button btnPayNow;
-    EditText edtAmount;
 
     String amount="";
 
@@ -46,29 +37,14 @@ public class PayPalMainActivity extends AppCompatActivity
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pay_pal_main);
 
         //Start PayPal Service
 
-        Intent intent = new Intent(this,PayPalService.class);
-        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
-        startService(intent);
+        Intent intentService = new Intent(this,PayPalService.class);
+        intentService.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
+        startService(intentService);
 
-        btnPayNow = findViewById(R.id.btnPayNow);
-        edtAmount = findViewById(R.id.edtAmount);
-
-        btnPayNow.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                processPayment();
-            }
-        });
-    }
-    private void processPayment()
-    {
-        amount = edtAmount.getText().toString();
+        amount = getIntent().getStringExtra("AMOUNT");
         PayPalPayment payPalPayment = new PayPalPayment
                 (new BigDecimal(amount),"PLN","Test Payment",PayPalPayment.PAYMENT_INTENT_SALE);
 
@@ -90,18 +66,10 @@ public class PayPalMainActivity extends AppCompatActivity
 
                 if (confirmation != null)
                 {
-                    try
-                    {
-                        String paymentDetails = confirmation.toJSONObject().toString(4);
+                    Intent intent = new Intent();
+                    setResult(808, intent);
 
-                        startActivity(new Intent(this, PaymentDetails.class)
-                                .putExtra("PaymentDetails", paymentDetails)
-                                .putExtra("PaymentAmount", amount));
-
-                    } catch (JSONException e)
-                    {
-                        e.printStackTrace();
-                    }
+                    finish();
                 }
             } else if (resultCode == Activity.RESULT_CANCELED)
             {
