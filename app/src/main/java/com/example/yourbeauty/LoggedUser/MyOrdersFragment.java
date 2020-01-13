@@ -130,12 +130,12 @@ public class MyOrdersFragment extends Fragment
                                         + parsedOrders.get(keys[i+6]) + " "
                                         + parsedOrders.get(keys[i+7]) + "\n";
 
-                                if(parsedOrders.get(keys[i+8]).equals("Y"))
+                                if(Objects.requireNonNull(parsedOrders.get(keys[i + 8])).equals("Y"))
                                 {
                                     orderData += "Payed in advance";
                                 }
                                 else
-                                    orderData += "Not payed";
+                                    orderData += "Not payed in advance";
 
                                 edit.setBackgroundColor(Color.rgb(230,230,230));
                                 edit.setEnabled(false);

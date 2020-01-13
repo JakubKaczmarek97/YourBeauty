@@ -19,8 +19,6 @@ public class ChangeCityFragment extends Fragment
 {
     private String CITY_NAME = "city_name";
 
-    private String userCity;
-
     private TextView textView;
     private EditText editText;
     private Button saveButton;
@@ -64,6 +62,8 @@ public class ChangeCityFragment extends Fragment
             MainActivity.setUserCity(userCity);
 
             Toast.makeText(getActivity(),"Data saved", Toast.LENGTH_SHORT).show();
+
+            editText.setText("");
         }
         else
         {
@@ -73,12 +73,7 @@ public class ChangeCityFragment extends Fragment
 
     private void loadData()
     {
-        userCity = SharedPrefs.loadData(getActivity(),CITY_NAME);
-
-        //String firstUpper = userCity.substring(0,1).toUpperCase();
-        //String toLower = userCity.substring(1).toLowerCase();
-
-        //userCity = firstUpper + toLower;
+        String userCity = SharedPrefs.loadData(getActivity(), CITY_NAME);
 
         String setText = "Your City: " + userCity;
         textView.setText(setText);
