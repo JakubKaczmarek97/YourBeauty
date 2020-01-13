@@ -1,6 +1,7 @@
 package com.example.yourbeauty.ui.SignUp;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.yourbeauty.JsonParser;
 import com.example.yourbeauty.R;
+import com.example.yourbeauty.UnregisteredUser.MainActivity;
 import com.example.yourbeauty.ui.home.HomeFragment;
 
 import java.util.Objects;
@@ -84,6 +86,10 @@ public class SignUpFragment extends Fragment
 
             String name = inputName.getText().toString();
             String secondName = inputSecondName.getText().toString();
+            if(inputSecondName.getText().toString().equals(""))
+            {
+                secondName = "-";
+            }
             String surname = inputSurname.getText().toString();
             String Email = inputEmail.getText().toString();
             String Password = inputPassword.getText().toString();
@@ -136,12 +142,7 @@ public class SignUpFragment extends Fragment
                         Toast.makeText(getActivity(),
                                 R.string.user_added, Toast.LENGTH_LONG).show();
 
-                        HomeFragment homeFragment = new HomeFragment();
-
-                        FragmentTransaction transaction =
-                                Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
-                        transaction.replace(R.id.fragment_sign_up, homeFragment);
-                        transaction.addToBackStack(null).commit();
+                        startActivity(new Intent(getActivity(), MainActivity.class));
 
                     }
                     else
