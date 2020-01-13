@@ -113,8 +113,9 @@ public class ServicesFragment extends Fragment
 
                             Button btn = new Button(getActivity());
                             btn.setText(R.string.no_services);
-                            btn.setBackgroundResource(R.drawable.gradient_1);
+                            btn.setBackgroundResource(R.drawable.gradient_buttons);
                             btn.setTextColor(Color.rgb(255,255,255));
+                            btn.setTextSize(24);
                             btn.setTypeface(typeface);
 
                             params.setMargins(10, 3, 10, 3);
@@ -148,6 +149,7 @@ public class ServicesFragment extends Fragment
                                 btn.setTextColor(Color.rgb(255,255,255));
                                 btn.setGravity(Gravity.CENTER);
                                 btn.setTypeface(typeface);
+                                btn.setTextSize(19);
 
                                 edit.setBackgroundColor(Color.rgb(230,230,230));
                                 edit.setEnabled(false);
@@ -155,6 +157,7 @@ public class ServicesFragment extends Fragment
                                 edit.setText(firmData);
                                 edit.setGravity(Gravity.CENTER);
                                 edit.setTypeface(typeface);
+                                edit.setTextSize(20);
 
                                 btn.setOnClickListener(new View.OnClickListener()
                                 {
@@ -176,7 +179,7 @@ public class ServicesFragment extends Fragment
                                 btnParams.setMargins(5, 0, 5, 0);
                                 linear.addView(btn, btnParams);
 
-                                editParams.setMargins(5, 0, 5, 10);
+                                editParams.setMargins(5, 0, 5, 16);
                                 linear.addView(edit,editParams);
                             }
                         }
