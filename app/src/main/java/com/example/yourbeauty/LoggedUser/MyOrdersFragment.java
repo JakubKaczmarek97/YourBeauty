@@ -121,13 +121,13 @@ public class MyOrdersFragment extends Fragment
                                 edit.setTypeface(typeface);
 
                                 String orderData =
-                                        parsedOrders.get(keys[i]) + "\n"
-                                        + parsedOrders.get(keys[i+1]) + " "
+                                        "Service:  " + parsedOrders.get(keys[i]) + "\n"
+                                        + "Worker:  "  + parsedOrders.get(keys[i+1]) + " "
                                         + parsedOrders.get(keys[i+2]) + "\n"
-                                        + parsedOrders.get(keys[i+3]) + "   "
-                                        + parsedOrders.get(keys[i+4]) + "\n"
-                                        + parsedOrders.get(keys[i+5]) + "\n"
-                                        + parsedOrders.get(keys[i+6]) + " "
+                                        + "Date:  " + parsedOrders.get(keys[i+3]) + "\n"
+                                        + "Hour:  " + parsedOrders.get(keys[i+4]) + "\n"
+                                        + "Firm Name:  " + parsedOrders.get(keys[i+5]) + "\n"
+                                        + "Address:  " + parsedOrders.get(keys[i+6]) + " "
                                         + parsedOrders.get(keys[i+7]) + "\n";
 
                                 if(Objects.requireNonNull(parsedOrders.get(keys[i + 8])).equals("Y"))
@@ -137,14 +137,23 @@ public class MyOrdersFragment extends Fragment
                                 else
                                     orderData += "Not payed in advance";
 
-                                edit.setBackgroundColor(Color.rgb(230,230,230));
+                                if(i%2 == 0)
+                                {
+                                    edit.setBackgroundColor(Color.argb (160,185, 90, 226));
+                                    edit.setTextColor(Color.rgb(255,255,255));
+                                }
+                                else
+                                {
+                                    edit.setBackgroundColor(Color.argb(200, 184, 236, 248));
+                                    edit.setTextColor(Color.rgb(0,0,0));
+                                }
+
                                 edit.setEnabled(false);
-                                edit.setTextColor(Color.rgb(0,0,0));
                                 edit.setText(orderData);
                                 edit.setTextSize(24);
                                 edit.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
-                                params.setMargins(16, 0, 16, 12);
+                                params.setMargins(16, 0, 16, 16);
                                 linear.addView(edit,params);
                             }
                         }

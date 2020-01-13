@@ -116,10 +116,10 @@
     <string name="userName">Name: </string>
     <string name="userName2">Second Name: </string>
     <string name="userSurname">Surname: </string>
-    <string name="userBirth">Date Of Birth: </string>
-    <string name="userGender">Gender: </string>
     <string name="userMail" translatable="false">E-Mail: </string>
-    <string name="userAccountNumber">Account Number: </string>
     <string name="userCity">City: </string>
+
+    <!-- My Orders Layout -->
+    <string name="orders">My Orders:</string>
 
 </resources>
