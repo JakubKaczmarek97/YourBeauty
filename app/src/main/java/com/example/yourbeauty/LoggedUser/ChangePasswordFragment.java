@@ -128,6 +128,10 @@ public class ChangePasswordFragment extends Fragment
                         Toast.makeText(getActivity(),
                                 "Password updated successfully",
                                 Toast.LENGTH_LONG).show();
+
+                        plainOldPass.setText("");
+                        plainNewPass.setText("");
+                        plainConfirm.setText("");
                     }
 
                 }
