@@ -16,10 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.example.yourbeauty.R;
-import com.example.yourbeauty.ui.home.HomeFragment;
 
 import org.json.JSONObject;
 
@@ -116,6 +114,7 @@ public class MakeOrderFragment extends Fragment
                         edit.setEnabled(false);
                         edit.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                         edit.setTypeface(typeface);
+                        edit.setTextSize(24);
 
                         if(validate == 1)
                         {
@@ -132,10 +131,6 @@ public class MakeOrderFragment extends Fragment
                                 @Override
                                 public void onClick(View v)
                                 {
-                                    HomeFragment homeFragment = new HomeFragment();
-
-                                    FragmentTransaction transaction = (Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
-                                    transaction.replace(R.id.fragment_summary, homeFragment);
                                     Objects.requireNonNull(getFragmentManager()).popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                                 }
                             });

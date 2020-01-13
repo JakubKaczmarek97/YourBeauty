@@ -118,12 +118,16 @@ public class HoursFragment extends Fragment
                                 (LinearLayout.LayoutParams.MATCH_PARENT,
                                         LinearLayout.LayoutParams.WRAP_CONTENT);
 
+                        Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.oregano);
+
                         if(parsedHours.isEmpty())
                         {
                             Button btn = new Button(getActivity());
                             btn.setText(R.string.no_hours);
                             btn.setBackgroundResource(R.drawable.gradient_buttons);
                             btn.setTextColor(Color.rgb(255,255,255));
+                            btn.setTextSize(19);
+                            btn.setTypeface(typeface);
 
                             params.setMargins(10, 3, 10, 3);
                             linear.addView(btn, params);
@@ -146,9 +150,8 @@ public class HoursFragment extends Fragment
 
                                 rb.setText(rbText);
                                 rb.setTextColor(Color.rgb(230,230,230));
-                                rb.setTextSize(18);
+                                rb.setTextSize(20);
                                 rb.setButtonTintList(ContextCompat.getColorStateList(getActivity(), R.color.radio_buttons));
-                                Typeface typeface = ResourcesCompat.getFont(getActivity(),R.font.oregano);
                                 rb.setTypeface(typeface);
 
                                 params.setMargins(5, 0, 5, 8);
