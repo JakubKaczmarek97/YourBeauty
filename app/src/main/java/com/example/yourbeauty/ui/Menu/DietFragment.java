@@ -123,7 +123,7 @@ public class DietFragment extends Fragment
                         if(parsedJson.isEmpty())
                         {
                             Button btn = new Button(getActivity());
-                            btn.setText(R.string.no_barbers);
+                            btn.setText(R.string.no_dietetics);
                             btn.setBackgroundResource(R.drawable.gradient_buttons);
                             btn.setTextColor(Color.rgb(255,255,255));
                             btn.setTypeface(typeface);

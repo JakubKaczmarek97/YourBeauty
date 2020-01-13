@@ -8,7 +8,7 @@
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_1">
+    android:background="@color/colorPrimaryDark">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -70,11 +70,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="32dp"
-            android:backgroundTint="#B8ECF8"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/gradient_buttons"
             android:text="@string/next_button"
             android:fontFamily="@font/oregano"
             android:layout_gravity="end"
-            android:textColor="#000000"/>
+            android:textColor="#FFFFFF"/>
 
     </LinearLayout>
 </ScrollView>

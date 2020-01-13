@@ -225,7 +225,7 @@ public class OrderZoneFragment extends Fragment
                                         if(selected >= current)
                                         {
                                             next.setEnabled(true);
-                                            next.setTextColor(Color.rgb(0,0,0));
+                                            next.setTextColor(Color.rgb(255,255,255));
                                         }
                                         else
                                         {
@@ -274,7 +274,7 @@ public class OrderZoneFragment extends Fragment
                                     if(enabled && selected >= current)
                                     {
                                         next.setEnabled(true);
-                                        next.setTextColor(Color.rgb(0,0,0));
+                                        next.setTextColor(Color.rgb(255,255,255));
                                     }
                                     else
                                     {
