@@ -178,7 +178,12 @@ public class MyProfileFragment extends Fragment
 
                                         new MyProfileFragment.UpdateUserProfile().execute();
 
-                                        btn.setText("Edit");
+                                        MyProfileFragment myProfileFragment = new MyProfileFragment();
+
+                                        FragmentTransaction transaction =
+                                                Objects.requireNonNull(Objects.requireNonNull(getActivity()).getSupportFragmentManager()).beginTransaction();
+                                        transaction.replace(R.id.fragment_my_profile, myProfileFragment);
+                                        transaction.addToBackStack(null).commit();
                                     }
                                 });
                             }
