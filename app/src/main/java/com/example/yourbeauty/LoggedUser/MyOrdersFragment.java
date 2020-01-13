@@ -102,7 +102,7 @@ public class MyOrdersFragment extends Fragment
 
                             Button btn = new Button(getActivity());
                             btn.setText("You don't have ordered visits");
-                            btn.setBackgroundResource(R.drawable.gradient_1);
+                            btn.setBackgroundResource(R.drawable.gradient_buttons);
                             btn.setTextColor(Color.rgb(255,255,255));
                             btn.setTypeface(typeface);
 

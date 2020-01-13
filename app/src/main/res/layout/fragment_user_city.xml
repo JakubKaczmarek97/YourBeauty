@@ -42,7 +42,8 @@
         android:layout_height="wrap_content"
         android:text="Save"
         android:layout_gravity="center_horizontal"
-        android:backgroundTint="#B8ECF8"
+        android:background="@drawable/gradient_buttons"
+        android:textColor="#FFFFFF"
         android:fontFamily="@font/oregano"/>
 
 </LinearLayout>

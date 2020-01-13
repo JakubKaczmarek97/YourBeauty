@@ -193,7 +193,8 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="16dp"
                     android:layout_gravity="center_horizontal"
-                    android:backgroundTint="#B8ECF8"
+                    android:background="@drawable/gradient_buttons"
+                    android:textColor="#FFFFFF"
                     android:fontFamily="@font/oregano"/>
 
                 <Button
@@ -204,7 +205,8 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="8dp"
                     android:layout_gravity="center_horizontal"
-                    android:backgroundTint="#B8ECF8"
+                    android:background="@drawable/gradient_buttons"
+                    android:textColor="#FFFFFF"
                     android:fontFamily="@font/oregano"/>
             </TableRow>
 
