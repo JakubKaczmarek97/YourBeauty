@@ -24,6 +24,8 @@
                 android:text="@string/summary"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/oregano"
                 android:textAlignment="center"/>
 
@@ -36,26 +38,28 @@
             </LinearLayout>
 
             <Button
+                android:padding="8dp"
                 android:id="@+id/btn_Without_Pay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:backgroundTint="#B8ECF8"
+                android:background="@drawable/gradient_buttons"
                 android:text="@string/btn_without_pay"
                 android:fontFamily="@font/oregano"
                 android:layout_gravity="center"
-                android:textColor="#000000"/>
+                android:textColor="#FFFFFF"/>
 
             <Button
                 android:id="@+id/btn_With_Pay"
+                android:padding="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:backgroundTint="#B8ECF8"
+                android:background="@drawable/gradient_buttons"
                 android:text="@string/btn_with_pay"
                 android:fontFamily="@font/oregano"
                 android:layout_gravity="center"
-                android:textColor="#000000"/>
+                android:textColor="#FFFFFF"/>
 
         </LinearLayout>
 

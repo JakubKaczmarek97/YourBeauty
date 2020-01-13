@@ -163,7 +163,7 @@ public class HoursFragment extends Fragment
                                     if(checkedID != -1)
                                     {
                                         next.setEnabled(true);
-                                        next.setTextColor(Color.rgb(0,0,0));
+                                        next.setTextColor(Color.rgb(255,255,255));
                                         RadioButton radioButton = view.findViewById(checkedID);
                                         selectedHour = radioButton.getText().toString();
                                     }
