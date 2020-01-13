@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="wait_my_orders">Proszę czekać na listę twoich wizyt</string>
     <string name="app_name">YourBeauty</string>
     <string name="aesthetic_medicine">Medycyna</string>
     <string name="bad_mail_pass">Błędny e-mail lub hasło!</string>

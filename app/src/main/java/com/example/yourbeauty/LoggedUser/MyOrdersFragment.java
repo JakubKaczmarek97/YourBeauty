@@ -50,7 +50,7 @@ public class MyOrdersFragment extends Fragment
         {
             super.onPreExecute();
             pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage(getResources().getString(R.string.wait_services));
+            pDialog.setMessage(getResources().getString(R.string.wait_my_orders));
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();

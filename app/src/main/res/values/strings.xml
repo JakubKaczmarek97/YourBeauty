@@ -4,6 +4,8 @@
     <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
     <string name="nav_header_desc" translatable="false">Navigation header</string>
 
+    <!--My orders panel-->
+    <string name="wait_my_orders">Please wait for list of your orders</string>
 
     <!-- Side Menu and Toast message -->
     <string name="menu_home">Home</string>
