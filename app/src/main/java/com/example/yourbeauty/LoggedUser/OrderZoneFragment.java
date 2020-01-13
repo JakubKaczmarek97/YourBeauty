@@ -86,23 +86,25 @@ public class OrderZoneFragment extends Fragment
 
         Typeface typeface = ResourcesCompat.getFont(Objects.requireNonNull(getActivity()), R.font.oregano);
 
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
+                (LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT);
+
         EditText firm = new EditText(getActivity());
-        String temp = firmName + "\n" + firmData;
+        String temp = firmName + "\n" + firmData.trim();
         firm.setText(temp);
         firm.setTextColor(Color.rgb(255,255,255));
-        firm.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         firm.setTextSize(20);
         firm.setTypeface(typeface);
         firm.setEnabled(false);
-        firms.addView(firm);
+        params.setMargins(6,0,0,0);
+        firms.addView(firm,params);
 
         EditText service = new EditText(getActivity());
-        temp = serviceName + "\n" + serviceData;
+        temp = " " + serviceName + "\n" + serviceData;
 
-        System.out.println(serviceName);
         service.setText(temp);
         service.setTextColor(Color.rgb(255,255,255));
-        service.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         service.setTextSize(20);
         service.setTypeface(typeface);
         service.setEnabled(false);
