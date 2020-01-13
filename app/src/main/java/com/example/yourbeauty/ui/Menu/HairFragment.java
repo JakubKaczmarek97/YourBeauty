@@ -131,6 +131,7 @@ public class HairFragment extends Fragment
                             btn.setBackgroundResource(R.drawable.gradient_buttons);
                             btn.setTextColor(Color.rgb(255,255,255));
                             btn.setTypeface(typeface);
+                            btn.setTextSize(19);
 
                             btnParams.setMargins(10, 3, 10, 3);
                             linear.addView(btn, btnParams);
@@ -151,6 +152,7 @@ public class HairFragment extends Fragment
                                 btn.setTextColor(Color.rgb(255,255,255));
                                 btn.setGravity(Gravity.CENTER);
                                 btn.setTypeface(typeface);
+                                btn.setTextSize(19);
 
                                 editText.setBackgroundColor(Color.rgb(230,230,230));
                                 editText.setEnabled(false);
@@ -158,6 +160,7 @@ public class HairFragment extends Fragment
                                 editText.setText(eText);
                                 editText.setGravity(Gravity.CENTER);
                                 editText.setTypeface(typeface);
+                                editText.setTextSize(20);
 
                                 btn.setOnClickListener(new View.OnClickListener()
                                 {
@@ -171,7 +174,7 @@ public class HairFragment extends Fragment
                                 btnParams.setMargins(5, 0, 5, 0);
                                 linear.addView(btn,btnParams);
 
-                                editParams.setMargins(5, 0, 5, 8);
+                                editParams.setMargins(5, 0, 5, 16);
                                 linear.addView(editText,editParams);
                             }
                         }

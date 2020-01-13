@@ -21,8 +21,8 @@
             android:text="@string/hair_frag"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/oregano"
             android:textAlignment="center"/>
 
