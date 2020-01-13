@@ -20,7 +20,6 @@ public class ChangeCityFragment extends Fragment
     private String CITY_NAME = "city_name";
 
     private String userCity;
-    private String userID;
 
     private TextView textView;
     private EditText editText;
@@ -31,7 +30,7 @@ public class ChangeCityFragment extends Fragment
     {
         View view = inflater.inflate(R.layout.fragment_change_city, container, false);
 
-        userID = UserActivity.getUserId();
+        String userID = UserActivity.getUserId();
         CITY_NAME += userID;
 
         textView = view.findViewById(R.id.textView);
@@ -47,9 +46,22 @@ public class ChangeCityFragment extends Fragment
     {
         if(!editText.getText().toString().isEmpty())
         {
-            SharedPrefs.saveData(getActivity(),CITY_NAME, editText.getText().toString());
-            UserActivity.setUserCity(editText.getText().toString());
-            MainActivity.setUserCity(editText.getText().toString());
+            String userCity = editText.getText().toString();
+
+            String temp = userCity.substring(0,1);
+            String firstUpper = temp.toUpperCase();
+
+            temp = userCity.substring(1).toLowerCase();
+            String toLower = temp.toLowerCase();
+
+            System.out.println(firstUpper + " " + toLower);
+
+            userCity = firstUpper + toLower;
+
+
+            SharedPrefs.saveData(getActivity(),CITY_NAME, userCity);
+            UserActivity.setUserCity(userCity);
+            MainActivity.setUserCity(userCity);
 
             Toast.makeText(getActivity(),"Data saved", Toast.LENGTH_SHORT).show();
         }
@@ -62,6 +74,11 @@ public class ChangeCityFragment extends Fragment
     private void loadData()
     {
         userCity = SharedPrefs.loadData(getActivity(),CITY_NAME);
+
+        //String firstUpper = userCity.substring(0,1).toUpperCase();
+        //String toLower = userCity.substring(1).toLowerCase();
+
+        //userCity = firstUpper + toLower;
 
         String setText = "Your City: " + userCity;
         textView.setText(setText);

@@ -56,10 +56,17 @@ public class CityFragment extends Fragment
     {
         if(!editText.getText().toString().isEmpty())
         {
-            SharedPrefs.saveData(getActivity(),CITY_NAME, editText.getText().toString());
+            String userCity = editText.getText().toString();
+
+            String firstUpper = userCity.substring(0,1).toUpperCase();
+            String toLower = userCity.substring(1).toLowerCase();
+
+            userCity = firstUpper + toLower;
+
+            SharedPrefs.saveData(getActivity(),CITY_NAME, userCity);
             SharedPrefs.saveData(getActivity(),IS_SAVED,"true");
 
-            MainActivity.setUserCity(editText.getText().toString());
+            MainActivity.setUserCity(userCity);
 
             Toast.makeText(getActivity(),"Data saved", Toast.LENGTH_SHORT).show();
         }
