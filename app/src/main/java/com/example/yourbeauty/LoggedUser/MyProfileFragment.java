@@ -239,7 +239,7 @@ public class MyProfileFragment extends Fragment
                     .add("email", Mail)
                     .build();
 
-            String url_update = "http://10.0.2.2/bayb/update_user_profile.php";
+            String url_update = "http://yourbeauty.cba.pl/update_user_profile.php";
             Request request = new Request.Builder()
                     .url(url_update)
                     .post(postData)
