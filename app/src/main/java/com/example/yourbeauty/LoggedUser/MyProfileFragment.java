@@ -104,7 +104,7 @@ public class MyProfileFragment extends Fragment
                     .add("idUser", ID)
                     .build();
 
-            String url_user = "http://10.0.2.2/bayb/user_profile.php";
+            String url_user = "http://yourbeauty.cba.pl/user_profile.php";
             Request request = new Request.Builder()
                     .url(url_user)
                     .post(postData)

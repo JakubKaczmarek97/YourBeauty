@@ -88,7 +88,7 @@ public class ChangePasswordFragment extends Fragment
                     .add("password_new2", confirmPassword)
                     .build();
 
-            String url_pass = "http://10.0.2.2/bayb/update_password.php";
+            String url_pass = "http://yourbeauty.cba.pl/update_password.php";
             Request request = new Request.Builder()
                     .url(url_pass)
                     .post(postData)

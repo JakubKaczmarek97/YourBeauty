@@ -88,7 +88,7 @@ public class HairFragment extends Fragment
                     .add("city", userCity)
                     .build();
 
-            String url_hairdressers = "http://10.0.2.2/bayb/display_category_hairdressers.php";
+            String url_hairdressers = "http://yourbeauty.cba.pl/display_category_hairdressers.php";
             Request request = new Request.Builder()
                     .url(url_hairdressers)
                     .post(postData)

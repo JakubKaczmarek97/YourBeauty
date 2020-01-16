@@ -85,7 +85,7 @@ public class BeautyFragment extends Fragment
                         .build();
             }
 
-            String url_beauticians = "http://10.0.2.2/bayb/display_category_beauticians.php";
+            String url_beauticians = "http://yourbeauty.cba.pl/display_category_beauticians.php";
             Request request = new Request.Builder()
                     .url(url_beauticians)
                     .post(postData)

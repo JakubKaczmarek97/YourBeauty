@@ -138,7 +138,7 @@ public class OrderZoneFragment extends Fragment
                     .add("idService", selectedService)
                     .build();
 
-            String url_order_zone = "http://10.0.2.2/bayb/order_zone.php";
+            String url_order_zone = "http://yourbeauty.cba.pl/order_zone.php";
             Request request = new Request.Builder()
                     .url(url_order_zone)
                     .post(postData)

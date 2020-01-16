@@ -88,7 +88,7 @@ public class HoursFragment extends Fragment
                     .add("idWorker", workerID)
                     .build();
 
-            String url_hours = "http://10.0.2.2/bayb/prepare_hour.php";
+            String url_hours = "http://yourbeauty.cba.pl/prepare_hour.php";
             Request request = new Request.Builder()
                     .url(url_hours)
                     .post(postData)

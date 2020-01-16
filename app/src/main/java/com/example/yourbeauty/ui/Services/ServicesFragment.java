@@ -77,7 +77,7 @@ public class ServicesFragment extends Fragment
                     .add("idFirm", selectedFirm)
                     .build();
 
-            String url_services = "http://10.0.2.2/bayb/display_services_of_firm.php";
+            String url_services = "http://yourbeauty.cba.pl/display_services_of_firm.php";
             Request request = new Request.Builder()
                     .url(url_services)
                     .post(postData)

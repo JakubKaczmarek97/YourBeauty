@@ -82,7 +82,7 @@ public class NailsFragment extends Fragment
                         .add("city", MainActivity.getUserCity())
                         .build();
             }
-            String url_nails = "http://10.0.2.2/bayb/display_category_nails.php";
+            String url_nails = "http://yourbeauty.cba.pl/display_category_nails.php";
             Request request = new Request.Builder()
                     .url(url_nails)
                     .post(postData)

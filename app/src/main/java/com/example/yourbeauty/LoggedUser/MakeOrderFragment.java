@@ -86,7 +86,7 @@ public class MakeOrderFragment extends Fragment
                     .add("idClient", idClient)
                     .build();
 
-            String url_make_order = "http://10.0.2.2/bayb/order_visit.php";
+            String url_make_order = "http://yourbeauty.cba.pl/order_visit.php";
             Request request = new Request.Builder()
                     .url(url_make_order)
                     .post(postData)

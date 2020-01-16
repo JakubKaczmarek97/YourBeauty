@@ -65,7 +65,7 @@ public class MyOrdersFragment extends Fragment
                     .add("id", UserActivity.getUserId())
                     .build();
 
-            String url_visits = "http://10.0.2.2/bayb/display_user_visits.php";
+            String url_visits = "http://yourbeauty.cba.pl/display_user_visits.php";
             Request request = new Request.Builder()
                     .url(url_visits)
                     .post(postData)

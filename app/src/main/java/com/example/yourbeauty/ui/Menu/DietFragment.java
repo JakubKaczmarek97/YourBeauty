@@ -84,7 +84,7 @@ public class DietFragment extends Fragment
                         .build();
             }
 
-            String url_diet = "http://10.0.2.2/bayb/display_category_dietetics.php";
+            String url_diet = "http://yourbeauty.cba.pl/display_category_dietetics.php";
             Request request = new Request.Builder()
                     .url(url_diet)
                     .post(postData)

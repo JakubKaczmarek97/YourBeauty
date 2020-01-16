@@ -104,7 +104,7 @@ public class SignUpFragment extends Fragment
                     .add("password", Password)
                     .build();
 
-            String url_create_product = "http://10.0.2.2/bayb/add_new_user.php";
+            String url_create_product = "http://yourbeauty.cba.pl/add_new_user.php";
             Request request = new Request.Builder()
                     .url(url_create_product)
                     .post(postData)
