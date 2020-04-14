@@ -1,7 +1,9 @@
 <h1 align="center">
- <strong>YourBeautyr</strong>
- Application for ordering visits to beauty specialists created in cooperation with Aneta Kopera (github.com/AnetaKopera)
+ <strong>YourBeauty</strong>
 <br/>
+</h1>
+<h1>
+ Application for ordering visits to beauty specialists created in cooperation with Aneta Kopera (github.com/AnetaKopera)
 </h1>
 
 
