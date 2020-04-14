@@ -45,4 +45,4 @@ Application tested on Android  8, 9 and 10
 3. Open downloaded project using Android Studio
 4. Run application on emulator or Android mobile connected via USB
 
-<strong>Important note:</strong> If You want to use PayPal in this application, You will need to enter Your PayPal client ID into file "PayPalConfig.java". 
+<strong>Important note:</strong> If You want to use PayPal in this application, You will need to enter Your PayPal client ID into file "PayPal/Config.java". 
